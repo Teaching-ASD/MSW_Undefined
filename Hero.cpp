@@ -1,6 +1,6 @@
 #include "Hero.h"
 
-Hero::Hero(std::string name_,int damage_,int hp_):name(name_), damage(damage_), hp(hp_)
+Hero::Hero(std::string name_,int hp_,int damage_):name(name_), hp(hp_), damage(damage_)
 {
 
 }

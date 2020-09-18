@@ -4,12 +4,12 @@
 
 class Hero
 {
-private:
+private:        
         const std::string name;
         const int damage;
         int hp;
 public:
-        Hero(std::string name_,int damage_, int hp_);
+        Hero(std::string name_, int hp_,int damage_);
         std::string getName();
         int getDamage();
         int getHp();

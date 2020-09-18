@@ -1,46 +1,57 @@
 #include "Arena.h"
 
-Arena::Arena(Hero* hero1,Hero* hero2)
-{
-    heroes.push_back(hero1);
-    heroes.push_back(hero2);
 
-}
+Arena::Arena(){}
 
-const bool Arena::getEnd(){
-
-    if(heroes[0]->getHp() && heroes[0]->getHp() > 0 ){
-        return true;
-    }else{return false; }
-
-}
-
-const std::string Arena::getData(std::string gyoztes_){
-
-    for(unsigned int x=0;x<this->heroes.size();x++){
-        gyoztes_ +=  this->heroes[x]->getName() + ":  HP: " + std::to_string(this->heroes[x]->getHp()) + " DMG: " + std::to_string(this->heroes[x]->getDamage()) + "\n\n";
-    }
-    return gyoztes_ ;
-};
-
-std::string Arena::Attack(){
-bool a = 0;
-bool b = 1;
-std::string gyoztes;
-gyoztes=getData(gyoztes);
-while(this->getEnd()){
-    heroes[b]->setHp(heroes[b]->getHp()-heroes[a]->getDamage());
-    if(this->heroes[b]->getHp()<0){this->heroes[b]->setHp(0);}
-    gyoztes += heroes[a]->getName()+ " -> " + heroes[b]->getName()+"\n\n";
-    if(a == 0) {a = 1;b = 0;}
-    else{a = 0;b = 1;}
-    gyoztes=getData(gyoztes);
-}
-gyoztes += heroes[a]->getName() + " died." +  heroes[b]->getName() + " wins.";
-return gyoztes;
+void Arena::addHero(Hero hero_){
+    this->heroes.push_back(hero_);
 }
 
 Arena::~Arena()
 {
-    heroes.clear();
+    this->heroes.clear();
+}
+
+void Arena::Attack(){
+    int attack=0, attacked=1;
+    while(!this->endGame())
+    {
+        this->heroes[attacked].setHp(this->heroes[attacked].getHp()-this->heroes[attack].getDamage());
+        this->stringvar += this->heroes[attack].getName() + " -> " + this->heroes[attacked].getName() + "\n \n";
+        int temp=attack;
+        attack=attacked;
+        attacked=temp;
+    }
+
+}
+
+
+bool Arena::endGame(){
+    if(this->heroes[0].getHp()<0 || this->heroes[0].getHp()==0){
+        this->heroes[0].setHp(0);
+        addData();
+        this->stringvar += this->heroes[0].getName()+ " died. " + this->heroes[1].getName() + " wins. \n"; 
+        return true;
+        }
+    else if(this->heroes[1].getHp()<0 || this->heroes[1].getHp()==0){
+        this->heroes[1].setHp(0);
+        addData();
+        this->stringvar += this->heroes[1].getName()+ " died. " + this->heroes[0].getName() + " wins. \n"; 
+        return true;
+        }
+    else {
+        addData();
+        return false;
+    }
+}
+
+void Arena::addData(){
+    for(unsigned int x=0;x<this->heroes.size();x++){
+        this->stringvar +=  this->heroes[x].getName() + ":  HP: " + std::to_string(this->heroes[x].getHp()) + " DMG: " + std::to_string(this->heroes[x].getDamage()) + "\n\n";
+    }
+};
+
+const std::string Arena::Fight(){
+    Attack();
+    return this->stringvar;
 }

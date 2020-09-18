@@ -6,18 +6,18 @@
 class Arena
 {
     public:
-
-        Arena(Hero*,Hero*);
-        const bool getEnd();
-        const std::string getData(std::string);
-        std::string Attack();
+        Arena();
         ~Arena();
-
+        void addHero(Hero hero_);
+        const std::string Fight();
     protected:
 
     private:
-        std::vector<Hero*> heroes;
-
+        std::vector<Hero> heroes;
+        std::string stringvar;
+        bool endGame();
+        void addData();
+        void Attack();
 };
 
 #endif // ARENA_H
