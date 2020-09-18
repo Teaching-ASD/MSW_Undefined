@@ -8,15 +8,10 @@ Arena::Arena(Hero* hero1,Hero* hero2)
 }
 
 const bool Arena::getEnd(){
-    int survivor = 0;
-    for(unsigned int i=0;i<this->heroes.size();i++){
-        if(this->heroes[i]->getHp()>0){
-            survivor += 1;
-        }
-    }
-    if(survivor == 1){
-        return false;
-    }else{return true; }
+
+    if(heroes[0]->getHp() && heroes[0]->getHp() > 0 ){
+        return true;
+    }else{return false; }
 
 }
 
