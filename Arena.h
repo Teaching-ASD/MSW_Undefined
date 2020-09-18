@@ -6,7 +6,11 @@
 class Arena
 {
     public:
+
         Arena(Hero*,Hero*);
+        const bool getEnd();
+        const std::string getData(std::string);
+        std::string Attack();
         ~Arena();
 
     protected:

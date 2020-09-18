@@ -10,9 +10,7 @@ int main()
 
     Arena Fight = Arena(&Levi,&Kalman);
 
-
-    cout << "Name: " << Levi.getName() << ", Damage: " << Levi.getDamage() << ", HP: " << Levi.getHp() << endl;
-    cout << "Name: " << Kalman.getName() << ", Damage: " << Kalman.getDamage() << ", HP: " << Kalman.getHp() << endl;
+    cout<<Fight.Attack()<<endl;
 
     return 0;
 }
