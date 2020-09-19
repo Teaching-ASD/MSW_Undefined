@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Arena.h"
-
+#include "Hero.h"
 
 
 using namespace std;

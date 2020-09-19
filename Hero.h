@@ -1,13 +1,14 @@
+#pragma once
 #ifndef HERO_H
 #define HERO_H
 #include <string>
 
 class Hero
 {
-private:        
+private:
         const std::string name;
-        const int damage;
         int hp;
+        const int damage;
 public:
         Hero(std::string name_, int hp_,int damage_);
         std::string getName();

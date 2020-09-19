@@ -1,7 +1,9 @@
+#pragma once
 #ifndef ARENA_H
 #define ARENA_H
 #include "Hero.h"
 #include <vector>
+#include <string>
 
 class Arena
 {
