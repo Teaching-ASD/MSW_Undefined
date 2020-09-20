@@ -20,9 +20,20 @@ int Hero::getHp()
     return this->hp;
 }
 
+/*
 void Hero::setHp(int hp_)
 {
     hp = hp_;
+}
+*/
+
+void Hero::ChangeHP(int dmg_)
+{
+    this->hp -= dmg_;
+    if(this->hp<0)
+    {
+        this->hp=0;
+    }
 }
 
 Hero::~Hero()

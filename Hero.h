@@ -16,7 +16,8 @@ public:
         int getHp();
         //void setName(string name_);
         //void setDamage(int damage_);
-        void setHp(int hp_);
+        //void setHp(int hp_);
+        void ChangeHP(int dmg_);
         ~Hero();
 };
 #endif //HERO_H
