@@ -1,5 +1,5 @@
 #include "Arena.h"
-
+#include <iostream>
 
 Arena::Arena(){}
 
@@ -62,23 +62,21 @@ std::string Arena::parseUnit(std::string fname){
         int dmg;
         int hp;
         std::string line;
-        int i = 0;
+        int a = 0;
         while (getline(file,line))
         {
             hero += line;
         }
-        for(int i = 0; i < hero.length(); i++)
-        {
-            hname = hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':')));
-        }
-        /*else if(i == 2)
-        {
-            hp = stoi(hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':'))));
-        }
-        else if(i == 3)
-        {
-            dmg = stoi(hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':'))));
-        }*/
+        hname = hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':')));
+        int b = (hero.find("hp")+6);
+        a = (hero.find(',', hero.find("hp"))-b);
+        hp = stoi(hero.substr(b,a));
+        b = (hero.find("dmg")+7);
+        a = (hero.find(',', hero.find("hp"))-b);
+        dmg = stoi(hero.substr(b,a));
+        std::cout << "name: " << hname <<std::endl;
+        std::cout << "hp: " << hp <<std::endl;
+        std::cout << "dmg: " << dmg <<std::endl;
 
         return hname;
 }
