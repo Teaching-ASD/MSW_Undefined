@@ -62,10 +62,23 @@ std::string Arena::parseUnit(std::string fname){
         int dmg;
         int hp;
         std::string line;
+        int i = 0;
         while (getline(file,line))
         {
             hero += line;
         }
-        hname = hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':')));
+        for(int i = 0; i < hero.length(); i++)
+        {
+            hname = hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':')));
+        }
+        /*else if(i == 2)
+        {
+            hp = stoi(hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':'))));
+        }
+        else if(i == 3)
+        {
+            dmg = stoi(hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':'))));
+        }*/
+
         return hname;
 }
