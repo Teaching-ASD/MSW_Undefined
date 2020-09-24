@@ -53,3 +53,19 @@ const std::string Arena::Fight(){
     Attack();
     return this->stringvar;
 }
+
+std::string Arena::parseUnit(std::string fname){
+        std::ifstream file;
+        file.open(fname);
+        std::string hero;
+        std::string hname;
+        int dmg;
+        int hp;
+        std::string line;
+        while (getline(file,line))
+        {
+            hero += line;
+        }
+        hname = hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':')));
+        return hname;
+}

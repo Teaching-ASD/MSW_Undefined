@@ -12,6 +12,8 @@ class Arena
         ~Arena();
         void addHero(Hero hero_);
         const std::string Fight();
+        std::string parseUnit(std::string fname);
+
     protected:
 
     private:

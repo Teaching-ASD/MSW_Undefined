@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "Arena.h"
 #include "Hero.h"
 
@@ -7,6 +8,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    /*
     if(argc==7)
     {
     Arena* Fight = new Arena();
@@ -26,4 +28,7 @@ int main(int argc, char *argv[])
         cout << "Not valid arguments, please give 6 arguments." << endl;
         return 100;
     }
+    */
+    Arena* Fight = new Arena();
+    cout << Fight->parseUnit(argv[1])<<endl;
 }
