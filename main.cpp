@@ -29,6 +29,11 @@ int main(int argc, char *argv[])
         return 100;
     }
     */
+   
     Arena* Fight = new Arena();
-    cout << Fight->parseUnit(argv[1])<<endl;
+    Fight->addHero(Hero::parseUnit(argv[1]));
+    Fight->addHero(Hero::parseUnit(argv[2]));
+    cout<<Fight->Fight()<<endl;
+    delete Fight;
+    return 0;
 }

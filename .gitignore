@@ -6,3 +6,6 @@
 *.cbp
 bin/
 obj/
+.vscode/
+rpg
+output.txt

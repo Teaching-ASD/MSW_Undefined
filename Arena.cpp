@@ -1,6 +1,7 @@
 #include "Arena.h"
 #include <iostream>
 
+
 Arena::Arena(){}
 
 void Arena::addHero(Hero hero_){
@@ -17,7 +18,7 @@ void Arena::Attack(){
     while(!this->endGame())
     {
         this->heroes[attacked].ChangeHP(this->heroes[attack].getDamage());
-        this->stringvar += this->heroes[attack].getName() + " -> " + this->heroes[attacked].getName() + "\n \n";
+       /* this->stringvar += this->heroes[attack].getName() + " -> " + this->heroes[attacked].getName() + "\n \n";*/
         int temp=attack;
         attack=attacked;
         attacked=temp;
@@ -28,17 +29,19 @@ void Arena::Attack(){
 
 bool Arena::endGame(){
     if(this->heroes[0].getHp()==0){
-        addData();
-        this->stringvar += this->heroes[0].getName()+ " died. " + this->heroes[1].getName() + " wins. \n";
+        /*addData();*/
+        /* this->stringvar += this->heroes[0].getName()+ " died. " + this->heroes[1].getName() + " wins. \n"; */
+        this->stringvar =this->heroes[1].getName()+ " wins. Remaining HP: " + std::to_string(this->heroes[1].getHp());
         return true;
         }
     else if(this->heroes[1].getHp()==0){
-        addData();
-        this->stringvar += this->heroes[1].getName()+ " died. " + this->heroes[0].getName() + " wins. \n";
+        /*addData();*/
+        /*this->stringvar += this->heroes[1].getName()+ " died. " + this->heroes[0].getName() + " wins. \n";*/
+        this->stringvar= this->heroes[0].getName() + " wins. Remaining HP: " + std::to_string(this->heroes[0].getHp());
         return true;
         }
     else {
-        addData();
+        /*addData();*/
         return false;
     }
 }
@@ -54,29 +57,4 @@ const std::string Arena::Fight(){
     return this->stringvar;
 }
 
-std::string Arena::parseUnit(std::string fname){
-        std::ifstream file;
-        file.open(fname);
-        std::string hero;
-        std::string hname;
-        int dmg;
-        int hp;
-        std::string line;
-        int a = 0;
-        while (getline(file,line))
-        {
-            hero += line;
-        }
-        hname = hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':')));
-        int b = (hero.find("hp")+6);
-        a = (hero.find(',', hero.find("hp"))-b);
-        hp = stoi(hero.substr(b,a));
-        b = (hero.find("dmg")+7);
-        a = (hero.find(',', hero.find("hp"))-b);
-        dmg = stoi(hero.substr(b,a));
-        std::cout << "name: " << hname <<std::endl;
-        std::cout << "hp: " << hp <<std::endl;
-        std::cout << "dmg: " << dmg <<std::endl;
 
-        return hname;
-}
