@@ -44,6 +44,7 @@ Hero::~Hero()
 Hero Hero::parseUnit(std::string fname){
         std::ifstream file;
         file.open(fname);
+		if(!file.is_open()){throw std::invalid_argument("2 fájl kell");}
         std::string hero;
         std::string hname;
         int dmg_;

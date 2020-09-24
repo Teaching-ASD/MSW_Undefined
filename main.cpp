@@ -31,9 +31,17 @@ int main(int argc, char *argv[])
     */
    
     Arena* Fight = new Arena();
+	try{
     Fight->addHero(Hero::parseUnit(argv[1]));
     Fight->addHero(Hero::parseUnit(argv[2]));
+	}
+	catch(const std::logic_error& ia){
+	//catch(const std::invalid_argument& ia){
+		cout << "2 fájlt kell megadni " << endl;
+        return 1;
+	}
     cout<<Fight->Fight()<<endl;
+
     delete Fight;
     return 0;
 }
