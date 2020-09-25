@@ -56,14 +56,35 @@ Hero Hero::parseUnit(std::string fname){
             {
                 hero += line;
             }
-            hname = hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':')));
+
+		hname=hero.substr(
+		hero.find(": \"", hero.find("name"))+3,
+		(
+		(hero.find(',', hero.find("name"))-1)-
+		(hero.find(": \"", hero.find("name"))+3)
+		));
+
+		hp_=stoi(hero.substr(
+		hero.find(":", hero.find("hp"))+1,
+		hero.find(',',hero.find("hp"))-hero.find(":",hero.find("hp"))-1
+		));
+
+		dmg_=stoi(hero.substr(
+		hero.find(":", hero.find("dmg"))+1,
+		hero.find('}', hero.find("dmg"))-hero.find(":",hero.find("dmg"))-1
+		));
+
+
+
+
+           /* hname = hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':')));
             int b = (hero.find("hp")+6);
             a = (hero.find(',', hero.find("hp"))-b);
             hp_ = stoi(hero.substr(b,a));
             b = (hero.find("dmg")+7);
             a = (hero.find(',', hero.find("hp"))-b);
             dmg_ = stoi(hero.substr(b,a));
-
+*/
             Hero object=  Hero(hname,hp_,dmg_);
             return object;
 }
