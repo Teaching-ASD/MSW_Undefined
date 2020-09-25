@@ -11,6 +11,8 @@ A program CLI-ből indítható, jelenleg 2 heroval. A 2 hero adatait 2 fileban k
 
 } ```
 
+##Indítás:
+
 ```./a.out 1.json 2.json ```
 
 Ezek után a program lejátsza a 2 karakter közötti csatát, ahol minden karakter a hp-jából az ellenfél dmg-jének megfelelő sebzést szenved el, ameddig az egyik meg nem hal.
