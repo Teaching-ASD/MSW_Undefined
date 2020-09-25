@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <fstream>
 #include "Arena.h"
@@ -29,19 +30,25 @@ int main(int argc, char *argv[])
         return 100;
     }
     */
-   
-    Arena* Fight = new Arena();
-	try{
-    Fight->addHero(Hero::parseUnit(argv[1]));
-    Fight->addHero(Hero::parseUnit(argv[2]));
-	}
-	catch(const std::logic_error& ia){
-	//catch(const std::invalid_argument& ia){
-		cout << "2 fájlt kell megadni " << endl;
-        return 1;
-	}
-    cout<<Fight->Fight()<<endl;
+    if(argc==3)
+    {
+        Arena* Fight = new Arena();
+        try
+        {
+        Fight->addHero(Hero::parseUnit(argv[1]));
+        Fight->addHero(Hero::parseUnit(argv[2]));
+        }
+        catch(std::exception const& e)
+        {
+            cerr<<"Wrong file name has been given!"<<endl;
+        }
+        cout<<Fight->Fight()<<endl;
+        delete Fight;
+        }
+    else{
+        cerr<<"Please give exactly 2 file!" << endl;
+    }
 
-    delete Fight;
+
     return 0;
 }

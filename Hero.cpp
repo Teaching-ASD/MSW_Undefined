@@ -43,26 +43,32 @@ Hero::~Hero()
 
 Hero Hero::parseUnit(std::string fname){
         std::ifstream file;
+        const std::exception e;
         file.open(fname);
-		if(!file.is_open()){throw std::invalid_argument("2 fájl kell");}
-        std::string hero;
-        std::string hname;
-        int dmg_;
-        int hp_;
-        std::string line;
-        int a = 0;
-        while (getline(file,line))
-        {
-            hero += line;
-        }
-        hname = hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':')));
-        int b = (hero.find("hp")+6);
-        a = (hero.find(',', hero.find("hp"))-b);
-        hp_ = stoi(hero.substr(b,a));
-        b = (hero.find("dmg")+7);
-        a = (hero.find(',', hero.find("hp"))-b);
-        dmg_ = stoi(hero.substr(b,a));
+		if(file.is_open()){
+            std::string hero;
+            std::string hname;
+            int dmg_;
+            int hp_;
+            std::string line;
+            int a = 0;
+            while (getline(file,line))
+            {
+                hero += line;
+            }
+            hname = hero.substr((hero.find(':')+3),((hero.find(',')-4)-hero.find(':')));
+            int b = (hero.find("hp")+6);
+            a = (hero.find(',', hero.find("hp"))-b);
+            hp_ = stoi(hero.substr(b,a));
+            b = (hero.find("dmg")+7);
+            a = (hero.find(',', hero.find("hp"))-b);
+            dmg_ = stoi(hero.substr(b,a));
 
-        Hero object=  Hero(hname,hp_,dmg_);
-        return object;
+            Hero object=  Hero(hname,hp_,dmg_);
+            return object;
+        }
+        else
+        {
+            throw e;
+        }
 }
