@@ -45,7 +45,7 @@ Hero Hero::parseUnit(std::string fname){
         std::ifstream file;
         const std::exception e;
         file.open(fname);
-		if(file.is_open()){
+	if(!file.is_open()){throw std::invalid_argument("The file " +fname+ " not exist");}
             std::string hero;
             std::string hname;
             int dmg_;
@@ -66,9 +66,4 @@ Hero Hero::parseUnit(std::string fname){
 
             Hero object=  Hero(hname,hp_,dmg_);
             return object;
-        }
-        else
-        {
-            throw e;
-        }
 }

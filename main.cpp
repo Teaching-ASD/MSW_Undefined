@@ -40,7 +40,8 @@ int main(int argc, char *argv[])
         }
         catch(std::exception const& e)
         {
-            cerr<<"Wrong file name has been given!"<<endl;
+            cerr<<e.what()<<endl;
+	    return 1;
         }
         cout<<Fight->Fight()<<endl;
         delete Fight;
