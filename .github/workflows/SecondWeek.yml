@@ -1,0 +1,15 @@
+name: First CI pipeline 
+
+on:
+  push:
+    branches: [init] 
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the app
+        run: g++ -std=c++17 *.cpp -o rpg
+      - name: Run unit tests, and check results
+        run: ./test.sh rpg         

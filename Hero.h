@@ -2,6 +2,7 @@
 #ifndef HERO_H
 #define HERO_H
 #include <string>
+#include<fstream>
 
 class Hero
 {
@@ -19,5 +20,6 @@ public:
         //void setHp(int hp_);
         void ChangeHP(int dmg_);
         ~Hero();
+        static Hero parseUnit(std::string fname);
 };
 #endif //HERO_H
