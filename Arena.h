@@ -20,7 +20,6 @@ class Arena
         std::vector<Hero> heroes;
         std::string stringvar;
         bool endGame();
-        void addData();
         void Attack();
 };
 

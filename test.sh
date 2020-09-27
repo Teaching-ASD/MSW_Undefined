@@ -1,7 +1,13 @@
 #!/bin/bash
 IFS=$'\n'
+FILE=output.txt
 
-rm output.txt
+
+if test -f "$FILE"
+then
+rm $FILE
+fi
+
 
 for i in 1 2 3
 do 
@@ -13,3 +19,12 @@ do
     fi
     done
 done
+DIFF=$(diff output.txt good.txt)
+
+if [ "$DIFF" != "" ]
+then
+echo "Tests not passed!"
+exit 1
+else
+exit 0
+fi
