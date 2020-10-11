@@ -13,5 +13,7 @@ jobs:
         run: g++ -std=c++17 *.cpp -o rpg
       - name: debugging
         run: g++ *.cpp -Wextra
+      - name: debugging memory lake 
+        run: valgrind ./a.out units/2.Json units/3.Json
       - name: Run unit tests, and check results
         run: ./test.sh rpg         
