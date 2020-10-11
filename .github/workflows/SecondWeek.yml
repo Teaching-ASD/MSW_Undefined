@@ -17,5 +17,7 @@ jobs:
         run: sudo apt install valgrind
       - name: debugging memory leak
         run: valgrind ./a.out units/2.json units/3.json
+      - name: debugging memory leak
+        run: valgrind --tool=callgrind ./a.out units/2.json units/3.json
       - name: Run unit tests, and check results
         run: ./test.sh rpg         
