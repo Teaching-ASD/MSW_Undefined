@@ -16,6 +16,6 @@ jobs:
       - name: debugging memory lake install
         run: sudo apt install valgrind
       - name: debugging memory lake 
-        run: valgrind ./a.out units/2.Json units/3.Json
+        run: valgrind ./a.out units/2.json units/3.json
       - name: Run unit tests, and check results
         run: ./test.sh rpg         
