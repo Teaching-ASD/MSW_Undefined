@@ -14,6 +14,7 @@ jobs:
       - name: debugging
         run: g++ *.cpp -Wextra
       - name: debugging memory lake 
+        run: sudo apt install valgrind
         run: valgrind ./a.out units/2.Json units/3.Json
       - name: Run unit tests, and check results
         run: ./test.sh rpg         
