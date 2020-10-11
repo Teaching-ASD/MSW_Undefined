@@ -1,9 +1,9 @@
 {
 
-  "name": "Kalman",
+  "name" : "Kalman",
 
-  "hp": 300,
+  "hp" : 300,
 
-  "dmg": 90
+  "dmg" : 10
 
 }

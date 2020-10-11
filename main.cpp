@@ -3,19 +3,22 @@
 #include <fstream>
 #include "Arena.h"
 #include "Hero.h"
+#include "Player.h"
 
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
+
+    
     if(argc==3)
     {
         Arena* Fight = new Arena();
         try
         {
-        Fight->addHero(Hero::parseUnit(argv[1]));
-        Fight->addHero(Hero::parseUnit(argv[2]));
+        Fight->addHero(Player::parseUnit(argv[1]));
+        Fight->addHero(Player::parseUnit(argv[2]));
         }
         catch(std::exception const& e)
         {
@@ -28,7 +31,7 @@ int main(int argc, char *argv[])
     else{
         cerr<<"Please give exactly 2 file!" << endl;
     }
-
+    
 
     return 0;
 }

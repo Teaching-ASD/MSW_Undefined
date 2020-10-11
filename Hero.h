@@ -4,6 +4,7 @@
 #include <string>
 #include<fstream>
 
+
 class Hero
 {
 private:
@@ -14,12 +15,12 @@ public:
         Hero(std::string name_, int hp_,int damage_);
         std::string getName();
         int getDamage();
-        int getHp();
+        int getCurHP();
         //void setName(string name_);
         //void setDamage(int damage_);
         //void setHp(int hp_);
-        void ChangeHP(int dmg_);
+        //void ChangeHP(int dmg_);
         ~Hero();
-        static Hero parseUnit(std::string fname);
+        
 };
 #endif //HERO_H

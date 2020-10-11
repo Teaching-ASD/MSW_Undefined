@@ -2,7 +2,7 @@ name: First CI pipeline
 
 on:
   push:
-    branches: [init] 
+    branches: [levelup] 
 
 jobs:
   build_and_test:
