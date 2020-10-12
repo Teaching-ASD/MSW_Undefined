@@ -3,6 +3,7 @@
 #include <fstream>
 #include "Arena.h"
 #include "Hero.h"
+#include "Json.h"
 
 
 using namespace std;
@@ -19,7 +20,7 @@ int main(int argc, char *argv[])
         }
         catch(std::exception const& e)
         {
-            cerr<<e.what()<<endl;
+            cerr<< "Error, " <<e.what()<<endl;
 	    return 1;
         }
         cout<<Fight->Fight()<<endl;
@@ -28,7 +29,5 @@ int main(int argc, char *argv[])
     else{
         cerr<<"Please give exactly 2 file!" << endl;
     }
-
-
     return 0;
 }

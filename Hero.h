@@ -2,7 +2,7 @@
 #ifndef HERO_H
 #define HERO_H
 #include <string>
-#include<fstream>
+#include "Json.h"
 
 class Hero
 {

@@ -1,8 +1,8 @@
-name: First CI pipeline 
+name: Jsonparser CI
 
 on:
   push:
-    branches: [init] 
+    branches: [jsonparser] 
 
 jobs:
   build_and_test:
