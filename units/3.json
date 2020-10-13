@@ -2,8 +2,10 @@
 
   "name": "Levi",
 
-  "hp": 320,
+  "hp": 150,
 
-  "dmg": 80
+  "dmg": 200,
+
+  "attackcooldown": 5.5
 
 }

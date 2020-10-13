@@ -2,8 +2,10 @@
 
   "name": "Kalman",
 
-  "hp": 300,
+  "hp": 500,
 
-  "dmg": 90
+  "dmg": 50,
+
+  "attackcooldown": 10.8
 
 }
