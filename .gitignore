@@ -9,5 +9,3 @@ obj/
 .vscode/
 rpg
 output.txt
-vlg
-valgrind.txt
