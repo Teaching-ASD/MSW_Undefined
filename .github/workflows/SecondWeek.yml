@@ -18,6 +18,6 @@ jobs:
       - name: debugging memory leak
         run: valgrind ./a.out units/1.json units/2.json
       - name: callgrind save
-        run: ./saveCommand.sh rpg 
+        run: ./saveCommand.sh
       - name: Run unit tests, and check results
         run: ./test.sh rpg         
