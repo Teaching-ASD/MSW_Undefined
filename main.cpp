@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
             Hero* h1 = new Hero(Hero::parseUnit(argv[1]));
             Hero* h2 = new Hero(Hero::parseUnit(argv[2]));
             h1->Attack(h2);
-            cout <<h1->getStringvar();
+            cout <<h1->getStringvar()<<endl;
             delete h1, h2;
         }
         catch(std::exception const& e)
