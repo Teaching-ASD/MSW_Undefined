@@ -11,12 +11,14 @@ class Json
 {
 private:
         std::map<std::string,std::string> adatok;
-        void internalParser(std::string data);
+        void internalParser(std::string data, std::string fname);
 public:
-        std::map<std::string,std::string> parseFile(std::string fname);
-        std::map<std::string,std::string> parser(std::string data);
         Json();
         ~Json();
+        std::map<std::string,std::string> parseFile(std::string fname);
+        std::map<std::string,std::string> parseString(std::string data);
+        std::map<std::string,std::string> getAdatok();
+        friend std::istream& operator>>(std::istream&, Json& j);
 };
-//std::istream& operator>>(std::istream&, Json& j);
+
 #endif //JSON_H
