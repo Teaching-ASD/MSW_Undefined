@@ -17,12 +17,11 @@ jobs:
     - run: sudo apt-get install graphviz
     - run: doxygen doxconf
 
-    - name: Push git subdir branch
-
-    uses: s0/git-publish-subdir-action@v2.4.0
-
-    env:
-      REPO: self
-      BRANCH: gh-pages
-      FOLDER: DOCS/html
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Push git subdir as branch
+      uses: s0/git-publish-subdir-action@v2.4.0
+      
+      env:
+        REPO: self
+        BRANCH: gh-pages
+        FOLDER: DOCS/html
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
