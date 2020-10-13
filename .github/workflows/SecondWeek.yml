@@ -18,6 +18,11 @@ jobs:
       - name: debugging memory leak
         run: valgrind ./a.out units/1.json units/2.json
       - name: callgrind save
-        run: valgrind --tool=callgrind ./a.out units/1.json units/2.json
+        run: valgrind --tool=callgrind ./a.out units/1.json units/2.json &> valgrind.txt 
+      - name: Upload file
+        uses: actions/upload-artifact@v1
+        with:
+          name: valgrind
+          path: valgrind.txt
       - name: Run unit tests, and check results
         run: ./test.sh rpg         
