@@ -15,6 +15,8 @@ jobs:
         run: g++ *.cpp -Wextra
       - name: debugging memory leak install
         run: sudo apt install valgrind
+      - name: debugging cppcheck install
+        run: sudo apt install cppcheck
       - name: debugging memory leak
         run: valgrind ./a.out units/1.json units/2.json
       - name: style and performance test
