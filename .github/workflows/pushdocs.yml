@@ -18,9 +18,10 @@ jobs:
     - run: doxygen doxconf
 
     - name: Make pdf  
-      run: sudo apt install texlive-latex-extra
-      run: cd DOCS/latex
-      run: make
+      run: |
+        sudo apt install texlive-latex-extra
+        cd DOCS/latex
+        make
     - name: Create artifact
       uses: actions/upload-artifact@v2
       with:
