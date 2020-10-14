@@ -48,7 +48,7 @@ int Player::getCurHP(){
 
 }
 
-Player Player::parseUnit(std::string fname){
+Player Player::parseUnitPlayer(std::string fname){
         std::ifstream file;
         const std::exception e;
         file.open(fname);

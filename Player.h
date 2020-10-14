@@ -15,17 +15,14 @@ int XP=0;
 
 public:
 Player(std::string,int,const int);
-~Player(){};
 
-
-static Player parseUnit(std::string fname);
-
+static Player parseUnitPlayer(std::string fname);
 int getCurDMG();
 int getCurHP();
-
 void addXP();
 void levelUp();
 void ChangeCurHp(int); 
 
+~Player(){};
 };
 #endif //Player_H

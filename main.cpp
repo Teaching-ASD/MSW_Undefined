@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
         Arena* Fight = new Arena();
         try
         {
-        Fight->addHero(Player::parseUnit(argv[1]));
-        Fight->addHero(Player::parseUnit(argv[2]));
+        Fight->addHero(Player::parseUnitPlayer(argv[1]));
+        Fight->addHero(Player::parseUnitPlayer(argv[2]));
         }
         catch(std::exception const& e)
         {

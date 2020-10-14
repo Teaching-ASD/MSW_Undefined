@@ -16,6 +16,7 @@ public:
         std::string getName();
         int getDamage();
         int getCurHP();
+        static Hero parseUnitHero(std::string fname);
         //void setName(string name_);
         //void setDamage(int damage_);
         //void setHp(int hp_);
