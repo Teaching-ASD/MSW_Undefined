@@ -1,6 +1,6 @@
 #include "Hero.h"
 
-Hero::Hero(std::string name_,int hp_,int damage_):name(name_), hp(hp_), damage(damage_)
+Hero::Hero(const std::string& name_,int hp_,const int damage_):name(name_), hp(hp_), damage(damage_)
 {
 
 }
@@ -39,7 +39,7 @@ void Hero::ChangeHP(int dmg_)
 
 Hero Hero::parseUnitHero(std::string fname){
         std::ifstream file;
-        const std::exception e;
+        //const std::exception e;
         file.open(fname);
 	if(!file.is_open()){throw std::invalid_argument("The file " +fname+ " not exist");}
             std::string hero;

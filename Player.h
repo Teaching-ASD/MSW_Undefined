@@ -14,7 +14,7 @@ int CurDMG;
 int XP=0;
 
 public:
-Player(std::string,int,const int);
+Player(const std::string&,int,const int);
 
 static Player parseUnitPlayer(std::string fname);
 int getCurDMG();

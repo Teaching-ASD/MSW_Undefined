@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(std::string name,int hp, const int damage):Hero(name,hp,damage){
+Player::Player(const std::string& name,int hp, const int damage):Hero(name,hp,damage){
 
     this->maxHP=hp;
     this->CurHP=this->maxHP;
@@ -50,7 +50,7 @@ int Player::getCurHP(){
 
 Player Player::parseUnitPlayer(std::string fname){
         std::ifstream file;
-        const std::exception e;
+        //const std::exception e;
         file.open(fname);
 	if(!file.is_open()){throw std::invalid_argument("The file " +fname+ " not exist");}
             std::string hero;
