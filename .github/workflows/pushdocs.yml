@@ -35,5 +35,5 @@ jobs:
       env:
         REPO: self
         BRANCH: gh-pages
-        FOLDER: DOCS/html
+        FOLDER: DOCS/latex
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
