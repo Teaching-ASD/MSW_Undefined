@@ -16,6 +16,8 @@ jobs:
     - run: sudo apt-get install doxygen
     - run: sudo apt-get install graphviz
     - run: doxygen doxconf
+    - run: cd latex
+    - run: make
 
     - name: Push git subdir as branch
       uses: s0/git-publish-subdir-action@v2.4.0
