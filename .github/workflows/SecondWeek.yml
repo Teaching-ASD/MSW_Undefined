@@ -24,7 +24,6 @@ jobs:
         with:
           name: valgrind
           path: valgrind.txt
-          name: valgrind out
           path: callgrind.out.*.txt
       - name: Run unit tests, and check results
         run: ./test.sh rpg         
