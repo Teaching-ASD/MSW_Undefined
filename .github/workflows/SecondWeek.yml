@@ -18,9 +18,9 @@ jobs:
       - name: debugging cppcheck install
         run: sudo apt install cppcheck
       - name: debugging memory leak
-        run: valgrind ./a.out units/1.json units/2.json
+        run: valgrind  --error-exitcode=1 ./a.out units/1.json units/2.json
       - name: style and performance test
-        run: cppcheck *.cpp --enable=warning,style,performance &> styleAndPerformance.txt 
+        run: cppcheck *.cpp --enable=warning,style,performance --error-exitcode=1 &> styleAndPerformance.txt 
       - name: Upload file
         uses: actions/upload-artifact@v1
         with:
