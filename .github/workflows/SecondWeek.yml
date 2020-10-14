@@ -23,6 +23,13 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: valgrind
-          path: callgrind.out.*
+          path: valgrind.txt
+      - name: callgrind file save
+        run: valgrind --tool=callgrind ./a.out units/1.json units/2.json
+      - name: Upload file
+        uses: actions/upload-artifact@v1
+        with:
+          name: valgrind file
+          path: callgrind*
       - name: Run unit tests, and check results
         run: ./test.sh rpg         
