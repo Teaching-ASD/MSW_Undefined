@@ -17,6 +17,17 @@ jobs:
     - run: sudo apt-get install graphviz
     - run: doxygen doxconf
 
+    - name: Make pdf  
+      run: sudo apt install texlive-latex-extra
+      run: cd DOCS/latex
+      run: make
+    - name: Create artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: documentation
+        path: DOCS/latex/refman.pdf
+
+
     - name: Push git subdir as branch
       uses: s0/git-publish-subdir-action@v2.4.0
 
