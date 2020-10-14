@@ -23,7 +23,6 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: valgrind
-          path: valgrind.txt
           path: callgrind.out.*.txt
       - name: Run unit tests, and check results
         run: ./test.sh rpg         
