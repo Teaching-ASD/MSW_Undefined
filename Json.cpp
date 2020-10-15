@@ -1,5 +1,4 @@
 #include "Json.h"
-#include<iostream>
 
 Json::Json(){}
 
@@ -21,7 +20,7 @@ void Json::keyTester(std::string data, std::string fname=" "){
 }
 
 void Json::internalParser(std::string data){
-            std::string hname,
+        std::string hname,
             dmg_,
             hp_;
         // remove whitespaces and resize
@@ -83,7 +82,6 @@ std::map<std::string,std::string> Json::parseString(std::string data){
 
 std::map<std::string, std::string> Json::parseFile(std::string fname){
         std::ifstream file;
-        const std::exception e;
         file.open(fname);
 	    if(!file.is_open()){throw std::invalid_argument("The file " +fname+ " not exist");}
         std::string hero,

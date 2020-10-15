@@ -11,7 +11,7 @@ private:
         int hp;
         const int damage;
 public:
-        Hero(std::string name_, int hp_,int damage_);
+        Hero(const std::string &name_, int hp_,int damage_);
         std::string getName();
         int getDamage();
         int getHp();

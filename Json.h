@@ -3,9 +3,10 @@
 #define JSON_H
 #include <string>
 #include<fstream>
-#include"Hero.h"
 #include <map>
 #include <algorithm>
+#include<istream>
+#include"Hero.h"
 
 class Json
 {

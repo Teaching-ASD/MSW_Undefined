@@ -1,5 +1,4 @@
 #include "Arena.h"
-#include <iostream>
 
 
 Arena::Arena(){}
