@@ -7,8 +7,7 @@ Json::~Json(){
     this->adatok.clear();
 }
 
-
-void Json::internalParser(std::string data, std::string fname=" "){
+void Json::keyTester(std::string data, std::string fname=" "){
         //check duplicated keys
         if(data.size() >= data.find("name", data.find("name")+1)){
             throw std::invalid_argument("The Hero "+fname+" has two name keys.");
@@ -19,7 +18,9 @@ void Json::internalParser(std::string data, std::string fname=" "){
         if(data.size() >= data.find("dmg", data.find("dmg")+1)){
             throw std::invalid_argument("The Hero "+fname+"  has two dmg keys.");
         }
-        
+}
+
+void Json::internalParser(std::string data){
             std::string hname,
             dmg_,
             hp_;
@@ -74,6 +75,7 @@ void Json::internalParser(std::string data, std::string fname=" "){
 };
 
 std::map<std::string,std::string> Json::parseString(std::string data){
+        this->keyTester(data);
         this->internalParser(data);
         return adatok;
 }
@@ -90,7 +92,9 @@ std::map<std::string, std::string> Json::parseFile(std::string fname){
         {
             hero.append(line);          
         }
-        this->internalParser(hero, fname);
+        this->keyTester(hero, fname);
+        this->internalParser(hero);
+        file.close();
         return adatok;
 }
 
@@ -102,6 +106,7 @@ std::istream& operator>>(std::istream& in, Json& j){
     {
         temp.push_back(a);
     }
+    j.keyTester(temp);
     j.internalParser(temp);
     return in;
 }

@@ -11,7 +11,8 @@ class Json
 {
 private:
         std::map<std::string,std::string> adatok;
-        void internalParser(std::string data, std::string fname);
+        void internalParser(std::string data);
+        static void keyTester(std::string data, std::string fname);
 public:
         Json();
         ~Json();
