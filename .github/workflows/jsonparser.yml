@@ -24,4 +24,6 @@ jobs:
               cmake CMakeLists.txt
               make
       - name: Run unit tests
-        run : ./runTests         
+        run : |
+              cd test
+              ./runTests         
