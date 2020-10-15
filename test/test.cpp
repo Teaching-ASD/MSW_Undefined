@@ -38,7 +38,6 @@ TEST_F(JsonTest, fileParser){
         EXPECT_EQ(Fight->Fight(),expected);
         delete hero1;
         delete hero2;
-        delete Fight;
     });
 }
 TEST_F(JsonTest, fileParserAll){
@@ -90,7 +89,6 @@ TEST_F(JsonTest, stringParser){
     });
     delete json1;
     delete json2;
-    delete Fight;
 }
 TEST_F(JsonTest, istreamParser){
     Json* json1 = new Json();
@@ -119,7 +117,6 @@ TEST_F(JsonTest, istreamParser){
     });
     delete json1;
     delete json2;
-    delete Fight;
 }
 int main(int argc, char** argv){
     ::testing::InitGoogleTest(&argc,argv);
