@@ -111,14 +111,12 @@ void Hero::Attack(Hero* h2_){
             if(cd1<cd2)
             {
                 cd2 -= cd1;
-                cd1=0;
                 h2_->ChangeHP(this->getDamage());
                 cd1 = this->getCooldown();
             }
             else if(cd2 < cd1)
             {
                 cd1 -= cd2;
-                cd2=0;
                 this->ChangeHP(h2_->getDamage());
                 cd2 = h2_->getCooldown();
             }

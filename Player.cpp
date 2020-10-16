@@ -124,7 +124,6 @@ void Player::Attack(Player* h2_){
             if(cd1<cd2)
             {
                 cd2 -= cd1;
-                cd1=0;
 
                 Fight(this,h2_);
                 cd1 = this->getCurCD();
@@ -132,7 +131,6 @@ void Player::Attack(Player* h2_){
             else if(cd2 < cd1)
             {
                 cd1 -= cd2;
-                cd2=0;
                 Fight(h2_,this);
                 cd2 = h2_->getCurCD();
             }
