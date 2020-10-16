@@ -4,6 +4,8 @@
 
   "hp": 110,
 
-  "dmg": 30
+  "dmg": 30,
+
+  "attackcooldown": 5.5
 
 }

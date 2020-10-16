@@ -2,8 +2,10 @@
 
   "name" : "Bence",
 
-  "hp" : 125,
+  "hp": 125,
 
-  "dmg" : 5
+  "dmg": 50,
+
+  "attackcooldown": 1.5
 
 }
