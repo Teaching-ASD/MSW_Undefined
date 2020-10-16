@@ -73,12 +73,20 @@ $(function() {
  <a href="classHero.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Hero_8h_source.html">Hero.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Hero:</div>
+<div class="dyncontent">
+<div class="center"><img src="classHero__inherit__graph.png" border="0" usemap="#Hero_inherit__map" alt="Inheritance graph"/></div>
+<map name="Hero_inherit__map" id="Hero_inherit__map">
+<area shape="rect" id="node2" href="classPlayer.html" title="Player class. " alt="" coords="5,80,64,107"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a48a41cc569e8a128d8fd027752f699c5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a48a41cc569e8a128d8fd027752f699c5">Hero</a> (std::string name_, int hp_, int damage_, double cd_)</td></tr>
-<tr class="memdesc:a48a41cc569e8a128d8fd027752f699c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a constructor for <a class="el" href="classHero.html" title="Hero class. ">Hero</a>.  <a href="#a48a41cc569e8a128d8fd027752f699c5">More...</a><br /></td></tr>
-<tr class="separator:a48a41cc569e8a128d8fd027752f699c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d5654a6c47add58bd56506de5e51b6c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a1d5654a6c47add58bd56506de5e51b6c">Hero</a> (const std::string &amp;name_, int hp_, const int damage_, const double cd_)</td></tr>
+<tr class="memdesc:a1d5654a6c47add58bd56506de5e51b6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a constructor for <a class="el" href="classHero.html" title="Hero class. ">Hero</a>.  <a href="#a1d5654a6c47add58bd56506de5e51b6c">More...</a><br /></td></tr>
+<tr class="separator:a1d5654a6c47add58bd56506de5e51b6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade246d363b9021a7e7aa811bb1410e6d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#ade246d363b9021a7e7aa811bb1410e6d">getName</a> ()</td></tr>
 <tr class="memdesc:ade246d363b9021a7e7aa811bb1410e6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a simple getter for getting the <a class="el" href="classHero.html" title="Hero class. ">Hero</a>'s name.  <a href="#ade246d363b9021a7e7aa811bb1410e6d">More...</a><br /></td></tr>
 <tr class="separator:ade246d363b9021a7e7aa811bb1410e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -99,20 +107,20 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a5a40a729874f0646e5f26027d92a98a1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classHero.html">Hero</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a5a40a729874f0646e5f26027d92a98a1">parseUnit</a> (std::string fname)</td></tr>
-<tr class="memdesc:a5a40a729874f0646e5f26027d92a98a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is for parsing the json files. It reads in the file totally and finds: name, hp, damage, attackcooldown. And then it returns an object. There is an exception if it can't find the file.  <a href="#a5a40a729874f0646e5f26027d92a98a1">More...</a><br /></td></tr>
-<tr class="separator:a5a40a729874f0646e5f26027d92a98a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7c9c36142baa69f0f81aef0a2306695"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classHero.html">Hero</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#af7c9c36142baa69f0f81aef0a2306695">parseUnitHero</a> (std::string fname)</td></tr>
+<tr class="memdesc:af7c9c36142baa69f0f81aef0a2306695"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is for parsing the json files. It reads in the file totally and finds: name, hp, damage, attackcooldown. And then it returns an object. There is an exception if it can't find the file.  <a href="#af7c9c36142baa69f0f81aef0a2306695">More...</a><br /></td></tr>
+<tr class="separator:af7c9c36142baa69f0f81aef0a2306695"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classHero.html" title="Hero class. ">Hero</a> class. </p>
 <p>This is a <a class="el" href="classHero.html" title="Hero class. ">Hero</a> class. This contains the name, health, damage, and cooldown of the <a class="el" href="classHero.html" title="Hero class. ">Hero</a>. The <a class="el" href="classHero.html" title="Hero class. ">Hero</a> can attack the other <a class="el" href="classHero.html" title="Hero class. ">Hero</a>, but every <a class="el" href="classHero.html" title="Hero class. ">Hero</a> has its own attackcooldown, which makes the fight more interesting.</p>
-<dl class="section author"><dt>Author</dt><dd>LeviG9901</dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2020.10.13. 12:00</dd></dl>
-<p>Created on: 2020.10.13. 12:00 </p>
+<dl class="section author"><dt>Author</dt><dd>97Vix</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>2.0</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020.10.16. 18:00</dd></dl>
+<p>Created on: 2020.10.16. 18:00 </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a48a41cc569e8a128d8fd027752f699c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48a41cc569e8a128d8fd027752f699c5">&#9670;&nbsp;</a></span>Hero()</h2>
+<a id="a1d5654a6c47add58bd56506de5e51b6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d5654a6c47add58bd56506de5e51b6c">&#9670;&nbsp;</a></span>Hero()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -120,7 +128,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">Hero::Hero </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>name_</em>, </td>
         </tr>
         <tr>
@@ -132,13 +140,13 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>damage_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
+          <td class="paramtype">const double&#160;</td>
           <td class="paramname"><em>cd_</em>&#160;</td>
         </tr>
         <tr>
@@ -308,8 +316,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5a40a729874f0646e5f26027d92a98a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a40a729874f0646e5f26027d92a98a1">&#9670;&nbsp;</a></span>parseUnit()</h2>
+<a id="af7c9c36142baa69f0f81aef0a2306695"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7c9c36142baa69f0f81aef0a2306695">&#9670;&nbsp;</a></span>parseUnitHero()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -318,7 +326,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classHero.html">Hero</a> Hero::parseUnit </td>
+          <td class="memname"><a class="el" href="classHero.html">Hero</a> Hero::parseUnitHero </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>fname</em></td><td>)</td>
