@@ -20,11 +20,11 @@ jobs:
       - name: debugging memory leak
         run: valgrind  --error-exitcode=1 ./a.out units/1.json units/2.json
       - name: style and performance test
-        run: cppcheck *.cpp --enable=warning,style,performance --error-exitcode=1 &> styleAndPerformance.txt 
+        run: cppcheck *.cpp --enable=warning,style,performance --error-exitcode=1 |& tee styleAndPerformance.txt
       - name: Upload file
         uses: actions/upload-artifact@v1
         with:
           name: styleAndPerformance
           path: styleAndPerformance.txt
       - name: Run unit tests, and check results
-        run: ./test.sh rpg         
+        run: ./test.sh rpg
