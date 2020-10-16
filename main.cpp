@@ -1,7 +1,5 @@
-
 #include <iostream>
 #include <fstream>
-#include "Arena.h"
 #include "Hero.h"
 
 
@@ -11,24 +9,23 @@ int main(int argc, char *argv[])
 {
     if(argc==3)
     {
-        Arena* Fight = new Arena();
         try
         {
-        Fight->addHero(Hero::parseUnit(argv[1]));
-        Fight->addHero(Hero::parseUnit(argv[2]));
+            Hero* h1 = new Hero(Hero::parseUnit(argv[1]));
+            Hero* h2 = new Hero(Hero::parseUnit(argv[2]));
+            h1->Attack(h2);
+            cout <<h1->getStringvar()<<endl;
+            delete h1, h2;
         }
         catch(std::exception const& e)
         {
             cerr<<e.what()<<endl;
 	    return 1;
         }
-        cout<<Fight->Fight()<<endl;
-        delete Fight;
-        }
+    }
     else{
         cerr<<"Please give exactly 2 file!" << endl;
     }
-
 
     return 0;
 }

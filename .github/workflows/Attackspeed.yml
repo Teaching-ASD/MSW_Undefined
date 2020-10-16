@@ -1,8 +1,8 @@
-name: First CI pipeline 
+name: AttackSpeed workflow
 
 on:
   push:
-    branches: [init] 
+    branches: [attackspeed] 
 
 jobs:
   build_and_test:
