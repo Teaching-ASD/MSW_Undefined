@@ -1,54 +1,59 @@
-#include <iostream>
-#include "Hero.h"
+#include "Player.h"
 
-Hero::Hero(const std::string& name_,int hp_,const int damage_,const double cd_):name(name_), hp(hp_), damage(damage_),cooldown(cd_)
-{
+Player::Player(const std::string& name,int hp, const int damage,const double cd_):Hero(name,hp,damage,cd_){
+
+    this->maxHP=hp;
+    this->CurHP=this->maxHP;
+    this->CurDMG=damage;
+    this->CurCD=cd_;
+
+
+};
+void Player::addXP(){
+
+    this->XP += CurDMG;
 
 }
 
-std::string Hero::getName()
-{
-    return this->name;
+void Player::levelUp(){
+    while(this->XP>=100){
+        this->XP -=100;
+        
+        maxHP = round(maxHP*1.1);
+        CurHP = maxHP;
+        CurDMG = round(CurDMG*1.1);
+        CurCD = CurCD*0.9;
+    }
+    
 }
 
-int Hero::getDamage()
-{
-    return this->damage;
-}
+void Player::ChangeCurHp(int dmg){
 
-int Hero::getHp()
-{
-    return this->hp;
-}
+    CurHP -= dmg;
 
-double Hero::getCooldown()
-{
-    return this->cooldown;
-}
-
-/*
-void Hero::setHp(int hp_)
-{
-    hp = hp_;
-}
-*/
-
-std::string Hero::getStringvar()
-{
-    return this->stringvar;
-}
-
-void Hero::ChangeHP(int dmg_)
-{
-    this->hp -= dmg_;
-    if(this->hp<0)
+    if(this->CurHP<0)
     {
-        this->hp=0;
+        this->CurHP=0;
     }
 }
 
+int Player::getCurDMG(){
 
-Hero Hero::parseUnitHero(std::string fname){
+    return CurDMG;
+
+}
+
+int Player::getCurHP(){
+
+    return CurHP;
+
+}
+double Player::getCurCD(){
+
+    return CurCD;
+
+}
+Player Player::parseUnitPlayer(std::string fname){
         std::ifstream file;
         //const std::exception e;
         file.open(fname);
@@ -87,38 +92,47 @@ Hero Hero::parseUnitHero(std::string fname){
 		hero.find('}', hero.find("attackcooldown"))-hero.find(":",hero.find("attackcooldown"))-1
 		));
         file.close();
-	    Hero object=  Hero(hname,hp_,dmg_,cd_);
+      
+	    Player object =  Player(hname,hp_,dmg_,cd_);
             return object;
 }
+void Player::Fight(Player* attack,Player* defend){
 
-void Hero::Attack(Hero* h2_){
+    defend->ChangeCurHp(attack->getCurDMG());
+    attack->addXP();
+    attack->levelUp();
+    defend->levelUp();
+
+}
+void Player::Attack(Player* h2_){
     int round = 0;
-    double cd1 = this->getCooldown();
-    double cd2 = h2_->getCooldown();
+    double cd1 = this->getCurCD();
+    double cd2 = h2_->getCurCD();
 
     while(!endGame(h2_))
     {
         if(round==0)
         {
-            h2_->ChangeHP(this->getDamage());
+            Fight(this,h2_);
         }
         else if(round==1)
         {
-            this->ChangeHP(h2_->getDamage());
+            Fight(h2_,this);
         }
         else
         {
             if(cd1<cd2)
             {
                 cd2 -= cd1;
-                h2_->ChangeHP(this->getDamage());
-                cd1 = this->getCooldown();
+
+                Fight(this,h2_);
+                cd1 = this->getCurCD();
             }
             else if(cd2 < cd1)
             {
                 cd1 -= cd2;
-                this->ChangeHP(h2_->getDamage());
-                cd2 = h2_->getCooldown();
+                Fight(h2_,this);
+                cd2 = h2_->getCurCD();
             }
             else if(cd1==cd2 && (cd1>0||cd2>0))
             {
@@ -127,16 +141,16 @@ void Hero::Attack(Hero* h2_){
             }
             else if(cd1 == 0 && cd2 ==0)
             {
-                h2_->ChangeHP(this->getDamage());
-                if(h2_->getHp() <= 0)
+                Fight(this,h2_);
+                if(h2_->getCurHP() <= 0)
                 {
                     continue;
                 }
                 else
                 {
-                    this->ChangeHP(h2_->getDamage());
-                    cd1 = this->getCooldown();
-                    cd2 = h2_->getCooldown();
+                    Fight(h2_,this);
+                    cd1 = this->getCurCD();
+                    cd2 = h2_->getCurCD();
                 }
             }
         }
@@ -144,24 +158,22 @@ void Hero::Attack(Hero* h2_){
     }
 }
 
+std::string Player::getStringvar()
+{
+    return this->stringvar;
+}
 
-bool Hero::endGame(Hero* h2_){
-    if(this->getHp()==0){
-        this->stringvar =h2_->getName()+ " wins. Remaining HP: " + std::to_string(h2_->getHp());
+bool Player::endGame(Player* h2_){
+    if(this->getCurHP()==0){
+        this->stringvar =h2_->getName()+ " wins. Remaining HP: " + std::to_string(h2_->getCurHP());
         return true;
         }
-    else if(h2_->getHp()==0){
-        this->stringvar= this->getName() + " wins. Remaining HP: " + std::to_string(this->getHp());
+    else if(h2_->getCurHP()==0){
+        this->stringvar= this->getName() + " wins. Remaining HP: " + std::to_string(this->getCurHP());
         return true;
         }
     else {
         return false;
     }
-
-
 }
 
-Hero::~Hero()
-{
-
-};

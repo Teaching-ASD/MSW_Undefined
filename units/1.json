@@ -1,11 +1,11 @@
 {
 
-  "name": "Bence",
+  "name" : "Bence",
 
-  "hp": 100,
+  "hp": 125,
 
-  "dmg": 60,
+  "dmg": 50,
 
-  "attackcooldown": 3.5
+  "attackcooldown": 1.5
 
 }

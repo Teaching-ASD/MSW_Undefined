@@ -1,6 +1,6 @@
-Kalman wins. Remaining HP: 260
-Levi wins. Remaining HP: 90
-Kalman wins. Remaining HP: 260
-Levi wins. Remaining HP: 50
-Levi wins. Remaining HP: 150
-Levi wins. Remaining HP: 50
+Bence wins. Remaining HP: 295
+Bence wins. Remaining HP: 138
+Bence wins. Remaining HP: 295
+Kalman wins. Remaining HP: 330
+Bence wins. Remaining HP: 138
+Kalman wins. Remaining HP: 330

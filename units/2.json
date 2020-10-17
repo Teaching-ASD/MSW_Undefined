@@ -1,11 +1,11 @@
 {
 
-  "name": "Kalman",
+  "name" : "Kalman",
 
-  "hp": 500,
+  "hp": 300,
 
-  "dmg": 50,
+  "dmg": 70,
 
-  "attackcooldown": 10.8
+  "attackcooldown": 3.5
 
 }

@@ -1,8 +1,8 @@
-name: AttackSpeed workflow
+name: LevelUp 
 
 on:
   push:
-    branches: [attackspeed] 
+    branches: [levelup] 
 
 jobs:
   build_and_test:
@@ -11,5 +11,20 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the app
         run: g++ -std=c++17 *.cpp -o rpg
+      - name: debugging
+        run: g++ *.cpp -Wextra
+      - name: debugging memory leak install
+        run: sudo apt install valgrind
+      - name: debugging cppcheck install
+        run: sudo apt install cppcheck
+      - name: debugging memory leak
+        run: valgrind  --error-exitcode=1 ./a.out units/1.json units/2.json
+      - name: style and performance test
+        run: cppcheck *.cpp --enable=warning,style,performance --error-exitcode=1 &> styleAndPerformance.txt
+      - name: Upload file
+        uses: actions/upload-artifact@v1
+        with:
+          name: styleAndPerformance
+          path: styleAndPerformance.txt
       - name: Run unit tests, and check results
-        run: ./test.sh rpg         
+        run: ./test.sh rpg
