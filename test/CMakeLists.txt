@@ -17,5 +17,5 @@ include_directories(${GTEST_INCLUDE_DIRS})
  
 # Link runTests with what we want to test 
 # and the GTest and pthread library
-add_executable(runTests test.cpp ../Arena.cpp ../Json.cpp ../Hero.cpp)
+add_executable(runTests test.cpp ../Player.cpp ../Json.cpp ../Hero.cpp)
 target_link_libraries(runTests ${GTEST_LIBRARIES} pthread)

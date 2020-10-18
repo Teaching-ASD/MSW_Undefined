@@ -17,12 +17,16 @@ void Json::keyTester(std::string data, std::string fname=" "){
         if(data.size() >= data.find("dmg", data.find("dmg")+1)){
             throw std::invalid_argument("The Hero "+fname+"  has two dmg keys.");
         }
+        if(data.size() >= data.find("attackcooldown", data.find("attackcooldown")+1)){
+            throw std::invalid_argument("The Hero "+fname+"  has two attackcooldown keys.");
+        }
 }
 
 void Json::internalParser(std::string data){
         std::string hname,
             dmg_,
-            hp_;
+            hp_,
+            attackcooldown_;
         // remove whitespaces and resize
         data.erase(remove_if(data.begin(), data.end(), isspace), data.end());
 
@@ -61,6 +65,19 @@ void Json::internalParser(std::string data){
             data.find('}', data.find("dmg"))-data.find(":",data.find("dmg"))-1
             );
         }
+        //get attackcooldown
+        if(data.find(',', data.find("attackcooldown"))<data.find('}', data.find("attackcooldown"))){
+            attackcooldown_=data.substr(
+            data.find(":", data.find("attackcooldown"))+1,
+            data.find(',', data.find("attackcooldown"))-data.find(":",data.find("dmg"))-1
+            );
+        }
+        else{
+            attackcooldown_=data.substr(
+            data.find(":", data.find("attackcooldown"))+1,
+            data.find('}', data.find("attackcooldown"))-data.find(":",data.find("attackcooldown"))-1
+            );
+        }
 
         //pair keys and datas
         std::pair<std::string,std::string> nev=std::make_pair("name", hname);
@@ -69,6 +86,8 @@ void Json::internalParser(std::string data){
         adatok.insert(hape);
         std::pair<std::string,std::string> damago=std::make_pair("dmg", dmg_);
         adatok.insert(damago);
+        std::pair<std::string,std::string> attcd=std::make_pair("attackcooldown", attackcooldown_);
+        adatok.insert(attcd);
 
 
 };
