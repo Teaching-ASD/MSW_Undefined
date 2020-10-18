@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['getadatok',['getAdatok',['../classJson.html#aa78c6954c87137751444d254256badb4',1,'Json']]],
   ['getcooldown',['getCooldown',['../classHero.html#a9e675f767e7cccdc090403913cd7d270',1,'Hero']]],
   ['getcurcd',['getCurCD',['../classPlayer.html#af0e4065659b63dd4e7e228f3d3947c33',1,'Player']]],
   ['getcurdmg',['getCurDMG',['../classPlayer.html#a069f27fbc3888c59674f7b151877ea43',1,'Player']]],
