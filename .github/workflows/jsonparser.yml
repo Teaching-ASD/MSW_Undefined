@@ -1,8 +1,8 @@
-name: LevelUp 
+name: Jsonparser CI
 
 on:
   push:
-    branches: [levelup] 
+    branches: [jsonparser] 
 
 jobs:
   build_and_test:
@@ -18,7 +18,7 @@ jobs:
       - name: debugging cppcheck install
         run: sudo apt install cppcheck
       - name: debugging memory leak
-        run: valgrind  --error-exitcode=1 ./a.out units/1.json units/2.json
+        run: valgrind  --error-exitcode=1 ./a.out test/units/1.json test/units/2.json
       - name: style and performance test
         run: cppcheck *.cpp --enable=warning,style,performance --error-exitcode=1 &> styleAndPerformance.txt
       - name: Upload file
@@ -26,5 +26,21 @@ jobs:
         with:
           name: styleAndPerformance
           path: styleAndPerformance.txt
-      - name: Run unit tests, and check results
-        run: ./test.sh rpg
+      - name: Get googletest
+        run: |
+              sudo apt install libgtest-dev
+              sudo apt install cmake
+              cd /usr/src/gtest
+              sudo cmake CMakeLists.txt
+              sudo make
+              sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a
+              sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
+      - name: Build unit tests
+        run: |
+              cd test
+              cmake CMakeLists.txt
+              make
+      - name: Run unit tests
+        run : |
+              cd test
+              ./runTests         

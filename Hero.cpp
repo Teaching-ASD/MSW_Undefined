@@ -49,46 +49,17 @@ void Hero::ChangeHP(int dmg_)
 
 
 Hero Hero::parseUnitHero(std::string fname){
-        std::ifstream file;
-        //const std::exception e;
-        file.open(fname);
-	if(!file.is_open()){throw std::invalid_argument("The file " +fname+ " not exist");}
-            std::string hero;
-            std::string hname;
-            int dmg_;
-            int hp_;
-            double cd_;
-            std::string line;
-            //int a = 0;
-            while (getline(file,line))
-            {
-                hero += line;
-            }
-
-		hname=hero.substr(
-		hero.find(": \"", hero.find("name"))+3,
-		(
-		(hero.find(',', hero.find("name"))-1)-
-		(hero.find(": \"", hero.find("name"))+3)
-		));
-
-		hp_=stoi(hero.substr(
-		hero.find(":", hero.find("hp"))+1,
-		hero.find(',',hero.find("hp"))-hero.find(":",hero.find("hp"))-1
-		));
-
-		dmg_=stoi(hero.substr(
-		hero.find(":", hero.find("dmg"))+1,
-		hero.find(',', hero.find("dmg"))-hero.find(":",hero.find("dmg"))-1
-		));
-
-		cd_=stod(hero.substr(
-		hero.find(":", hero.find("attackcooldown"))+1,
-		hero.find('}', hero.find("attackcooldown"))-hero.find(":",hero.find("attackcooldown"))-1
-		));
-        file.close();
-	    Hero object=  Hero(hname,hp_,dmg_,cd_);
-            return object;
+        Json* json = new Json();
+        std::map<std::string,std::string> adatok = json->parseFile(fname);
+	    Hero object=
+        Hero(
+            adatok.at("name"),
+        std::stoi(adatok.at("hp")),
+        std::stoi(adatok.at("dmg")),
+        std::stod(adatok.at("attackcooldown"))
+        );
+        delete json;
+        return object;
 }
 
 void Hero::Attack(Hero* h2_){

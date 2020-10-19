@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "Hero.h"
+#include "Json.h"
 #include "Player.h"
 
 
@@ -24,13 +25,12 @@ int main(int argc, char *argv[])
         }
         catch(std::exception const& e)
         {
-            cerr<<e.what()<<endl;
+            cerr<< "Error, " <<e.what()<<endl;
 	    return 1;
         }
     }
     else{
         cerr<<"Please give exactly 2 file!" << endl;
     }
-
     return 0;
 }

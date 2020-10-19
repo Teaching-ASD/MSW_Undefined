@@ -5,11 +5,11 @@
  *
  * This is a Player class. This contains the maximum and current hp, current damage, current cooldown and XP of the Player. 
  *
- * \author 97Vix
+ * \author LeviG9901, 97Vix, b3nc301
  * 
- * \version 1.0
+ * \version 1.1
  *
- * \date 2020.10.16. 18:00
+ * \date 2020.10.18. 16:45
  *
  * Created on: 2020.10.16. 18:00
 */
@@ -18,6 +18,7 @@
 #define PLAYER_H
 #include "Hero.h"
 #include <math.h>
+#include "Json.h"
 
 class Player : public Hero
 {
@@ -33,10 +34,7 @@ std::string stringvar;
 public:
 /// This is a constructor for Player
 Player(const std::string&/**< [in] The Player's name */,int/**< [in] The Player's health */,const int/**< [in] The Player's damage */,const double/**< [in] The Player's attackcooldown */);
-/// This method is for parsing the json files. It reads in the file totally and finds: name, hp, damage, attackcooldown. And then it returns an object. There is an exception if it can't find the file. 
-/**
- * \exception std::invalid_argument file cannot opened
-*/
+/// This method is for parsing the json files. It gets the filename and passes to the json parser. 
 static Player parseUnitPlayer(std::string fname /**< [in] Name of the file */);
 /**
  * \return The Player's current damage
