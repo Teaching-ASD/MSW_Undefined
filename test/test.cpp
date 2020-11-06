@@ -116,6 +116,44 @@ TEST_F(JsonTest, istreamParser){
     delete json1;
     delete json2;
 }
+TEST_F(JsonTest, whiteSpace){
+    ASSERT_NO_THROW({
+        Player* p1 = new Player(Player::parseUnitPlayer("units/4.json"));
+        Player* p2 = new Player(Player::parseUnitPlayer("units/5.json"));
+        ASSERT_EQ(p1->getName(),p1ok->getName());
+        ASSERT_EQ(p1->getDamage(),p1ok->getDamage());
+        ASSERT_EQ(p1->getHp(),p1ok->getHp());
+        ASSERT_EQ(p1->getCooldown(), p1ok->getCooldown());
+        ASSERT_EQ(p2->getName(),p2ok->getName());
+        ASSERT_EQ(p2->getDamage(),p2ok->getDamage());
+        ASSERT_EQ(p2->getHp(),p2ok->getHp());
+        ASSERT_EQ(p1->getCooldown(), p1ok->getCooldown());
+        ASSERT_EQ(p2->getCooldown(), p2ok->getCooldown());
+        p1->Attack(p2);
+        EXPECT_EQ(p1->getStringvar(),expected);
+        delete p1;
+        delete p2;
+    });
+}
+TEST_F(JsonTest, keyOrder){
+    ASSERT_NO_THROW({
+        Player* p1 = new Player(Player::parseUnitPlayer("units/6.json"));
+        Player* p2 = new Player(Player::parseUnitPlayer("units/7.json"));
+        ASSERT_EQ(p1->getName(),p1ok->getName());
+        ASSERT_EQ(p1->getDamage(),p1ok->getDamage());
+        ASSERT_EQ(p1->getHp(),p1ok->getHp());
+        ASSERT_EQ(p1->getCooldown(), p1ok->getCooldown());
+        ASSERT_EQ(p2->getName(),p2ok->getName());
+        ASSERT_EQ(p2->getDamage(),p2ok->getDamage());
+        ASSERT_EQ(p2->getHp(),p2ok->getHp());
+        ASSERT_EQ(p1->getCooldown(), p1ok->getCooldown());
+        ASSERT_EQ(p2->getCooldown(), p2ok->getCooldown());
+        p1->Attack(p2);
+        EXPECT_EQ(p1->getStringvar(),expected);
+        delete p1;
+        delete p2;
+    });
+}
 int main(int argc, char** argv){
     ::testing::InitGoogleTest(&argc,argv);
     return RUN_ALL_TESTS();
