@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['changecurhp',['ChangeCurHp',['../classPlayer.html#a27b740c3bf94c388aa89276b448ffa1f',1,'Player']]]
+  ['changecurhp',['ChangeCurHp',['../classHero.html#a2573955c772c0194a73c9d9d62a00efc',1,'Hero']]],
+  ['character',['Character',['../classCharacter.html#a52e5e355845fa855175837121bad9328',1,'Character']]]
 ];

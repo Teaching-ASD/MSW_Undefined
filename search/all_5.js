@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hero',['Hero',['../classHero.html',1,'Hero'],['../classHero.html#a1d5654a6c47add58bd56506de5e51b6c',1,'Hero::Hero()']]]
+  ['hero',['Hero',['../classHero.html',1,'Hero'],['../classHero.html#a3ab822849ef387fc5268a139b83515c8',1,'Hero::Hero()']]]
 ];
