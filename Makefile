@@ -19,19 +19,18 @@ Player.o: Player.cpp
 main.o: main.cpp
 	$(CC) $(CFLAGS) -c main.cpp
 clean:
-	rm -rf *.o rpg ./DOCS
+	 rm -rf *.o rpg ./DOCS
 docs:
 	doxygen doxconf
-valgrind: rpg
+leaktest: rpg
 	valgrind $(VLGFLAGS)  ./rpg $(TESTFLDR)/units/1.json $(TESTFLDR)/units/2.json
 cppcheck:
 	cppcheck $(FILES)  $(CHCKFLAGS)
 
-CreateTest:
-	cmake $(TESTFLDR)/CMakeLists.txt
-creategtest: CreateTest
-	$ (cd $(TESTFLDR) && make)
-gtest: creategtest
+
+creategtest: 
+	$ (cd $(TESTFLDR) && cmake CMakeLists.txt && make)
+unittest: creategtest
 	$ (cd $(TESTFLDR) && ./runTests)
 
-test: valgrind cppcheck gtest 
+test: leaktest cppcheck unittest 
