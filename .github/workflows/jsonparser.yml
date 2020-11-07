@@ -1,8 +1,6 @@
 name: Jsonparser CI
 
-on:
-  push:
-    branches:
+
 
 jobs:
   build_and_test:

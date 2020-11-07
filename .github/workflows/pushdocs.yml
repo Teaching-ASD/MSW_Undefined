@@ -1,8 +1,6 @@
 name: pushdocs.yml
 
-on:
-  push:
-    branches:
+
 
 
 jobs:
