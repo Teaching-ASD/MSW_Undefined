@@ -17,11 +17,10 @@
 #ifndef JSON_H
 #define JSON_H
 #include <string>
-#include<fstream>
+#include <fstream>
 #include <map>
 #include <algorithm>
-#include<istream>
-#include"Hero.h"
+#include <istream>
 #include <exception>
 
 class JSON
@@ -78,7 +77,7 @@ public:
                 return ret; 
         }
 
-        static JSON parseFromFile(const std::string& fname);
+        static JSON parseFromFile(std::string fname);
         
         class ParseException : public std::logic_error {
                 public:

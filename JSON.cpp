@@ -99,7 +99,7 @@ std::map<std::string, std::string> JSON::parseFile(std::string fname){
 
 
 
-static JSON::JSON parseFromFile(const std::string& fname){
+JSON JSON::parseFromFile(std::string fname){
     std::map<std::string,std::string> map;
     std::ifstream file;
     file.open(fname);

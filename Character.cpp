@@ -48,15 +48,15 @@ void Character::ChangeHP(int dmg_)
 }
 
 
-Character Character::parseUnitCharacter(std::string fname){
-        Json* json = new Json();
+Character Character::parse(std::string fname){
+        JSON* json = new JSON();
         std::map<std::string,std::string> adatok = json->parseFile(fname);
 	    Character object=
         Character(
             adatok.at("name"),
-        std::stoi(adatok.at("hp")),
-        std::stoi(adatok.at("dmg")),
-        std::stod(adatok.at("attackcooldown"))
+        std::stoi(adatok.at("health_points")),
+        std::stoi(adatok.at("damage")),
+        std::stod(adatok.at("attack_cooldown"))
         );
         delete json;
         return object;

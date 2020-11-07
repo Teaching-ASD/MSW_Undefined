@@ -1,12 +1,11 @@
 #include "Hero.h"
 
-Hero::Hero(const std::string& name,int hp, const int damage,const double cd_):Character(name,hp,damage,cd_){
+Hero::Hero(const std::string& name,int hp, const int damage,const double cd_, const int xpperlvl_, const int hpperlvl_, const int dmgperlvl_, const double cdmperlvl_):Character(name,hp,damage,cd_),xpperlvl(xpperlvl_),hpperlvl(hpperlvl_),dmgperlvl(dmgperlvl_),cdmperlvl(cdmperlvl_){
 
     this->maxHP=hp;
     this->CurHP=this->maxHP;
     this->CurDMG=damage;
     this->CurCD=cd_;
-
 
 };
 void Hero::addXP(){
@@ -53,19 +52,41 @@ double Hero::getCurCD(){
     return CurCD;
 
 }
-Hero Hero::parseUnitHero(std::string fname){
-        Json* json = new Json();
+
+const int Hero::getXpPerLvl(){
+    return xpperlvl;
+}
+
+const int Hero::getHpPerLvl(){
+    return hpperlvl;
+}
+
+const int Hero::getDmgPerLvl(){
+    return dmgperlvl;
+}
+
+const double Hero::getCdmPerLvl(){
+    return cdmperlvl;
+}
+
+Hero Hero::parse(std::string fname){
+        JSON* json = new JSON();
         std::map<std::string,std::string> adatok = json->parseFile(fname);
 	    Hero object=
         Hero(
             adatok.at("name"),
-        std::stoi(adatok.at("hp")),
-        std::stoi(adatok.at("dmg")),
-        std::stod(adatok.at("attackcooldown"))
+        std::stoi(adatok.at("health_points")),
+        std::stoi(adatok.at("damage")),
+        std::stod(adatok.at("attack_cooldown")),
+        std::stod(adatok.at("experience_per_level")),
+        std::stod(adatok.at("health_point_bonus_per_level")),
+        std::stod(adatok.at("damage_bonus_per_level")),
+        std::stod(adatok.at("cooldown_multiplier_per_level"))
         );
         delete json;
         return object;
 }
+/*
 void Hero::Fight(Hero* attack,Hero* defend){
 
     defend->ChangeCurHp(attack->getCurDMG());
@@ -146,4 +167,5 @@ bool Hero::endGame(Hero* h2_){
         return false;
     }
 }
+*/
 
