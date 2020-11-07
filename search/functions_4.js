@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['getadatok',['getAdatok',['../classJson.html#aa78c6954c87137751444d254256badb4',1,'Json']]],
+  ['getadatok',['getAdatok',['../classJSON.html#a0b4690d67ae0c0872e541515d687e5ef',1,'JSON']]],
   ['getcooldown',['getCooldown',['../classCharacter.html#a843f43967553ba0b551809c26542c276',1,'Character']]],
   ['getcurcd',['getCurCD',['../classHero.html#a3445d922502c680323533d77d12bf8fd',1,'Hero']]],
   ['getcurdmg',['getCurDMG',['../classHero.html#ab3411235100a3d30b949fad6abe13057',1,'Hero']]],
