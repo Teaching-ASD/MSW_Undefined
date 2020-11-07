@@ -27,7 +27,7 @@ valgrind: rpg
 cppcheck:
 	cppcheck $(FILES)  $(CHCKFLAGS)
 
-CreateTest: $(TESTFLDR)/Makefile
+CreateTest:
 	cmake $(TESTFLDR)/CMakeLists.txt
 creategtest: CreateTest
 	$ (cd $(TESTFLDR) && make)
