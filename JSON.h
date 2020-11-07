@@ -1,7 +1,7 @@
 /**
- * \class Json
+ * \class JSON
  *
- * \brief Json parser class
+ * \brief JSON parser class
  *
  * This is a JSON parser class. This class accepts 3 formats: filename, string, istream, and gets the data from there and converts it to a map. 
  *
@@ -22,19 +22,25 @@
 #include <algorithm>
 #include<istream>
 #include"Hero.h"
+#include <exception>
 
-class Json
+class JSON
 {
 private:
         std::map<std::string,std::string> adatok;
         void internalParser(std::string data);
-        static void keyTester(std::string data, std::string fname);
+        static void keyTester(std::string data, std::string key);
+        void internalStringParse(std::string data, std::string key);
+        void internalNumParse(std::string data, std::string key);
 public:
-        /// This is a constructor for Json
-        Json();
+        /// This is a constructor for JSON
+        JSON();
 
-        ///This is a destructot for Json
-        ~Json();
+        /// This is a constructor with a map
+        JSON(std::map<std::string,std::string> adatok_ /**< [in] A map with the datas */);
+
+        ///This is a destructot for JSON
+        ~JSON();
 
 
         ///This is the file parser.
@@ -64,7 +70,21 @@ public:
         /**
         * \exception std::invalid_argument The data has duplicated keys.
         */
-        friend std::istream& operator>>(std::istream&, Json& j);
+        friend std::istream& operator>>(std::istream&, JSON& j);
+
+        template<typename T>
+        T get(std::string data){
+                T ret = adatok.at("data");
+                return ret; 
+        }
+
+        static JSON parseFromFile(const std::string& fname);
+        
+        class ParseException : public std::logic_error {
+                public:
+                        ParseException(const std::string& msg) : std::logic_error(msg){};
+        };
+        unsigned int count(const std::string& data);
 };
 
 #endif //JSON_H
