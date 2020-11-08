@@ -27,7 +27,7 @@ class Hero : public Character
 private:
 
     int maxHP;
-    int XP=0;
+    
     int level=1;
     const int xpperlvl;
     const int hpperlvl;
@@ -36,13 +36,13 @@ private:
     std::string stringvar;
     
 public:
-
+    int XP=0;
     /// This is a constructor for Hero
     Hero(const std::string&/**< [in] The Hero's name */,int/**< [in] The Hero's health */, int/**< [in] The Hero's damage */, double/**< [in] The Hero's attackcooldown */,const int/**< [in] The Hero's Experience per Level */, const int /**< [in] The Hero's HealthPoint Bonus per Level */, const int /**< [in] The Hero's Damage Bonus per Level */, const double /**< [in] The Hero's Cooldown Multiplier per Level */);
     /// This method is for parsing the json files. It gets the filename and passes to the json parser. 
     static Hero parse(std::string fname /**< [in] Name of the file */);
 
-    void addXP();
+    void addXP(int);
     /// This method is doing the levelup.It is changing the value of the maxhp and current hp, dmg, cooldown
     void levelUp();
     /**

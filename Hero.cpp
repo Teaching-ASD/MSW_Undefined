@@ -4,17 +4,16 @@ Hero::Hero(const std::string& name,int hp,  int damage, double cd_, const int xp
     this->maxHP=hp;
 
 };
-void Hero::addXP(){
+void Hero::addXP(int xp_){
 
-    this->XP += this->getDamage();
+    this->XP += xp_;
 
 }
 
 void Hero::levelUp(){
-    while(this->XP>=xpperlvl){
+    while(this->XP>=(level*xpperlvl)){
 
         level++;
-        this->XP -=xpperlvl;
         maxHP = maxHP+hpperlvl;
         this->setHp(maxHP);
         this->setDamage(this->getDamage()+dmgperlvl);
@@ -68,8 +67,9 @@ Hero Hero::parse(std::string fname){
 void Hero::Fight(Monster& monster,Hero& hero,bool HeroAttack){
 
     if(HeroAttack == 1) {
+        int a = monster.getHealthPoints();
         monster.ChangeHP(hero.getDamage());
-        hero.addXP();
+        hero.addXP(a-monster.getHealthPoints());
         hero.levelUp();
     }
     else{
@@ -79,23 +79,12 @@ void Hero::Fight(Monster& monster,Hero& hero,bool HeroAttack){
 }
 
 void Hero::fightTilDeath(Monster& monster){
-    int round = 0;
     double cd1 = this->getAttackCoolDown();
     double cd2 = monster.getAttackCoolDown();
 
     while(monster.getHealthPoints()>0 && this->getHealthPoints()>0)
     {
-        if(round==0)
-        {
-            //Fight(this,monster);
-            Fight(monster,*this,1);
-        }
-        else if(round==1)
-        {
-            Fight(monster,*this,0);
-        }
-        else
-        {
+
             if(cd1<cd2)
             {
                 cd2 -= cd1;
@@ -132,8 +121,7 @@ void Hero::fightTilDeath(Monster& monster){
                     cd2 = monster.getAttackCoolDown();
                 }
             }
-        }
-        round++;
+       
     }
 }
 
