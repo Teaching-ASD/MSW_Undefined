@@ -3,11 +3,11 @@
  *
  * \brief Monster class
  *
- * This is a Monster class. This contains the maximum and current hp, current damage, current cooldown and XP of the Monster. 
+ * This is a Monster class. This contains the hp, damage, cooldown and XP of the Monster. 
  *
  * \author LeviG9901, 97Vix, b3nc301
  * 
- * \version 1.1
+ * \version 2.0
  *
  * \date 2020.10.18. 16:45
  *

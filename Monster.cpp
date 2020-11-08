@@ -5,8 +5,8 @@ Monster::Monster(const std::string &name_, int hp_ ,int damage_,double cd_):Char
     
 
 Monster Monster::parse(std::string fname){
-        JSON* json = new JSON();
-        std::map<std::string,std::string> adatok = json->parseFile(fname);
+        JSON json;
+        std::map<std::string,std::string> adatok = json.parseFile(fname);
 	    Monster object=
         Monster(
         adatok.at("name"),
@@ -14,7 +14,6 @@ Monster Monster::parse(std::string fname){
         std::stoi(adatok.at("damage")),
         std::stod(adatok.at("attack_cooldown"))
         );
-        delete json;
         return object;
 
 }

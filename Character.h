@@ -7,9 +7,9 @@
  *
  * \author LeviG9901, 97Vix, b3nc301
  * 
- * \version 2.1
+ * \version 2.2
  *
- * \date 2020.10.18. 16:45
+ * \date 2020.11.08 12:00
  *
  * Created on: 2020.10.16. 18:00
 */
@@ -29,10 +29,10 @@ private:
         double cooldown;
         std::string stringvar;
 public:
-        void ChangeHP(int);
-        void setDamage(int);
-        void setCd(double);
-        void setHp(int);
+        void ChangeHP(int/**< [in] The ammount of HP decrease. */);
+        void setDamage(int/**< [in] The new damage. */);
+        void setCd(double /**< [in] The new CD. */);
+        void setHp(int /**< [in] The new HP. */);
 
         /// This is a constructor for Character
         Character(const std::string &name_ /**< [in] The Character's name */, int hp_ /**< [in] The Character's health */,int damage_ /**< [in] The Character's damage */,double cd_ /**< [in] The Character's attackcooldown */);
@@ -40,23 +40,23 @@ public:
         /**
          * \return The Character's name
         */
-        std::string getName();
+        std::string getName() const;
         /**
          * \return The Character's damage
         */
-        int getDamage();
+        int getDamage() const;
         /**
          * \return The Character's Hp
         */
-        int getHealthPoints();
+        int getHealthPoints() const;
         /**
          * \return The stringvar variable
         */
-        std::string getStringvar();
+        std::string getStringvar() const;
         /**
          * \return The Character's cooldown
         */
-        const double getAttackCoolDown();
+        double getAttackCoolDown() const;
         /// This method is for checking if one of the two Character died while attacking eachother, and if one of them died, then it just puts who won as a string in the stringvar variable.
         /**
          * \return The game is ended
@@ -65,10 +65,16 @@ public:
         /// This method is for the Characteres attacking eachother. It contains the cooldown logic as well. The first two round both of the Characteres attack, but if one of them dies, it just quits from a while loop and endGame() will be called. If noone dies in the first round, then it continues to run in the else statement and there is 4 different cases. First it checks if the first Character has lower cooldown, then it reduces the second Character's cooldown with the first Character's cooldown, and first Character attacks second Character. After that the second Character's cooldown will remain in reduced state and the first Character will get its original cooldown again. There is another if statement if the second Character has lower cooldown. It does the same thing as the first one. And then it checks if both of them has the same cooldown, but it is not zero, and it will change both Character's cooldown to Zero. And the last if statement for the case when both Character has zero cooldown. The first Character will start the attack, and there is an if statement for if the second Character dies while first Character attacked and second Character has 0 hp, this if statement will do a continue, which will break out, and the engGame() will be called. If the second Character doesn't die while the first Character attacking the second Character, then it continues to that part, when the second Character attacks the first Character, and at the end of the if statement, both of the Character's cooldown will be the original cooldown again, and the while loop continues until one of them dies.
         void Attack(Character* h2_ /**< [in] The enemy Character as parameter */);
         /// This method is for parsing the json files. It gets the filename and passes to the json parser. 
+        /**
+         * \return A Character object with the datas.
+         */
         static Character parse(std::string fname /**< [in] Name of the file */);
 
-
-        const bool isAlive();
+        /// This method is for check the character is alive
+        /**
+         * \return The caracter is alive or not
+         */
+        bool isAlive();
 
         ~Character();
 };

@@ -1,6 +1,8 @@
 name: pushdocs.yml
 
-
+on:
+  push:
+    [refactor]
 
 
 jobs:

@@ -1,5 +1,8 @@
-name: Jsonparser CI
+name: Test CI
 
+on:
+  push:
+    [refactor]
 
 
 jobs:
@@ -7,18 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build the app
-        run: g++ -std=c++17 *.cpp -o rpg
       - name: debugging
-        run: g++ *.cpp -Wextra
+        run: g++ -std=c++17 *.cpp -Wextra
       - name: debugging memory leak install
         run: sudo apt install valgrind
       - name: debugging cppcheck install
         run: sudo apt install cppcheck
       - name: debugging memory leak
-        run: valgrind  --error-exitcode=1 ./a.out test/units/1.json test/units/2.json
+        run: valgrind  --error-exitcode=1 ./a.out scenario1.json
       - name: style and performance test
-        run: cppcheck *.cpp --enable=warning,style,performance --error-exitcode=1 &> styleAndPerformance.txt
+        run: cppcheck Hero.cpp Monster.cpp JSON.cpp Character.cpp --enable=warning,style,performance --error-exitcode=1 &> styleAndPerformance.txt
       - name: Upload file
         uses: actions/upload-artifact@v1
         with:
@@ -41,4 +42,4 @@ jobs:
       - name: Run unit tests
         run : |
               cd test
-              ./runTests         
+                      

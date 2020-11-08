@@ -3,13 +3,13 @@
  *
  * \brief Hero class
  *
- * This is a Hero class. This contains the maximum and current hp, current damage, current cooldown and XP of the Hero. 
+ * This is a Hero class. This is stores the datas from the Hero. 
  *
  * \author LeviG9901, 97Vix, b3nc301
  * 
- * \version 1.1
+ * \version 2.0
  *
- * \date 2020.10.18. 16:45
+ * \date 2020.11.08 12:00
  *
  * Created on: 2020.10.16. 18:00
 */
@@ -48,25 +48,29 @@ public:
     /**
     * \return The Hero's Experience per Level
     */
-    const int getXpPerLvl();
+    int getXpPerLvl() const;
     /**
     * \return The Hero's Health Point bonus per Level
     */
-    const int getHpPerLvl();
+    int getHpPerLvl() const;
     /**
     * \return The Hero's Damage bonus per Level
     */
-    const int getDmgPerLvl();
+    int getDmgPerLvl() const;
     /**
     * \return The Hero's Cooldown Multiplier per Level 
     */
-    const double getCdmPerLvl();
-    
-    const int getLevel();
-
+    double getCdmPerLvl() const;
+    /**
+    * \return The Hero's current level. 
+    */
+    int getLevel() const;
+    /// This method is for attack a Monster with the Hero
     void fightTilDeath(Monster&);
-
-    const int getMaxHealthPoints();
+    /**
+    * \return The Hero's maximum Health Points. 
+    */
+    int getMaxHealthPoints() const;
 
     /// This method is doing the attack and levelup.
     void Fight(Monster& monster/**< [in] This is the monster*/,Hero& defend,/**< [in] This is the  Hero */bool HeroAttack/**< [in] Is the hero attacking? */);

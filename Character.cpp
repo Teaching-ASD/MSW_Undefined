@@ -1,48 +1,42 @@
 #include <iostream>
 #include "Character.h"
 
-Character::Character(const std::string& name_,int hp_,int damage_,double cd_):name(name_), hp(hp_), damage(damage_),cooldown(cd_)
-{
-
+Character::Character(const std::string& name_,int hp_,int damage_,double cd_):name(name_), hp(hp_), damage(damage_),cooldown(cd_){
 }
 
-std::string Character::getName()
-{
+std::string Character::getName() const{
     return this->name;
 }
 
-int Character::getDamage()
-{
+int Character::getDamage() const{
     return this->damage;
 }
 
-int Character::getHealthPoints()
-{
+int Character::getHealthPoints() const{
     return this->hp;
 }
 
-const double Character::getAttackCoolDown()
-{
+double Character::getAttackCoolDown() const{
     return this->cooldown;
 }
-std::string Character::getStringvar()
-{
+
+std::string Character::getStringvar() const{
     return this->stringvar;
 }
 
-void Character::setHp(int hp_)
-{
+void Character::setHp(int hp_){
     hp = hp_;
 }
+
 void Character::setDamage(int dmg){
     damage = dmg;
 }
+
 void Character::setCd(double cd){
     cooldown=cd;
 }
 
-void Character::ChangeHP(int dmg_)
-{
+void Character::ChangeHP(int dmg_){
     this->hp -= dmg_;
     if(this->hp<0)
     {
@@ -52,8 +46,8 @@ void Character::ChangeHP(int dmg_)
 
 
 Character Character::parse(std::string fname){
-        JSON* json = new JSON();
-        std::map<std::string,std::string> adatok = json->parseFile(fname);
+        JSON json;
+        std::map<std::string,std::string> adatok = json.parseFile(fname);
 	    Character object=
         Character(
             adatok.at("name"),
@@ -61,11 +55,10 @@ Character Character::parse(std::string fname){
         std::stoi(adatok.at("damage")),
         std::stod(adatok.at("attack_cooldown"))
         );
-        delete json;
         return object;
 }
 
-const bool Character::isAlive(){
+bool Character::isAlive(){
 
     if (getHealthPoints() > 0){
             return 1;
@@ -74,7 +67,5 @@ const bool Character::isAlive(){
 
 };
 
-Character::~Character()
-{
-
+Character::~Character(){
 };

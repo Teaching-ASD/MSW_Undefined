@@ -21,33 +21,33 @@ void Hero::levelUp(){
 
     }
 }
-const int Hero::getLevel(){
+int Hero::getLevel() const{
     return level;
 }
 
-const int Hero::getXpPerLvl(){
+int Hero::getXpPerLvl() const{
     return xpperlvl;
 }
 
-const int Hero::getHpPerLvl(){
+int Hero::getHpPerLvl() const{
     return hpperlvl;
 }
 
-const int Hero::getDmgPerLvl(){
+int Hero::getDmgPerLvl() const{
     return dmgperlvl;
 }
 
-const double Hero::getCdmPerLvl(){
+double Hero::getCdmPerLvl() const{
     return cdmperlvl;
 }
 
-const int Hero::getMaxHealthPoints(){
+int Hero::getMaxHealthPoints() const{
     return maxHP;
 }
 
 Hero Hero::parse(std::string fname){
-        JSON* json = new JSON();
-        std::map<std::string,std::string> adatok = json->parseFile(fname);
+        JSON json;
+        std::map<std::string,std::string> adatok = json.parseFile(fname);
 	    Hero object=
         Hero(
             adatok.at("name"),
@@ -59,13 +59,11 @@ Hero Hero::parse(std::string fname){
         std::stod(adatok.at("damage_bonus_per_level")),
         std::stod(adatok.at("cooldown_multiplier_per_level"))
         );
-        delete json;
         return object;
 }
 
 
 void Hero::Fight(Monster& monster,Hero& hero,bool HeroAttack){
-
     if(HeroAttack == 1) {
         int a = monster.getHealthPoints();
         monster.ChangeHP(hero.getDamage());
@@ -73,7 +71,7 @@ void Hero::Fight(Monster& monster,Hero& hero,bool HeroAttack){
         hero.levelUp();
     }
     else{
-    hero.ChangeHP(monster.getDamage());
+        hero.ChangeHP(monster.getDamage());
     }
 
 }
