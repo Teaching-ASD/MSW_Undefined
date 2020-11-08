@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: debugging
-        run: g++ -std=c++17 *.cpp -Wextra
+        run: g++ -std=c++17 *.cpp -Wextra -lstdc++fs
       - name: debugging memory leak install
         run: sudo apt install valgrind
       - name: debugging cppcheck install
