@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['changecurhp',['ChangeCurHp',['../classHero.html#a2573955c772c0194a73c9d9d62a00efc',1,'Hero']]],
-  ['character',['Character',['../classCharacter.html',1,'Character'],['../classCharacter.html#a52e5e355845fa855175837121bad9328',1,'Character::Character()']]]
+  ['changehp',['ChangeHP',['../classCharacter.html#a4fb6ab1f866b1ade5f87ef975b6afade',1,'Character']]],
+  ['character',['Character',['../classCharacter.html',1,'Character'],['../classCharacter.html#a308c4413d49659172797407104e7d451',1,'Character::Character()']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['json',['JSON',['../classJSON.html',1,'JSON'],['../classJSON.html#acf359a0f5efc57e6e844ad58abbd6480',1,'JSON::JSON()'],['../classJSON.html#ac15717b036222f157be91550f4ce8a66',1,'JSON::JSON(std::map&lt; std::string, std::string &gt; adatok_)']]]
+  ['isalive',['isAlive',['../classCharacter.html#aa49f985b1b05751b2d4b3de74b4acc8c',1,'Character']]]
 ];
