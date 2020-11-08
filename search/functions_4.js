@@ -1,16 +1,12 @@
 var searchData=
 [
-  ['get',['get',['../classJSON.html#aab03a2a05444bce154ebc14e57d9aab6',1,'JSON']]],
-  ['getadatok',['getAdatok',['../classJSON.html#a483657038b7a0d3d9b6e2606cff3e492',1,'JSON']]],
-  ['getattackcooldown',['getAttackCoolDown',['../classCharacter.html#a44d2b7c4acb13bc0ee070b951a595ab3',1,'Character']]],
-  ['getcdmperlvl',['getCdmPerLvl',['../classHero.html#ae3270cb12f8fac6eccf353e34eac4cbf',1,'Hero']]],
-  ['getdamage',['getDamage',['../classCharacter.html#a4b5771117324e7bcf7afd005b2aa5943',1,'Character']]],
-  ['getdmgperlvl',['getDmgPerLvl',['../classHero.html#a7b91323349545875e9035b917fb38bae',1,'Hero']]],
-  ['gethealthpoints',['getHealthPoints',['../classCharacter.html#a11c7a043e31cad72a2dd090b8daac6d2',1,'Character']]],
-  ['gethpperlvl',['getHpPerLvl',['../classHero.html#ac7507f692479e01f19e11a1a4534caa6',1,'Hero']]],
-  ['getlevel',['getLevel',['../classHero.html#a17e77f3769e62aeb4e1807bbfc720f47',1,'Hero']]],
-  ['getmaxhealthpoints',['getMaxHealthPoints',['../classHero.html#ac6a7deeb6e390a23536d622042f4c48e',1,'Hero']]],
-  ['getname',['getName',['../classCharacter.html#ad79f892fe576c7ef0804cad502d94517',1,'Character']]],
-  ['getstringvar',['getStringvar',['../classCharacter.html#adf886a6256bf827bc26f6a0a2ec2df35',1,'Character']]],
-  ['getxpperlvl',['getXpPerLvl',['../classHero.html#a00ebf70b8b49d9ce99920600e683c892',1,'Hero']]]
+  ['getadatok',['getAdatok',['../classJson.html#aa78c6954c87137751444d254256badb4',1,'Json']]],
+  ['getcooldown',['getCooldown',['../classHero.html#a9e675f767e7cccdc090403913cd7d270',1,'Hero']]],
+  ['getcurcd',['getCurCD',['../classPlayer.html#af0e4065659b63dd4e7e228f3d3947c33',1,'Player']]],
+  ['getcurdmg',['getCurDMG',['../classPlayer.html#a069f27fbc3888c59674f7b151877ea43',1,'Player']]],
+  ['getcurhp',['getCurHP',['../classPlayer.html#a20603e49434eff82f281f3b3aae49a35',1,'Player']]],
+  ['getdamage',['getDamage',['../classHero.html#a4a681c061ac4ce4d1cd22aeb025c8d2e',1,'Hero']]],
+  ['gethp',['getHp',['../classHero.html#a7710500513b5197165e3d3c0b6402f07',1,'Hero']]],
+  ['getname',['getName',['../classHero.html#ade246d363b9021a7e7aa811bb1410e6d',1,'Hero']]],
+  ['getstringvar',['getStringvar',['../classHero.html#a031f8270dcbab7eed51b0dfb99ac62c4',1,'Hero::getStringvar()'],['../classPlayer.html#a5e8c0dfdb056a1b40141dc36f016ca5a',1,'Player::getStringvar()']]]
 ];
