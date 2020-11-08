@@ -25,13 +25,17 @@ class Character
 private:
         const std::string name;
         int hp;
-        const int damage;
-        const double cooldown;
-        void ChangeHP(int dmg_);
+        int damage;
+        double cooldown;
         std::string stringvar;
 public:
+        void ChangeHP(int);
+        void setDamage(int);
+        void setCd(double);
+        void setHp(int);
+
         /// This is a constructor for Character
-        Character(const std::string &name_ /**< [in] The Character's name */, int hp_ /**< [in] The Character's health */,const int damage_ /**< [in] The Character's damage */,const double cd_ /**< [in] The Character's attackcooldown */);
+        Character(const std::string &name_ /**< [in] The Character's name */, int hp_ /**< [in] The Character's health */,int damage_ /**< [in] The Character's damage */,double cd_ /**< [in] The Character's attackcooldown */);
         /// This is a simple getter for getting the Character's name.
         /**
          * \return The Character's name
@@ -44,7 +48,7 @@ public:
         /**
          * \return The Character's Hp
         */
-        int getHp();
+        int getHealthPoints();
         /**
          * \return The stringvar variable
         */
@@ -52,7 +56,7 @@ public:
         /**
          * \return The Character's cooldown
         */
-        double getCooldown();
+        const double getAttackCoolDown();
         /// This method is for checking if one of the two Character died while attacking eachother, and if one of them died, then it just puts who won as a string in the stringvar variable.
         /**
          * \return The game is ended
@@ -62,6 +66,10 @@ public:
         void Attack(Character* h2_ /**< [in] The enemy Character as parameter */);
         /// This method is for parsing the json files. It gets the filename and passes to the json parser. 
         static Character parse(std::string fname /**< [in] Name of the file */);
+
+
+        const bool isAlive();
+
         ~Character();
 };
 #endif //Character_H

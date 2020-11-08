@@ -1,56 +1,29 @@
 #include "Hero.h"
-
-Hero::Hero(const std::string& name,int hp, const int damage,const double cd_, const int xpperlvl_, const int hpperlvl_, const int dmgperlvl_, const double cdmperlvl_):Character(name,hp,damage,cd_),xpperlvl(xpperlvl_),hpperlvl(hpperlvl_),dmgperlvl(dmgperlvl_),cdmperlvl(cdmperlvl_){
+Hero::Hero(const std::string& name,int hp,  int damage, double cd_, const int xpperlvl_, const int hpperlvl_, const int dmgperlvl_, const double cdmperlvl_):Character(name,hp,damage,cd_),xpperlvl(xpperlvl_),hpperlvl(hpperlvl_),dmgperlvl(dmgperlvl_),cdmperlvl(cdmperlvl_){
 
     this->maxHP=hp;
-    this->CurHP=this->maxHP;
-    this->CurDMG=damage;
-    this->CurCD=cd_;
 
 };
 void Hero::addXP(){
 
-    this->XP += CurDMG;
+    this->XP += this->getDamage();
 
 }
 
 void Hero::levelUp(){
-    while(this->XP>=100){
-        this->XP -=100;
-        
-        maxHP = round(maxHP*1.1);
-        CurHP = maxHP;
-        CurDMG = round(CurDMG*1.1);
-        CurCD = CurCD*0.9;
-    }
-    
-}
+    while(this->XP>=xpperlvl){
 
-void Hero::ChangeCurHp(int dmg){
+        level++;
+        this->XP -=xpperlvl;
+        maxHP = maxHP+hpperlvl;
+        this->setHp(maxHP);
+        this->setDamage(this->getDamage()+dmgperlvl);
+        this->setCd(this->getAttackCoolDown()*cdmperlvl);
 
-    CurHP -= dmg;
-
-    if(this->CurHP<0)
-    {
-        this->CurHP=0;
     }
 }
-
-int Hero::getCurDMG(){
-
-    return CurDMG;
-
-}
-
-int Hero::getCurHP(){
-
-    return CurHP;
-
-}
-double Hero::getCurCD(){
-
-    return CurCD;
-
+const int Hero::getLevel(){
+    return level;
 }
 
 const int Hero::getXpPerLvl(){
@@ -67,6 +40,10 @@ const int Hero::getDmgPerLvl(){
 
 const double Hero::getCdmPerLvl(){
     return cdmperlvl;
+}
+
+const int Hero::getMaxHealthPoints(){
+    return maxHP;
 }
 
 Hero Hero::parse(std::string fname){
@@ -86,29 +63,36 @@ Hero Hero::parse(std::string fname){
         delete json;
         return object;
 }
-/*
-void Hero::Fight(Hero* attack,Hero* defend){
 
-    defend->ChangeCurHp(attack->getCurDMG());
-    attack->addXP();
-    attack->levelUp();
-    defend->levelUp();
+
+void Hero::Fight(Monster& monster,Hero& hero,bool HeroAttack){
+
+    if(HeroAttack == 1) {
+        monster.ChangeHP(hero.getDamage());
+        hero.addXP();
+        hero.levelUp();
+    }
+    else{
+    hero.ChangeHP(monster.getDamage());
+    }
 
 }
-void Hero::Attack(Hero* h2_){
-    int round = 0;
-    double cd1 = this->getCurCD();
-    double cd2 = h2_->getCurCD();
 
-    while(!endGame(h2_))
+void Hero::fightTilDeath(Monster& monster){
+    int round = 0;
+    double cd1 = this->getAttackCoolDown();
+    double cd2 = monster.getAttackCoolDown();
+
+    while(monster.getHealthPoints()>0 && this->getHealthPoints()>0)
     {
         if(round==0)
         {
-            Fight(this,h2_);
+            //Fight(this,monster);
+            Fight(monster,*this,1);
         }
         else if(round==1)
         {
-            Fight(h2_,this);
+            Fight(monster,*this,0);
         }
         else
         {
@@ -116,14 +100,16 @@ void Hero::Attack(Hero* h2_){
             {
                 cd2 -= cd1;
 
-                Fight(this,h2_);
-                cd1 = this->getCurCD();
+                //Fight(this,monster);
+                Fight(monster,*this,1);
+                cd1 = this->getAttackCoolDown();
             }
             else if(cd2 < cd1)
             {
                 cd1 -= cd2;
-                Fight(h2_,this);
-                cd2 = h2_->getCurCD();
+                //Fight(monster,this);
+                Fight(monster,*this,0);
+                cd2 = monster.getAttackCoolDown();
             }
             else if(cd1==cd2 && (cd1>0||cd2>0))
             {
@@ -132,16 +118,18 @@ void Hero::Attack(Hero* h2_){
             }
             else if(cd1 == 0 && cd2 ==0)
             {
-                Fight(this,h2_);
-                if(h2_->getCurHP() <= 0)
+                //Fight(this,monster);
+                Fight(monster,*this,1);
+                if(monster.getHealthPoints() <= 0)
                 {
                     continue;
                 }
                 else
                 {
-                    Fight(h2_,this);
-                    cd1 = this->getCurCD();
-                    cd2 = h2_->getCurCD();
+                    //Fight(monster,this);
+                    Fight(monster,*this,0);
+                    cd1 = this->getAttackCoolDown();
+                    cd2 = monster.getAttackCoolDown();
                 }
             }
         }
@@ -149,23 +137,5 @@ void Hero::Attack(Hero* h2_){
     }
 }
 
-std::string Hero::getStringvar()
-{
-    return this->stringvar;
-}
 
-bool Hero::endGame(Hero* h2_){
-    if(this->getCurHP()==0){
-        this->stringvar =h2_->getName()+ " wins. Remaining HP: " + std::to_string(h2_->getCurHP());
-        return true;
-        }
-    else if(h2_->getCurHP()==0){
-        this->stringvar= this->getName() + " wins. Remaining HP: " + std::to_string(this->getCurHP());
-        return true;
-        }
-    else {
-        return false;
-    }
-}
-*/
 

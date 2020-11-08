@@ -43,7 +43,7 @@ void JSON::internalNumParse(std::string data, std::string key){
             data.find(":", data.find(key))+1,
             data.find(',',data.find(key))-data.find(":",data.find(key))-1
 	        );
-        key.erase(remove_if(key.begin(), key.end(), "\""), key.end());
+        key.erase(remove(key.begin(), key.end(), '\"'), key.end());
         std::pair<std::string,std::string> ret=std::make_pair(key, str);
         adatok.insert(ret);
         }
@@ -53,7 +53,7 @@ void JSON::internalNumParse(std::string data, std::string key){
             data.find(":", data.find(key))+1,
             data.find('}',data.find(key))-data.find(":",data.find(key))-1
 	        );
-        key.erase(remove_if(key.begin(), key.end(), "\""), key.end());
+        key.erase(remove(key.begin(), key.end(), '\"'), key.end());
         std::pair<std::string,std::string> ret=std::make_pair(key, str);
         adatok.insert(ret);
         }
