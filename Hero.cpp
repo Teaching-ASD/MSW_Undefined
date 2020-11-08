@@ -65,9 +65,9 @@ Hero Hero::parse(std::string fname){
 
 void Hero::Fight(Monster& monster,Hero& hero,bool HeroAttack){
     if(HeroAttack == 1) {
-        int a = monster.getHealthPoints();
+        int OldMonsterHp = monster.getHealthPoints();
         monster.ChangeHP(hero.getDamage());
-        hero.addXP(a-monster.getHealthPoints());
+        hero.addXP(OldMonsterHp-monster.getHealthPoints());
         hero.levelUp();
     }
     else{

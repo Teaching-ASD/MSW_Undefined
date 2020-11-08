@@ -25,7 +25,6 @@ class Monster : public Character
 public:
     /// This is a constructor for Monster
     Monster(const std::string &name_ /**< [in] The Monster's name */, int hp_ /**< [in] The Monster's health */,int damage_ /**< [in] The Monster's damage */,double cd_ /**< [in] The Monster's attackcooldown */);
-    /// This is a simple getter for getting the Monster's name.
 
     /// This method is for parsing the json files. It gets the filename and passes to the json parser. 
     static Monster parse(std::string fname /**< [in] Name of the file */);
