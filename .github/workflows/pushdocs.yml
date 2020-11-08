@@ -3,7 +3,7 @@ name: pushdocs.yml
 on:
   push:
     branches:
-    - jsonparser
+    - documentation
     - gh-pages
 
 jobs:

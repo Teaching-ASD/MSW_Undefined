@@ -1,8 +1,8 @@
-name: Jsonparser CI
+name: Documentation CI
 
 on:
   push:
-    branches: [jsonparser] 
+    branches: [documentation] 
 
 jobs:
   build_and_test:
