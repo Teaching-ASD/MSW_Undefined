@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['operator_3e_3e',['operator&gt;&gt;',['../classJson.html#a8f7ba9fdaa4eeec4d6af413ca41af3e7',1,'Json']]]
+  ['msw_5fundefined',['MSW_Undefined',['../autotoc_md0.html',1,'']]],
+  ['monster',['Monster',['../classMonster.html',1,'Monster'],['../classMonster.html#a82eb2593738c609b1dc5c58e56509890',1,'Monster::Monster()']]]
 ];
