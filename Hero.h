@@ -7,9 +7,9 @@
  *
  * \author LeviG9901, 97Vix, b3nc301
  * 
- * \version 2.1
+ * \version 2.2
  *
- * \date 2020.10.18. 16:45
+ * \date 2020.11.08. 12:25
  *
  * Created on: 2020.10.16. 18:00
 */
@@ -37,18 +37,22 @@ public:
          * \return The Hero's name
         */
         std::string getName();
+        /// This is a simple getter for getting the Hero's damage.
         /**
          * \return The Hero's damage
         */
         int getDamage();
+        /// This is a simple getter for getting the Hero's healthpoint.
         /**
          * \return The Hero's Hp
         */
         int getHp();
+        /// This is a simple getter for getting the Hero's Stringvar.
         /**
          * \return The stringvar variable
         */
         std::string getStringvar();
+        /// This is a simple getter for getting the Hero's Cooldown.
         /**
          * \return The Hero's cooldown
         */

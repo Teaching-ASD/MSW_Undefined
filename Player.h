@@ -9,7 +9,7 @@
  * 
  * \version 1.1
  *
- * \date 2020.10.18. 16:45
+ * \date 2020.11.08. 12:25
  *
  * Created on: 2020.10.16. 18:00
 */
@@ -36,10 +36,12 @@ public:
 Player(const std::string&/**< [in] The Player's name */,int/**< [in] The Player's health */,const int/**< [in] The Player's damage */,const double/**< [in] The Player's attackcooldown */);
 /// This method is for parsing the json files. It gets the filename and passes to the json parser. 
 static Player parseUnitPlayer(std::string fname /**< [in] Name of the file */);
+/// This is a simple getter for getting the Player's current damage.
 /**
  * \return The Player's current damage
 */
 int getCurDMG();
+/// This is a simple getter for getting the Player's current healthpoint.
 /**
  * \return The Player's current HP
 */
@@ -50,6 +52,7 @@ void addXP();
 void levelUp();
 /// This method is decreasing the current hp with the value of the damage
 void ChangeCurHp(int); 
+/// This is a simple getter for getting the Player's current cooldown.
 /**
  * \return The Player's current cooldown
 */
