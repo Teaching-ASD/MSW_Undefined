@@ -205,6 +205,24 @@ TEST_F(JSONTest, istreamParser){
         EXPECT_EQ(this->getResults(h1,monsters),expected);
     });
 }
+TEST_F(JSONTest, whiteSpace){
+    ASSERT_NO_THROW({
+        Monster m1 = Monster(Monster::parse("units/4.json"));
+        ASSERT_EQ(m1.getName(),m1ok->getName());
+        ASSERT_EQ(m1.getDamage(),m1ok->getDamage());
+        ASSERT_EQ(m1.getHealthPoints(),m1ok->getHealthPoints());
+        ASSERT_EQ(m1.getAttackCoolDown(), m1ok->getAttackCoolDown());
+    });
+}
+TEST_F(JSONTest, keyOrder){
+    ASSERT_NO_THROW({
+        Monster m1 = Monster(Monster::parse("units/5.json"));
+        ASSERT_EQ(m1.getName(),m1ok->getName());
+        ASSERT_EQ(m1.getDamage(),m1ok->getDamage());
+        ASSERT_EQ(m1.getHealthPoints(),m1ok->getHealthPoints());
+        ASSERT_EQ(m1.getAttackCoolDown(), m1ok->getAttackCoolDown());
+    });
+}
 int main(int argc, char** argv){
     ::testing::InitGoogleTest(&argc,argv);
     return RUN_ALL_TESTS();

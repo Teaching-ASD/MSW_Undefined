@@ -7,9 +7,9 @@
  *
  * \author LeviG9901, 97Vix, b3nc301
  * 
- * \version 2.0
+ * \version 2.2
  *
- * \date 2020.11.08 12:00
+ * \date 2020.11.08. 12:25
  *
  * Created on: 2020.10.16. 18:00
 */
