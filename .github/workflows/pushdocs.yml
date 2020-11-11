@@ -3,7 +3,7 @@ name: pushdocs.yml
 on:
   push:
     branches:
-    - documentation
+    - cmake
     - gh-pages
 
 jobs:
@@ -12,14 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
-    - run: sudo apt-get install doxygen
-    - run: sudo apt-get install graphviz
-    - run: doxygen doxconf
-
+    - name: Get doxygen, and utils
+      run: sudo apt-get install doxygen graphviz texlive-latex-extra
+    - name: Create docs
+      run: make docs    
     - name: Make pdf  
       run: |
-        sudo apt install texlive-latex-extra
         cd DOCS/latex
         make
     - name: Create artifact
