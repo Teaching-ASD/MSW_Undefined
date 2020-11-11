@@ -1,11 +1,11 @@
 {
 
-  "name" : "  Bence",
+  "name" : "Zombie",
 
-  "hp": 125,
+  "health_points": 10,
 
-  "dmg": 50,
+  "damage": 1,
 
-  "attackcooldown": 1.5
+  "attack_cooldown": 2.8
 
 }

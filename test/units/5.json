@@ -1,11 +1,10 @@
 {
 
-  "name" : "  Kalman",
+  "health_points" : 10,
 
-  "hp":  300,
+  "attack_cooldown" : 2.8,
 
-  "dmg":  70,
+  "name" : "Zombie",
 
-  "attackcooldown":     3.5
-
+  "damage" : 1
 }

@@ -1,95 +1,102 @@
-#include <iostream>
 #include "Hero.h"
+Hero::Hero(const std::string& name,int hp,  int damage, double cd_, const int xpperlvl_, const int hpperlvl_, const int dmgperlvl_, const double cdmperlvl_):Character(name,hp,damage,cd_),xpperlvl(xpperlvl_),hpperlvl(hpperlvl_),dmgperlvl(dmgperlvl_),cdmperlvl(cdmperlvl_){
 
-Hero::Hero(const std::string& name_,int hp_,const int damage_,const double cd_):name(name_), hp(hp_), damage(damage_),cooldown(cd_)
-{
+    this->maxHP=hp;
+
+};
+void Hero::addXP(int xp_){
+
+    this->XP += xp_;
 
 }
 
-std::string Hero::getName()
-{
-    return this->name;
-}
+void Hero::levelUp(){
+    while(this->XP>=(level*xpperlvl)){
 
-int Hero::getDamage()
-{
-    return this->damage;
-}
+        level++;
+        maxHP = maxHP+hpperlvl;
+        this->setHp(maxHP);
+        this->setDamage(this->getDamage()+dmgperlvl);
+        this->setCd(this->getAttackCoolDown()*cdmperlvl);
 
-int Hero::getHp()
-{
-    return this->hp;
-}
-
-double Hero::getCooldown()
-{
-    return this->cooldown;
-}
-
-/*
-void Hero::setHp(int hp_)
-{
-    hp = hp_;
-}
-*/
-
-std::string Hero::getStringvar()
-{
-    return this->stringvar;
-}
-
-void Hero::ChangeHP(int dmg_)
-{
-    this->hp -= dmg_;
-    if(this->hp<0)
-    {
-        this->hp=0;
     }
 }
+int Hero::getLevel() const{
+    return level;
+}
 
+int Hero::getXpPerLvl() const{
+    return xpperlvl;
+}
 
-Hero Hero::parseUnitHero(std::string fname){
-        Json* json = new Json();
-        std::map<std::string,std::string> adatok = json->parseFile(fname);
+int Hero::getHpPerLvl() const{
+    return hpperlvl;
+}
+
+int Hero::getDmgPerLvl() const{
+    return dmgperlvl;
+}
+
+double Hero::getCdmPerLvl() const{
+    return cdmperlvl;
+}
+
+int Hero::getMaxHealthPoints() const{
+    return maxHP;
+}
+
+Hero Hero::parse(std::string fname){
+        JSON json;
+        std::map<std::string,std::string> adatok = json.parseFile(fname);
 	    Hero object=
         Hero(
             adatok.at("name"),
-        std::stoi(adatok.at("hp")),
-        std::stoi(adatok.at("dmg")),
-        std::stod(adatok.at("attackcooldown"))
+        std::stoi(adatok.at("health_points")),
+        std::stoi(adatok.at("damage")),
+        std::stod(adatok.at("attack_cooldown")),
+        std::stod(adatok.at("experience_per_level")),
+        std::stod(adatok.at("health_point_bonus_per_level")),
+        std::stod(adatok.at("damage_bonus_per_level")),
+        std::stod(adatok.at("cooldown_multiplier_per_level"))
         );
-        delete json;
         return object;
 }
 
-void Hero::Attack(Hero* h2_){
-    int round = 0;
-    double cd1 = this->getCooldown();
-    double cd2 = h2_->getCooldown();
 
-    while(!endGame(h2_))
+void Hero::Fight(Monster& monster,Hero& hero,bool HeroAttack){
+    if(HeroAttack == 1) {
+        int OldMonsterHp = monster.getHealthPoints();
+        monster.ChangeHP(hero.getDamage());
+        hero.addXP(OldMonsterHp-monster.getHealthPoints());
+        hero.levelUp();
+    }
+    else{
+        hero.ChangeHP(monster.getDamage());
+    }
+
+}
+
+void Hero::fightTilDeath(Monster& monster){
+    double cd1 = this->getAttackCoolDown();
+    double cd2 = monster.getAttackCoolDown();
+
+    while(monster.getHealthPoints()>0 && this->getHealthPoints()>0)
     {
-        if(round==0)
-        {
-            h2_->ChangeHP(this->getDamage());
-        }
-        else if(round==1)
-        {
-            this->ChangeHP(h2_->getDamage());
-        }
-        else
-        {
+
             if(cd1<cd2)
             {
                 cd2 -= cd1;
-                h2_->ChangeHP(this->getDamage());
-                cd1 = this->getCooldown();
+
+                //Fight(this,monster);
+                Fight(monster,*this,1);
+                cd1 = this->getAttackCoolDown();
             }
             else if(cd2 < cd1)
             {
                 cd1 -= cd2;
-                this->ChangeHP(h2_->getDamage());
-                cd2 = h2_->getCooldown();
+                //Fight(monster,this);
+                Fight(monster,*this,0);
+                cd2 = monster.getAttackCoolDown();
             }
             else if(cd1==cd2 && (cd1>0||cd2>0))
             {
@@ -98,41 +105,23 @@ void Hero::Attack(Hero* h2_){
             }
             else if(cd1 == 0 && cd2 ==0)
             {
-                h2_->ChangeHP(this->getDamage());
-                if(h2_->getHp() <= 0)
+                //Fight(this,monster);
+                Fight(monster,*this,1);
+                if(monster.getHealthPoints() <= 0)
                 {
                     continue;
                 }
                 else
                 {
-                    this->ChangeHP(h2_->getDamage());
-                    cd1 = this->getCooldown();
-                    cd2 = h2_->getCooldown();
+                    //Fight(monster,this);
+                    Fight(monster,*this,0);
+                    cd1 = this->getAttackCoolDown();
+                    cd2 = monster.getAttackCoolDown();
                 }
             }
-        }
-        round++;
+       
     }
 }
 
 
-bool Hero::endGame(Hero* h2_){
-    if(this->getHp()==0){
-        this->stringvar =h2_->getName()+ " wins. Remaining HP: " + std::to_string(h2_->getHp());
-        return true;
-        }
-    else if(h2_->getHp()==0){
-        this->stringvar= this->getName() + " wins. Remaining HP: " + std::to_string(this->getHp());
-        return true;
-        }
-    else {
-        return false;
-    }
 
-
-}
-
-Hero::~Hero()
-{
-
-};

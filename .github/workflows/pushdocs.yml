@@ -3,8 +3,8 @@ name: pushdocs.yml
 on:
   push:
     branches:
-    - cmake
-    - gh-pages
+      [refactor]
+
 
 jobs:
   deploy:

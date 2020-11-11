@@ -1,7 +1,7 @@
-OBJS := Hero.o Json.o Player.o main.o
-FILES := Hero.cpp Json.cpp Player.cpp main.cpp
+OBJS := Hero.o JSON.o Monster.o main.o Character.o
+FILES := Hero.cpp JSON.cpp Monster.cpp Character.cpp
 CFLAGS := -std=c++17 -Wall -Wextra
-CC := g++
+CC := g++-10
 
 VLGFLAGS := --error-exitcode=1 --leak-check=full
 CHCKFLAGS:= --enable=warning,style,performance --error-exitcode=1 --output-file=styleAndPerformance.txt
@@ -9,13 +9,14 @@ TESTFLDR := test
 
 rpg: $(OBJS)
 	$(CC) $(CFLAGS) -o rpg $(OBJS)
-
+Character.o: Character.cpp
+	$(CC) $(CFLAGS) -c Character.cpp
 Hero.o: Hero.cpp
 	$(CC) $(CFLAGS) -c Hero.cpp
-Json.o: Json.cpp
-	$(CC) $(CFLAGS) -c Json.cpp
-Player.o: Player.cpp
-	$(CC) $(CFLAGS) -c Player.cpp
+JSON.o: JSON.cpp
+	$(CC) $(CFLAGS) -c JSON.cpp
+Monster.o: Monster.cpp
+	$(CC) $(CFLAGS) -c Monster.cpp
 main.o: main.cpp
 	$(CC) $(CFLAGS) -c main.cpp
 clean:
@@ -23,7 +24,7 @@ clean:
 docs:
 	doxygen doxconf
 leaktest: rpg
-	valgrind $(VLGFLAGS)  ./rpg $(TESTFLDR)/units/1.json $(TESTFLDR)/units/2.json
+	$ (cp rpg $(TESTFLDR)/rpg && cd $(TESTFLDR) && valgrind $(VLGFLAGS) ./rpg scenario1.json)
 cppcheck:
 	cppcheck $(FILES)  $(CHCKFLAGS)
 
