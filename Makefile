@@ -3,7 +3,7 @@ FILES := Hero.cpp JSON.cpp Monster.cpp Character.cpp
 CFLAGS := -std=c++17 -Wall -Wextra
 CC := g++-10
 
-VLGFLAGS := --error-exitcode=1 --leak-check=full -s --show-leak-kinds=all
+VLGFLAGS := --error-exitcode=1 --leak-check=full
 CHCKFLAGS:= --enable=warning,style,performance --error-exitcode=1 --output-file=styleAndPerformance.txt
 TESTFLDR := test
 
