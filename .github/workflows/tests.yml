@@ -2,18 +2,16 @@ name: Automated test CI
 
 on:
   push:
-    branches: [refactor] 
+    branches: [docker] 
 
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
+    container: 97vix/moszekalmantest:1.0
     steps:
       - uses: actions/checkout@v2
-      - name: Get test utils
-        run: sudo apt install valgrind cppcheck
       - name: Get googletest
         run: |
-              sudo apt install libgtest-dev cmake
               cd /usr/src/gtest
               sudo cmake CMakeLists.txt
               sudo make
