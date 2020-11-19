@@ -10,7 +10,7 @@ jobs:
   deploy:
     name: Deploy to github pages
     runs-on: ubuntu-latest
-    container: 97vix/moszekalmandoxy:3.2
+    container: 97vix/moszekalmandoxy:3.3
     steps:
     - uses: actions/checkout@v2
     - name: Create docs
