@@ -10,11 +10,11 @@ jobs:
   deploy:
     name: Deploy to github pages
     runs-on: ubuntu-latest
-    container: 97vix/moszekalmandoxy:1.0
+    container: 97vix/moszekalmandoxy:2.0
     steps:
     - uses: actions/checkout@v2
     - name: Create docs
-      run: make docs .
+      run: make docs 
     - name: Make pdf 
       run: |
         cd DOCS/latex
