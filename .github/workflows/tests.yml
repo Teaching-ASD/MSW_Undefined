@@ -7,16 +7,9 @@ on:
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
-    container: 97vix/moszekalmantest:2.0
+    container: 97vix/moszekalmantest:3.0
     steps:
       - uses: actions/checkout@v2
-      - name: Get googletest
-        run: |
-              cd /usr/src/gtest
-              cmake CMakeLists.txt
-              make .
-              ln -st /usr/lib/ /usr/src/gtest/libgtest.a
-              ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
       - name: Run all test
         run: make test
       - name: Upload file
