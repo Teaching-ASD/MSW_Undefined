@@ -29,6 +29,17 @@ void JSON::internalStringParse(std::string data, std::string key){
             adatok.insert(ret);
         }
 }
+
+void JSON::internalStringParseMonster(std::string data, std::string key){
+        if(data.find(key)<data.size()){
+            this->keyTester(data,key);
+            std::string str=data.substr(
+            data.find("\"",data.find(":",data.find(key))),
+            data.find("]")-(data.find("\"",data.find(":",data.find(key)))) );
+            std::pair<std::string,std::string> ret=std::make_pair(key, str);
+            adatok.insert(ret);
+        }
+}
 void JSON::internalNumParse(std::string data, std::string key){
         //remove whitespaces
         data.erase(remove_if(data.begin(), data.end(), isspace), data.end());
@@ -69,7 +80,7 @@ void JSON::internalParser(std::string data){
         this->internalStringParse(data, "race");
         this->internalStringParse(data, "additional_info");
         this->internalStringParse(data,"hero");
-        this->internalStringParse(data,"monsters");
+        this->internalStringParseMonster(data,"monsters");
 };
 
 std::map<std::string,std::string> JSON::parseString(std::string data){

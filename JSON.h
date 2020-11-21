@@ -22,6 +22,9 @@
 #include <algorithm>
 #include <istream>
 #include <exception>
+#include <list>
+#include <variant>
+
 
 class JSON
 {
@@ -30,9 +33,13 @@ private:
         void internalParser(std::string data);
         static void keyTester(std::string data, std::string key);
         void internalStringParse(std::string data, std::string key);
+        void internalStringParseMonster(std::string data, std::string key);
         void internalNumParse(std::string data, std::string key);
         std::string readFile(std::string fname);
 public:
+       typedef std::list<std::variant<std::string, int, double>> list;
+        //typedef std::list<std::variant<std::string>> list;
+
         /// This is a constructor for JSON
         JSON();
 
@@ -71,12 +78,45 @@ public:
         /**
          *  \return Returns the requested data.
          */
-        template<typename T>
-        T get(std::string data){
-                T ret = adatok.at(data);
-                return ret; 
+
+
+        template <typename T>
+        inline typename std::enable_if<!std::is_same<T, JSON::list>::value, T>::type
+        get(const std::string& key){
+
+                T ret = {adatok.at(key)};
+                return ret;
         }
-        
+
+        template <typename T>
+        inline typename std::enable_if<std::is_same<T, JSON::list>::value, JSON::list>::type
+        get(const std::string& key)
+	{
+                T ret = {};
+                std::string s = "";
+                std::variant<std::string> vs = "";
+                vs = s;
+                bool readName = false;
+                for(char x : adatok.at(key)){
+                        if(x == '"'){  
+                                if(readName == 1){
+                                        readName = 0;
+                                        vs = s;
+                                        s = "";
+                                        ret.push_back(std::get<std::string>(vs));
+                                }  
+                                else{
+                                        readName = 1;
+                                }
+                        }
+                        if(readName == 1 && x!='"'){
+                                s = s + x; 
+                        }
+                }   
+                 return ret; 
+        }
+            
+
         /// This is a static parser, which accepts a single json file, which has hero and monsters keys and parse it to a JSON object.
         /**
          * \return A parsed JSON object.
