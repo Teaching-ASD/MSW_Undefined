@@ -84,7 +84,7 @@ public:
         inline typename std::enable_if<!std::is_same<T, JSON::list>::value, T>::type
         get(const std::string& key){
 
-                T ret = {adatok.at(key)};
+                T ret = adatok.at(key);
                 return ret;
         }
 
@@ -94,14 +94,13 @@ public:
 	{
                 T ret = {};
                 std::string s = "";
-                std::variant<std::string> vs = "";
-                vs = s;
+                std::variant<std::string> vs;
                 bool readName = false;
                 for(char x : adatok.at(key)){
                         if(x == '"'){  
                                 if(readName == 1){
                                         readName = 0;
-                                        vs = s;
+                                        vs = (std::variant<std::string>)s;
                                         s = "";
                                         ret.push_back(std::get<std::string>(vs));
                                 }  
@@ -113,7 +112,7 @@ public:
                                 s = s + x; 
                         }
                 }   
-                 return ret; 
+                return ret; 
         }
             
 
