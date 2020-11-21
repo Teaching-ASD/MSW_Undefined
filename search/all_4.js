@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['get_7',['get',['../classJSON.html#aab03a2a05444bce154ebc14e57d9aab6',1,'JSON']]],
+  ['get_7',['get',['../classJSON.html#a2e3d7b3d03297c4b09ce1f64ad4187d7',1,'JSON']]],
   ['getadatok_8',['getAdatok',['../classJSON.html#a483657038b7a0d3d9b6e2606cff3e492',1,'JSON']]],
   ['getattackcooldown_9',['getAttackCoolDown',['../classCharacter.html#a44d2b7c4acb13bc0ee070b951a595ab3',1,'Character']]],
   ['getcdmperlvl_10',['getCdmPerLvl',['../classHero.html#ae3270cb12f8fac6eccf353e34eac4cbf',1,'Hero']]],
