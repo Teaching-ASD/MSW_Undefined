@@ -5,11 +5,11 @@
  *
  * This is a JSON parser class. This class accepts 3 formats: filename, string, istream, and gets the data from there and converts it to a map. It has a static method which is accepts a scenario and parse the data.
  *
- * \author b3nc301
+ * \author b3nc301,97Vix
  * 
- * \version 2.0
+ * \version 2.1
  *
- * \date 2020.11.8 12:00
+ * \date 2020.11.30 15:00
  *
  * Created on: 2020.10.18. 16:45
 */
