@@ -1,4 +1,4 @@
 {
     "hero" : "Dark_Wanderer.json",
-    "monsters" : "Zombie.json"
+    "monsters" : ["Zombie.json"]
 }

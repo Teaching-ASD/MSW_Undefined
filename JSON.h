@@ -85,11 +85,6 @@ public:
         get(const std::string& key){
 
                 T ret = adatok.at(key);
-                if (typeid(ret) == typeid(std::string)){
-                ret.erase(std::remove(ret.begin(), ret.end(), '"'), ret.end());
-                ret.erase(std::remove(ret.begin(), ret.end(), '}'), ret.end());
-                ret.erase(std::remove(ret.begin(), ret.end(), ','), ret.end());
-                }
                 return ret;
         }
 

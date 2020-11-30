@@ -43,18 +43,19 @@ class JSONTest : public ::testing::Test{
 };
 
 TEST_F(JSONTest, fileParser){
-        
     ASSERT_NO_THROW({
         char fname[]="scenario3.json";
         JSON scenario = JSON::parseFromFile(fname);         
         std::string hero_file;
-        std::string monster_file;
+        std::list<std::string> monster_files;
         hero_file=scenario.get<std::string>("hero");
-        monster_file=scenario.get<std::string>("monsters");
+        JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
+        for(auto monster_file : monster_file_list)
+            monster_files.push_back(std::get<std::string>(monster_file));
         Hero h1{Hero::parse(hero_file)};
-        Monster m1{Monster::parse(monster_file)};
+        Monster m1{Monster::parse(monster_files.back())};
         std::list<Monster> monsters;
-        monsters.push_back(Monster::parse(monster_file));
+        monsters.push_back(Monster::parse(monster_files.back()));
         ASSERT_EQ(h1.getName(),h1ok->getName());
         ASSERT_EQ(h1.getDamage(),h1ok->getDamage());
         ASSERT_EQ(h1.getHealthPoints(),h1ok->getHealthPoints());
@@ -87,10 +88,9 @@ TEST_F(JSONTest, fileParserScenario1){
     std::string hero_file;
     std::list<std::string> monster_files;
     hero_file=scenario.get<std::string>("hero");
-    std::istringstream monsters(scenario.get<std::string>("monsters"));
-    std::copy(std::istream_iterator<std::string>(monsters),
-        std::istream_iterator<std::string>(),
-        std::back_inserter(monster_files));
+    JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
+    for(auto monster_file : monster_file_list)
+        monster_files.push_back(std::get<std::string>(monster_file));
     Hero hero{Hero::parse(hero_file)};
     std::list<Monster> monsters1;
     for (const auto& monster_file : monster_files){
@@ -116,10 +116,9 @@ TEST_F(JSONTest, fileParserScenario2){
     std::string hero_file;
     std::list<std::string> monster_files;
     hero_file=scenario.get<std::string>("hero");
-    std::istringstream monsters(scenario.get<std::string>("monsters"));
-    std::copy(std::istream_iterator<std::string>(monsters),
-        std::istream_iterator<std::string>(),
-        std::back_inserter(monster_files));
+    JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
+    for(auto monster_file : monster_file_list)
+        monster_files.push_back(std::get<std::string>(monster_file));
     Hero hero{Hero::parse(hero_file)};
     std::list<Monster> monsters1;
     for (const auto& monster_file : monster_files){
