@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['get_7',['get',['../classJSON.html#a2e3d7b3d03297c4b09ce1f64ad4187d7',1,'JSON']]],
+  ['get_7',['get',['../classJSON.html#a2e3d7b3d03297c4b09ce1f64ad4187d7',1,'JSON::get(const std::string &amp;key)'],['../classJSON.html#a8de84d9d127678670c65199e150ac6d4',1,'JSON::get(const std::string &amp;key)']]],
   ['getadatok_8',['getAdatok',['../classJSON.html#a483657038b7a0d3d9b6e2606cff3e492',1,'JSON']]],
   ['getattackcooldown_9',['getAttackCoolDown',['../classCharacter.html#a44d2b7c4acb13bc0ee070b951a595ab3',1,'Character']]],
   ['getcdmperlvl_10',['getCdmPerLvl',['../classHero.html#ae3270cb12f8fac6eccf353e34eac4cbf',1,'Hero']]],

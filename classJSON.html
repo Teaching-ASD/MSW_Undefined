@@ -89,7 +89,8 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a200052290120970f650695312ad847b7"><td class="memItemLeft" align="right" valign="top"><a id="a200052290120970f650695312ad847b7"></a>
-typedef std::list&lt; std::variant&lt; std::string, int, double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>list</b></td></tr>
+typedef std::list&lt; std::variant&lt; std::string, int, double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#a200052290120970f650695312ad847b7">list</a></td></tr>
+<tr class="memdesc:a200052290120970f650695312ad847b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is variant list type definition .It stores int, double and string variables. <br /></td></tr>
 <tr class="separator:a200052290120970f650695312ad847b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -100,7 +101,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acf359a0f5efc57e6e844ad58abbd6480"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad21d0848fcee452fe2434c653bc87510"><td class="memItemLeft" align="right" valign="top"><a id="ad21d0848fcee452fe2434c653bc87510"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#ad21d0848fcee452fe2434c653bc87510">~JSON</a> ()</td></tr>
-<tr class="memdesc:ad21d0848fcee452fe2434c653bc87510"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a destructot for <a class="el" href="classJSON.html" title="JSON parser class.">JSON</a>. <br /></td></tr>
+<tr class="memdesc:ad21d0848fcee452fe2434c653bc87510"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a destructor for <a class="el" href="classJSON.html" title="JSON parser class.">JSON</a>. <br /></td></tr>
 <tr class="separator:ad21d0848fcee452fe2434c653bc87510"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46662f345b158d719a8a8a371c2d4893"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJSON.html#a46662f345b158d719a8a8a371c2d4893">parseFile</a> (std::string fname)</td></tr>
 <tr class="memdesc:a46662f345b158d719a8a8a371c2d4893"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the file parser.  <a href="classJSON.html#a46662f345b158d719a8a8a371c2d4893">More...</a><br /></td></tr>
@@ -112,12 +113,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a483657038b7a0d3d9b6e2606cff3e492"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a getter for the Adatok map.  <a href="classJSON.html#a483657038b7a0d3d9b6e2606cff3e492">More...</a><br /></td></tr>
 <tr class="separator:a483657038b7a0d3d9b6e2606cff3e492"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e3d7b3d03297c4b09ce1f64ad4187d7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a2e3d7b3d03297c4b09ce1f64ad4187d7"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt;!std::is_same&lt; T, JSON::list &gt;::value, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classJSON.html#a2e3d7b3d03297c4b09ce1f64ad4187d7">get</a> (const std::string &amp;key)</td></tr>
+<tr class="memitem:a2e3d7b3d03297c4b09ce1f64ad4187d7"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt;!std::is_same&lt; T, <a class="el" href="classJSON.html#a200052290120970f650695312ad847b7">JSON::list</a> &gt;::value, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classJSON.html#a2e3d7b3d03297c4b09ce1f64ad4187d7">get</a> (const std::string &amp;key)</td></tr>
 <tr class="memdesc:a2e3d7b3d03297c4b09ce1f64ad4187d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a template for get the proper data from the Adatok map.  <a href="classJSON.html#a2e3d7b3d03297c4b09ce1f64ad4187d7">More...</a><br /></td></tr>
 <tr class="separator:a2e3d7b3d03297c4b09ce1f64ad4187d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8de84d9d127678670c65199e150ac6d4"><td class="memTemplParams" colspan="2"><a id="a8de84d9d127678670c65199e150ac6d4"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a8de84d9d127678670c65199e150ac6d4"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; std::is_same&lt; T, JSON::list &gt;::value, JSON::list &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get</b> (const std::string &amp;key)</td></tr>
+<tr class="memitem:a8de84d9d127678670c65199e150ac6d4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a8de84d9d127678670c65199e150ac6d4"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; std::is_same&lt; T, <a class="el" href="classJSON.html#a200052290120970f650695312ad847b7">JSON::list</a> &gt;::value, <a class="el" href="classJSON.html#a200052290120970f650695312ad847b7">JSON::list</a> &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classJSON.html#a8de84d9d127678670c65199e150ac6d4">get</a> (const std::string &amp;key)</td></tr>
+<tr class="memdesc:a8de84d9d127678670c65199e150ac6d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a template for get in <a class="el" href="classJSON.html#a200052290120970f650695312ad847b7" title="This is variant list type definition .It stores int, double and string variables.">JSON::list</a> type from the Adatok map.  <a href="classJSON.html#a8de84d9d127678670c65199e150ac6d4">More...</a><br /></td></tr>
 <tr class="separator:a8de84d9d127678670c65199e150ac6d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfb544fba7154a2f521aa9edf52f7954"><td class="memItemLeft" align="right" valign="top"><a id="acfb544fba7154a2f521aa9edf52f7954"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> (const std::string &amp;data)</td></tr>
@@ -144,7 +145,7 @@ Friends</h2></td></tr>
 <p>Created on: 2020.10.18. 16:45 </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a2e3d7b3d03297c4b09ce1f64ad4187d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e3d7b3d03297c4b09ce1f64ad4187d7">&#9670;&nbsp;</a></span>get()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e3d7b3d03297c4b09ce1f64ad4187d7">&#9670;&nbsp;</a></span>get() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,7 +156,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::enable_if&lt;!std::is_same&lt;T, JSON::list&gt;::value, T&gt;::type JSON::get </td>
+          <td class="memname">std::enable_if&lt;!std::is_same&lt;T, <a class="el" href="classJSON.html#a200052290120970f650695312ad847b7">JSON::list</a>&gt;::value, T&gt;::type JSON::get </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>key</em></td><td>)</td>
@@ -171,6 +172,37 @@ template&lt;typename T &gt; </div>
 
 <p>This is a template for get the proper data from the Adatok map. </p>
 <dl class="section return"><dt>Returns</dt><dd>Returns the requested data. </dd></dl>
+
+</div>
+</div>
+<a id="a8de84d9d127678670c65199e150ac6d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8de84d9d127678670c65199e150ac6d4">&#9670;&nbsp;</a></span>get() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::enable_if&lt;std::is_same&lt;T, <a class="el" href="classJSON.html#a200052290120970f650695312ad847b7">JSON::list</a>&gt;::value, <a class="el" href="classJSON.html#a200052290120970f650695312ad847b7">JSON::list</a>&gt;::type JSON::get </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This is a template for get in <a class="el" href="classJSON.html#a200052290120970f650695312ad847b7" title="This is variant list type definition .It stores int, double and string variables.">JSON::list</a> type from the Adatok map. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns <a class="el" href="classJSON.html#a200052290120970f650695312ad847b7" title="This is variant list type definition .It stores int, double and string variables.">JSON::list</a>. </dd></dl>
 
 </div>
 </div>
