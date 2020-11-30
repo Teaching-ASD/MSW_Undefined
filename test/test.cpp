@@ -134,20 +134,25 @@ TEST_F(JSONTest, stringParser){
         JSON json1;
         JSON json2;
         json1.parseString(h1string);
-        adatok = json1.getAdatok();
-        Hero h1 = Hero(            adatok.at("name"),
-        std::stoi(adatok.at("health_points")),
-        std::stoi(adatok.at("damage")),
-        std::stod(adatok.at("attack_cooldown")),
-        std::stod(adatok.at("experience_per_level")),
-        std::stod(adatok.at("health_point_bonus_per_level")),
-        std::stod(adatok.at("damage_bonus_per_level")),
-        std::stod(adatok.at("cooldown_multiplier_per_level")));
+        Hero h1 =         Hero(
+        json1.get<std::string>("name"),
+        json1.get<int>("health_points"),
+        json1.get<int>("damage"),
+        json1.get<double>("attack_cooldown"),
+        json1.get<int>("experience_per_level"),
+        json1.get<int>("health_point_bonus_per_level"),
+        json1.get<int>("damage_bonus_per_level"),
+        json1.get<double>("cooldown_multiplier_per_level")
+        );
         json2.parseString(m1string);
         std::list<Monster> monsters;
         Monster m1 = 
-        Monster(
-        json2.get<std::string>("name"),std::stoi(json2.get<std::string>("health_points")),std::stoi(json2.get<std::string>("damage")), std::stod(json2.get<std::string>("attack_cooldown")) );
+                Monster(
+        json2.get<std::string>("name"),
+        json2.get<int>("health_points"),
+        json2.get<int>("damage"),
+        json2.get<double>("attack_cooldown")
+        );
         monsters.push_back(m1);
         ASSERT_EQ(h1.getName(),h1ok->getName());
         ASSERT_EQ(h1.getDamage(),h1ok->getDamage());
@@ -174,20 +179,24 @@ TEST_F(JSONTest, istreamParser){
         JSON json1;
         JSON json2;
         h1ss>>json1;
-        adatok = json1.getAdatok();
-        Hero h1 = Hero(            adatok.at("name"),
-        std::stoi(adatok.at("health_points")),
-        std::stoi(adatok.at("damage")),
-        std::stod(adatok.at("attack_cooldown")),
-        std::stod(adatok.at("experience_per_level")),
-        std::stod(adatok.at("health_point_bonus_per_level")),
-        std::stod(adatok.at("damage_bonus_per_level")),
-        std::stod(adatok.at("cooldown_multiplier_per_level")));
+        Hero h1 =         Hero(
+        json1.get<std::string>("name"),
+        json1.get<int>("health_points"),
+        json1.get<int>("damage"),
+        json1.get<double>("attack_cooldown"),
+        json1.get<int>("experience_per_level"),
+        json1.get<int>("health_point_bonus_per_level"),
+        json1.get<int>("damage_bonus_per_level"),
+        json1.get<double>("cooldown_multiplier_per_level")
+        );
         m1ss>>json2;
-        adatok = json2.getAdatok();
         std::list<Monster> monsters;
-        Monster m1 = Monster(
-            json2.get<std::string>("name"),std::stoi(json2.get<std::string>("health_points")),std::stoi(json2.get<std::string>("damage")), std::stod(json2.get<std::string>("attack_cooldown")) );
+        Monster m1 =         Monster(
+        json2.get<std::string>("name"),
+        json2.get<int>("health_points"),
+        json2.get<int>("damage"),
+        json2.get<double>("attack_cooldown")
+        );        
         monsters.push_back(m1);
         ASSERT_EQ(h1.getName(),h1ok->getName());
         ASSERT_EQ(h1.getDamage(),h1ok->getDamage());

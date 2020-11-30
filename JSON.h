@@ -29,7 +29,7 @@
 class JSON
 {
 private:
-        std::map<std::string,std::string> adatok;
+        std::map<std::string,std::variant<std::string, int, double>> adatok;
         void internalParser(std::string data);
         static void keyTester(std::string data, std::string key);
         void internalStringParse(std::string data, std::string key);
@@ -48,24 +48,15 @@ public:
 
         ///This is the file parser.
         /**
-        * \return A map with the parsed datas. It has name, hp, dmg, attackspeed keys.
         * \exception JSON::ParseException file cannot opened, or the data has duplicated keys.
         */
-        std::map<std::string,std::string> parseFile(std::string fname/**< [in] Name of the file */);
+        void parseFile(std::string fname/**< [in] Name of the file */);
 
         ///This is the String parser.
         /**
-        * \return A map with the parsed datas. It has name, hp, dmg, attackspeed keys.
         * \exception JSON::ParseException The data has duplicated keys.
         */
-        std::map<std::string,std::string> parseString(std::string data/**< [in] The input string */);
-
-
-        ///This is a getter for the Adatok map.
-        /**
-        * \return Returns the setted map with the parsed datas. It has name, hp, dmg, attackspeed keys.
-        */
-        std::map<std::string,std::string> getAdatok();
+        void parseString(std::string data/**< [in] The input string */);
 
 
         ///This is the istream manager. It gets an input stream and make the adatok map, which is accessible through getAdatok.
@@ -83,9 +74,9 @@ public:
         template <typename T>
         inline typename std::enable_if<!std::is_same<T, JSON::list>::value, T>::type
         get(const std::string& key){
-
-                T ret = adatok.at(key);
+                T ret = std::get<T>(adatok.at(key));
                 return ret;
+
         }
 
         /// This is a template for get in JSON::list type from the Adatok map.
@@ -102,7 +93,7 @@ public:
                 std::string s = "";
                 std::variant<std::string> vs;
                 bool readName = false;
-                for(char x : adatok.at(key)){
+                for(char x : std::get<std::string>(adatok.at(key))){
                         if(x == '"'){  
                                 if(readName == 1){
                                         readName = 0;
