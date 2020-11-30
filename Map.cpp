@@ -19,10 +19,13 @@ Map::Map(std::string filename)
 
 Map::type Map::get(int x, int y) const
 {
-
-    if(y > mapvector.size() || x > mapvector[y].length()||y < 0 || x <0)
+    if(x > mapvector[y].size() || x <0)
     {
-        throw "Wrong Index Exception";
+        throw WrongIndexException("X is wrong");
+    }
+    if(y > mapvector.size() || y < 0 )
+    {
+        throw WrongIndexException("Y is wrong");
     }
     else
     {
@@ -31,11 +34,13 @@ Map::type Map::get(int x, int y) const
             Map::type a = Free;
             return a;
         }
-        else
+        else if(mapvector[y][x] == '#')
         {
             Map::type a = Wall;
             return a;
         }
+        else{
+            throw WrongIndexException("Not found symbol");
+        }
     }
 }
-
