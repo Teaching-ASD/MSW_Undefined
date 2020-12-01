@@ -21,7 +21,7 @@
 
 class Map{
 
-private:
+public:
     std::vector<std::string> mapvector;
 
 public:
@@ -30,6 +30,9 @@ public:
         Free,
         Wall
     };
+
+    /// This is a constructor for the Map Class
+    Map(){};
     /// This is a constructor for the Map Class, this constructor reads the file in
     Map(std::string filename);
 
@@ -45,4 +48,5 @@ public:
             explicit WrongIndexException(const std::string& msg) : std::runtime_error(msg){};
 
     };
+    ~Map(){};
 };

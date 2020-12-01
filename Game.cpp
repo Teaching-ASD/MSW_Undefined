@@ -1,11 +1,10 @@
 #include "Game.h"
 
-Game::Game() {};
+Game::Game():map() {
 
-Game::Game(std::string mapfilename){
+};
 
-Map* map_= new Map(mapfilename) ;
-map = map_;
+Game::Game(std::string mapfilename): map(Map(mapfilename)), beeMap(true){
 
 }
 
@@ -14,23 +13,19 @@ void Game::setMap(Map& map_){
     if(monstersV.size() > 0 || heroPos != nullptr ){
 
         throw AlreadyHasUnitsException(" You can't change the map, because it contains units. ");
-
     }
-    
-    delete map;
-    this->map = new Map(map_);
-    
+    this->map = map_;
+    beeMap=true;
 }
 
+
+
+
 void Game::putHero(Hero hero, int x, int y) {
- 
-    if(map == nullptr){
 
-        Map::WrongIndexException(" There is no map ");
+    if(beeMap == false){ throw Map::WrongIndexException(" There is no map ");}
 
-    }
-
-    if(map->get(x,y)==1){throw OccupiedException(" Occupied block. ");};
+    if(map.get(x,y)==1){throw OccupiedException(" Occupied block. ");};
     
     for(auto i : monstersV){
 
@@ -50,13 +45,9 @@ void Game::putHero(Hero hero, int x, int y) {
 
 void Game::putMonster(Monster monster,int x,int y){
 
-    if(map == nullptr){
+    if(beeMap == false){ throw Map::WrongIndexException(" There is no map "); }
 
-        Map::WrongIndexException(" There is no map ");
-
-    }
-
-    if(map->get(x,y)==1){throw OccupiedException(" Occupied block. ");};
+    if(map.get(x,y)==1){throw OccupiedException(" Occupied block. ");};
     
     if(heroPos!=nullptr){
         if(heroPos->x == x && heroPos->y==y){
@@ -65,8 +56,5 @@ void Game::putMonster(Monster monster,int x,int y){
 
         }
     }
-    
-
     monstersV.push_back(new Pos(monster,x,y));
-
 };
