@@ -47,14 +47,13 @@ void Character::ChangeHP(int dmg_){
 
 Character Character::parse(std::string fname){
         JSON json;
-        std::map<std::string,std::string> adatok = json.parseFile(fname);
+        json.parseFile(fname);
 	    Character object=
         Character(
-            adatok.at("name"),
-        std::stoi(adatok.at("health_points")),
-        std::stoi(adatok.at("damage")),
-        std::stod(adatok.at("attack_cooldown"))
-        );
+            json.get<std::string>("name"),
+        json.get<int>("health_points"),
+        json.get<int>("damage"),
+        json.get<int>("attack_cooldown"));
         return object;
 }
 

@@ -47,17 +47,17 @@ int Hero::getMaxHealthPoints() const{
 
 Hero Hero::parse(std::string fname){
         JSON json;
-        std::map<std::string,std::string> adatok = json.parseFile(fname);
+        json.parseFile(fname);
 	    Hero object=
         Hero(
-            adatok.at("name"),
-        std::stoi(adatok.at("health_points")),
-        std::stoi(adatok.at("damage")),
-        std::stod(adatok.at("attack_cooldown")),
-        std::stod(adatok.at("experience_per_level")),
-        std::stod(adatok.at("health_point_bonus_per_level")),
-        std::stod(adatok.at("damage_bonus_per_level")),
-        std::stod(adatok.at("cooldown_multiplier_per_level"))
+        json.get<std::string>("name"),
+        json.get<int>("health_points"),
+        json.get<int>("damage"),
+        json.get<double>("attack_cooldown"),
+        json.get<int>("experience_per_level"),
+        json.get<int>("health_point_bonus_per_level"),
+        json.get<int>("damage_bonus_per_level"),
+        json.get<double>("cooldown_multiplier_per_level")
         );
         return object;
 }
