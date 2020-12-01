@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['character_39',['Character',['../classCharacter.html',1,'']]]
+  ['alreadyhasheroexception_44',['AlreadyHasHeroException',['../classGame_1_1AlreadyHasHeroException.html',1,'Game']]],
+  ['alreadyhasunitsexception_45',['AlreadyHasUnitsException',['../classGame_1_1AlreadyHasUnitsException.html',1,'Game']]]
 ];
