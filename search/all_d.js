@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ejson_35',['~JSON',['../classJSON.html#ad21d0848fcee452fe2434c653bc87510',1,'JSON']]]
+  ['type_36',['type',['../classMap.html#a41697b848ea9a5aad1910714e0196b7b',1,'Map']]]
 ];
