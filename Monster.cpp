@@ -6,13 +6,13 @@ Monster::Monster(const std::string &name_, int hp_ ,int damage_,double cd_):Char
 
 Monster Monster::parse(std::string fname){
         JSON json;
-        std::map<std::string,std::string> adatok = json.parseFile(fname);
+        json.parseFile(fname);
 	    Monster object=
         Monster(
-        adatok.at("name"),
-        std::stoi(adatok.at("health_points")),
-        std::stoi(adatok.at("damage")),
-        std::stod(adatok.at("attack_cooldown"))
+        json.get<std::string>("name"),
+        json.get<int>("health_points"),
+        json.get<int>("damage"),
+        json.get<double>("attack_cooldown")
         );
         return object;
 

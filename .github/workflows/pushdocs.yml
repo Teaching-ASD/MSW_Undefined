@@ -3,20 +3,19 @@ name: pushdocs.yml
 on:
   push:
     branches:
-      [refactor]
+      [docker]
 
 
 jobs:
   deploy:
     name: Deploy to github pages
     runs-on: ubuntu-latest
+    container: 97vix/moszekalmandoxy:3.4
     steps:
     - uses: actions/checkout@v2
-    - name: Get doxygen, and utils
-      run: sudo apt-get install doxygen graphviz texlive-latex-extra
     - name: Create docs
-      run: make docs    
-    - name: Make pdf  
+      run: make docs 
+    - name: Make pdf 
       run: |
         cd DOCS/latex
         make

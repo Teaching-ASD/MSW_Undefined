@@ -43,18 +43,19 @@ class JSONTest : public ::testing::Test{
 };
 
 TEST_F(JSONTest, fileParser){
-        
     ASSERT_NO_THROW({
         char fname[]="scenario3.json";
         JSON scenario = JSON::parseFromFile(fname);         
         std::string hero_file;
-        std::string monster_file;
+        std::list<std::string> monster_files;
         hero_file=scenario.get<std::string>("hero");
-        monster_file=scenario.get<std::string>("monsters");
+        JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
+        for(auto monster_file : monster_file_list)
+            monster_files.push_back(std::get<std::string>(monster_file));
         Hero h1{Hero::parse(hero_file)};
-        Monster m1{Monster::parse(monster_file)};
+        Monster m1{Monster::parse(monster_files.back())};
         std::list<Monster> monsters;
-        monsters.push_back(Monster::parse(monster_file));
+        monsters.push_back(Monster::parse(monster_files.back()));
         ASSERT_EQ(h1.getName(),h1ok->getName());
         ASSERT_EQ(h1.getDamage(),h1ok->getDamage());
         ASSERT_EQ(h1.getHealthPoints(),h1ok->getHealthPoints());
@@ -87,10 +88,9 @@ TEST_F(JSONTest, fileParserScenario1){
     std::string hero_file;
     std::list<std::string> monster_files;
     hero_file=scenario.get<std::string>("hero");
-    std::istringstream monsters(scenario.get<std::string>("monsters"));
-    std::copy(std::istream_iterator<std::string>(monsters),
-        std::istream_iterator<std::string>(),
-        std::back_inserter(monster_files));
+    JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
+    for(auto monster_file : monster_file_list)
+        monster_files.push_back(std::get<std::string>(monster_file));
     Hero hero{Hero::parse(hero_file)};
     std::list<Monster> monsters1;
     for (const auto& monster_file : monster_files){
@@ -116,10 +116,9 @@ TEST_F(JSONTest, fileParserScenario2){
     std::string hero_file;
     std::list<std::string> monster_files;
     hero_file=scenario.get<std::string>("hero");
-    std::istringstream monsters(scenario.get<std::string>("monsters"));
-    std::copy(std::istream_iterator<std::string>(monsters),
-        std::istream_iterator<std::string>(),
-        std::back_inserter(monster_files));
+    JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
+    for(auto monster_file : monster_file_list)
+        monster_files.push_back(std::get<std::string>(monster_file));
     Hero hero{Hero::parse(hero_file)};
     std::list<Monster> monsters1;
     for (const auto& monster_file : monster_files){
@@ -135,20 +134,25 @@ TEST_F(JSONTest, stringParser){
         JSON json1;
         JSON json2;
         json1.parseString(h1string);
-        adatok = json1.getAdatok();
-        Hero h1 = Hero(            adatok.at("name"),
-        std::stoi(adatok.at("health_points")),
-        std::stoi(adatok.at("damage")),
-        std::stod(adatok.at("attack_cooldown")),
-        std::stod(adatok.at("experience_per_level")),
-        std::stod(adatok.at("health_point_bonus_per_level")),
-        std::stod(adatok.at("damage_bonus_per_level")),
-        std::stod(adatok.at("cooldown_multiplier_per_level")));
+        Hero h1 =         Hero(
+        json1.get<std::string>("name"),
+        json1.get<int>("health_points"),
+        json1.get<int>("damage"),
+        json1.get<double>("attack_cooldown"),
+        json1.get<int>("experience_per_level"),
+        json1.get<int>("health_point_bonus_per_level"),
+        json1.get<int>("damage_bonus_per_level"),
+        json1.get<double>("cooldown_multiplier_per_level")
+        );
         json2.parseString(m1string);
         std::list<Monster> monsters;
         Monster m1 = 
-        Monster(
-        json2.get<std::string>("name"),std::stoi(json2.get<std::string>("health_points")),std::stoi(json2.get<std::string>("damage")), std::stod(json2.get<std::string>("attack_cooldown")) );
+                Monster(
+        json2.get<std::string>("name"),
+        json2.get<int>("health_points"),
+        json2.get<int>("damage"),
+        json2.get<double>("attack_cooldown")
+        );
         monsters.push_back(m1);
         ASSERT_EQ(h1.getName(),h1ok->getName());
         ASSERT_EQ(h1.getDamage(),h1ok->getDamage());
@@ -175,20 +179,24 @@ TEST_F(JSONTest, istreamParser){
         JSON json1;
         JSON json2;
         h1ss>>json1;
-        adatok = json1.getAdatok();
-        Hero h1 = Hero(            adatok.at("name"),
-        std::stoi(adatok.at("health_points")),
-        std::stoi(adatok.at("damage")),
-        std::stod(adatok.at("attack_cooldown")),
-        std::stod(adatok.at("experience_per_level")),
-        std::stod(adatok.at("health_point_bonus_per_level")),
-        std::stod(adatok.at("damage_bonus_per_level")),
-        std::stod(adatok.at("cooldown_multiplier_per_level")));
+        Hero h1 =         Hero(
+        json1.get<std::string>("name"),
+        json1.get<int>("health_points"),
+        json1.get<int>("damage"),
+        json1.get<double>("attack_cooldown"),
+        json1.get<int>("experience_per_level"),
+        json1.get<int>("health_point_bonus_per_level"),
+        json1.get<int>("damage_bonus_per_level"),
+        json1.get<double>("cooldown_multiplier_per_level")
+        );
         m1ss>>json2;
-        adatok = json2.getAdatok();
         std::list<Monster> monsters;
-        Monster m1 = Monster(
-            json2.get<std::string>("name"),std::stoi(json2.get<std::string>("health_points")),std::stoi(json2.get<std::string>("damage")), std::stod(json2.get<std::string>("attack_cooldown")) );
+        Monster m1 =         Monster(
+        json2.get<std::string>("name"),
+        json2.get<int>("health_points"),
+        json2.get<int>("damage"),
+        json2.get<double>("attack_cooldown")
+        );        
         monsters.push_back(m1);
         ASSERT_EQ(h1.getName(),h1ok->getName());
         ASSERT_EQ(h1.getDamage(),h1ok->getDamage());

@@ -15,3 +15,4 @@ CMakeCache.txt
 runTests
 /DOCS
 test/Makefile
+styleAndPerformance.txt

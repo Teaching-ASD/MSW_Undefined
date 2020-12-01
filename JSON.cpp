@@ -25,7 +25,18 @@ void JSON::internalStringParse(std::string data, std::string key){
                     (data.find("\"",data.find(":",data.find(key)))+1)
                 )
             );
-            std::pair<std::string,std::string> ret=std::make_pair(key, str);
+            std::pair<std::string,std::variant<std::string, int, double>> ret=std::make_pair(key, str);
+            adatok.insert(ret);
+        }
+}
+
+void JSON::internalStringParseMonster(std::string data, std::string key){
+        if(data.find(key)<data.size()){
+            this->keyTester(data,key);
+            std::string str=data.substr(
+            data.find("\"",data.find(":",data.find(key))),
+            data.find("]")-(data.find("\"",data.find(":",data.find(key)))) );
+            std::pair<std::string,std::variant<std::string, int, double>> ret=std::make_pair(key, str);
             adatok.insert(ret);
         }
 }
@@ -36,13 +47,19 @@ void JSON::internalNumParse(std::string data, std::string key){
         if(data.find(key)<data.size()){
         this->keyTester(data,key);
         if(data.find(',',data.find(key))<data.find('}',data.find(key))){
-            std::string str=data.substr(
+             std::string str=data.substr(
                 data.find(":", data.find(key))+1,
                 data.find(',',data.find(key))-data.find(":",data.find(key))-1
 	        );
             key.erase(remove(key.begin(), key.end(), '\"'), key.end());
-            std::pair<std::string,std::string> ret=std::make_pair(key, str);
+            if(str.find('.')!=std::string::npos){
+                std::pair<std::string, std::variant<std::string, int, double>> ret=std::make_pair(key, stod(str));
             adatok.insert(ret);
+            }
+            else {
+                std::pair<std::string, std::variant<std::string, int, double>> ret=std::make_pair(key, stoi(str));
+                adatok.insert(ret);
+            }
         }
         else{
             std::string str=data.substr(
@@ -50,8 +67,14 @@ void JSON::internalNumParse(std::string data, std::string key){
                 data.find('}',data.find(key))-data.find(":",data.find(key))-1
 	        );
             key.erase(remove(key.begin(), key.end(), '\"'), key.end());
-            std::pair<std::string,std::string> ret=std::make_pair(key, str);
+            if(std::string::npos != str.find('.')){
+                std::pair<std::string, std::variant<std::string, int, double>> ret=std::make_pair(key, stod(str));
             adatok.insert(ret);
+            }
+            else {
+                std::pair<std::string, std::variant<std::string, int, double>> ret=std::make_pair(key, stoi(str));
+                adatok.insert(ret);
+            }
         }
         }
 }
@@ -69,18 +92,16 @@ void JSON::internalParser(std::string data){
         this->internalStringParse(data, "race");
         this->internalStringParse(data, "additional_info");
         this->internalStringParse(data,"hero");
-        this->internalStringParse(data,"monsters");
+        this->internalStringParseMonster(data,"monsters");
 };
 
-std::map<std::string,std::string> JSON::parseString(std::string data){
+void JSON::parseString(std::string data){
         this->internalParser(data);
-        return adatok;
 }
 
 
-std::map<std::string, std::string> JSON::parseFile(std::string fname){
+void JSON::parseFile(std::string fname){
         this->internalParser(this->readFile(fname));
-        return adatok;
 }
 
 std::string JSON::readFile(std::string fname){
@@ -116,8 +137,4 @@ std::istream& operator>>(std::istream& in, JSON& j){
     }
     j.internalParser(temp);
     return in;
-}
-
-std::map<std::string,std::string> JSON::getAdatok(){
-    return this->adatok;
 }
