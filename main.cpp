@@ -10,7 +10,8 @@
 #include "JSON.h"
 #include "Hero.h"
 #include "Monster.h"
-
+#include "Game.h"
+#include "Map.h"
 
 
 
@@ -49,23 +50,18 @@ int main(int argc, char** argv){
         Hero hero{Hero::parse(hero_file)};
         std::list<Monster> monsters;
         for (const auto& monster_file : monster_files)
-            monsters.push_back(Monster::parse(monster_file));        
-
-        while (hero.isAlive() && !monsters.empty()) {
-            std::cout 
-                << hero.getName() << "(" << hero.getLevel()<<")"
-                << " vs "
-                << monsters.front().getName()
-                <<std::endl;
-            hero.fightTilDeath(monsters.front());
-            if (!monsters.front().isAlive()) monsters.pop_front();
-        }
-        std::cout << (hero.isAlive() ? "The hero won." : "The hero died.") << std::endl;
-        std::cout << hero.getName() << ": LVL" << hero.getLevel() << std::endl
-                  << "   HP: "<<hero.getHealthPoints()<<"/"<<hero.getMaxHealthPoints()<<std::endl
-                  << "  DMG: "<<hero.getDamage()<<std::endl
-                  << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
-                  ;
+            monsters.push_back(Monster::parse(monster_file));   
+        Map map("map1.txt");
+        Game game;
+        game.setMap(map);
+        game.putHero(hero, 1, 2);
+        game.putMonster(monsters.front(),1,3);
+        monsters.pop_front();    
+        game.putMonster(monsters.front(),3,1);
+        monsters.pop_front();    
+        game.putMonster(monsters.front(),5,4);
+        monsters.pop_front();
+        game.run();
     } catch (const JSON::ParseException& e) {bad_exit(4);}
     return 0;
 }

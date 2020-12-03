@@ -1,8 +1,10 @@
 #include "Map.h"
 #include <fstream>
+#include<iostream>
 
 Map::Map(std::string filename)
 {
+    long unsigned int max=0;
     std::ifstream file;
     file.open(filename);
     if(!file.is_open())
@@ -12,20 +14,28 @@ Map::Map(std::string filename)
     std::string line;
     while(getline(file,line))
     {
+        if(line.size()>max){max=line.size();}
         mapvector.push_back(line);
+
+    }
+    for(long unsigned int i=0;i<mapvector.size();i++){
+        mapvector.at(i).pop_back();
+        while(mapvector.at(i).size()<=max){
+            mapvector.at(i)+="#";
+        }
     }
     file.close();
 }
 
-Map::type Map::get(int x, int y) const
+Map::type Map::get(long unsigned int x, long unsigned int y) const
 {
-    if(x > mapvector[y].size() || x <0)
-    {
-        throw WrongIndexException("X is wrong");
-    }
-    if(y > mapvector.size() || y < 0 )
+    if(y >= mapvector.size())
     {
         throw WrongIndexException("Y is wrong");
+    }
+    else if(x >= mapvector[y].size())
+    {
+        throw WrongIndexException("X is wrong");
     }
     else
     {
