@@ -17,25 +17,45 @@
 #ifndef Character_H
 #define Character_H
 #include <string>
+#include <iostream>
 #include "JSON.h"
 
-
+struct Damage{
+        int physical = 0;
+        int magical = 0;
+        Damage(int physical_, int magical_):physical(physical_),magical(magical_){}
+        
+        auto& operator+= (int d){
+                return physical+=d,magical+=d;
+        }
+        
+        auto& operator+ (Damage d){
+                return physical = d.physical,magical=d.magical;
+        }
+        auto& operator*= (int d){
+                return physical*=d,magical*=d;
+        }
+        
+};
 class Character
 {
 private:
         const std::string name;
         int hp;
-        int damage;
         double cooldown;
+        int defense = 0;
         std::string stringvar;
+        
 public:
+        Damage characterDmg;
         void ChangeHP(int/**< [in] The ammount of HP decrease. */);
         void setDamage(int/**< [in] The new damage. */);
         void setCd(double /**< [in] The new CD. */);
         void setHp(int /**< [in] The new HP. */);
+        void setDefense(int /**< [in] The new Defense. */);
 
         /// This is a constructor for Character
-        Character(const std::string &name_ /**< [in] The Character's name */, int hp_ /**< [in] The Character's health */,int damage_ /**< [in] The Character's damage */,double cd_ /**< [in] The Character's attackcooldown */);
+        Character(const std::string &name_ /**< [in] The Character's name */, int hp_ /**< [in] The Character's health */,int damage_ /**< [in] The Character's physical damage */,int magical_/**< [in] The Character's magical damage value */,double cd_ /**< [in] The Character's attackcooldown */,int defense_/**< [in] The Character's Defense value */);
         /// This is a simple getter for getting the Character's name.
         /**
          * \return The Character's name
@@ -57,6 +77,18 @@ public:
          * \return The Character's cooldown
         */
         double getAttackCoolDown() const;
+        /**
+         * \return The Character's cooldown
+        */
+        int getDefense() const;
+        /**
+         * \return The Character's physical damage
+        */
+        int getPhysicalDamage() const;
+        /**
+         * \return The Character's physical damage
+        */
+        int getMagicalDamage() const;
         /// This method is for checking if one of the two Character died while attacking eachother, and if one of them died, then it just puts who won as a string in the stringvar variable.
         /**
          * \return The game is ended

@@ -33,11 +33,13 @@ private:
     const int hpperlvl;
     const int dmgperlvl;
     const double cdmperlvl;
+    const double defperlvl;
+    
  
 public:
 
     /// This is a constructor for Hero
-    Hero(const std::string&/**< [in] The Hero's name */,int/**< [in] The Hero's health */, int/**< [in] The Hero's damage */, double/**< [in] The Hero's attackcooldown */,const int/**< [in] The Hero's Experience per Level */, const int /**< [in] The Hero's HealthPoint Bonus per Level */, const int /**< [in] The Hero's Damage Bonus per Level */, const double /**< [in] The Hero's Cooldown Multiplier per Level */);
+    Hero(const std::string&/**< [in] The Hero's name */,int/**< [in] The Hero's health */, int/**< [in] The Hero's Physical damage */,int/**< [in] The Hero's Magical damage */, double/**< [in] The Hero's attackcooldown */,const int/**< [in] The Hero's Experience per Level */, const int /**< [in] The Hero's HealthPoint Bonus per Level */, const int /**< [in] The Hero's Damage Bonus per Level */, const double /**< [in] The Hero's Cooldown Multiplier per Level */,int/**< [in] The Hero's Defense value */, const double/**< [in] The Hero's Defense Bonus per Level */);
     /// This method is for parsing the json files. It gets the filename and passes to the json parser. 
     static Hero parse(std::string fname /**< [in] Name of the file */);
     /// This method is increasing the xp of the Hero 
@@ -64,6 +66,10 @@ public:
     * \return The Hero's current level. 
     */
     int getLevel() const;
+    /**
+    * \return The Hero's Defense Bonus Multiplier. 
+    */
+    int getDefPerLvl() const;
     /// This method is for attack a Monster with the Hero
     void fightTilDeath(Monster&);
     /**
