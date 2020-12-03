@@ -6,7 +6,6 @@ Game::Game(std::string &mapfilename):map(Map(mapfilename)){
     beeMap=true;
 }
 
-
 void Game::setMap(const Map &map){
 
     if(monsters.size() > 0 || heroPos != nullptr ){
@@ -29,10 +28,8 @@ void Game::putHero(Hero hero, int x, int y) {
 
     if(map.get(x,y)==Map::type::Wall){throw OccupiedException(" Occupied block. ");};
     
-    for(auto monster : monsters){
-        if(monster.x == x && monster.y==y){
+    if(std::any_of(monsters.begin(),monsters.end(),[x,y](monsterPos i){return i.x == x && i.y==y;})){
             throw OccupiedException(" Occupied block. There is a monster in here.");
-        }
 
     }
     if(gameIsRunning) throw GameAlreadyStartedException("You can't change the map, because the game started");
@@ -123,12 +120,7 @@ void Game::drawMap(){
                     std::cout << "┣┫";
                     }
                  else{  
-                    for(monsterPos monster : monsters){
-                        if(monster.x == x && monster.y==y){
-                          m++;
-                        }
-                    }
-
+                     m= count_if(monsters.begin(),monsters.end(),[x,y](monsterPos monster){return monster.x == x && monster.y==y;});
                     switch (m)
                     {
                     case(0): 

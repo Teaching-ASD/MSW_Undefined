@@ -2,6 +2,7 @@ OBJS := Hero.o JSON.o Monster.o main.o Character.o Map.o Game.o
 FILES := Hero.cpp JSON.cpp Monster.cpp Character.cpp Map.cpp Game.cpp
 CFLAGS := -std=c++17 -Wall -Wextra
 CC := g++-10
+SHELL := /bin/bash
 
 VLGFLAGS := --error-exitcode=1 --leak-check=full
 CHCKFLAGS:= --enable=warning,style,performance --error-exitcode=1 --output-file=styleAndPerformance.txt
@@ -28,7 +29,7 @@ clean:
 docs:
 	doxygen doxconf
 leaktest: rpg
-	$ (cp rpg $(TESTFLDR)/rpg && cd $(TESTFLDR) && valgrind $(VLGFLAGS) ./rpg scenario1.json)
+	$ (cp rpg $(TESTFLDR)/rpg && cd $(TESTFLDR) && (valgrind $(VLGFLAGS) ./rpg scenario1.json) <<< "exit")  
 cppcheck:
 	cppcheck $(FILES)  $(CHCKFLAGS)
 
@@ -38,7 +39,7 @@ creategtest:
 unittest: creategtest
 	$ (cd $(TESTFLDR) && ./runTests)
 
-test: cppcheck 
+test: cppcheck leaktest
 
 run: rpg
 	$ (cp rpg $(TESTFLDR)/rpg && cd $(TESTFLDR) && ./rpg scenario1.json)
