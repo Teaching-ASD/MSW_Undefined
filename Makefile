@@ -38,7 +38,7 @@ creategtest:
 unittest: creategtest
 	$ (cd $(TESTFLDR) && ./runTests)
 
-test: leaktest cppcheck 
+test: cppcheck 
 
 run: rpg
 	$ (cp rpg $(TESTFLDR)/rpg && cd $(TESTFLDR) && ./rpg scenario1.json)
