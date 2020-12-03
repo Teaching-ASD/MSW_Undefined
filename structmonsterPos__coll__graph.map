@@ -1,0 +1,5 @@
+<map id="monsterPos" name="monsterPos">
+<area shape="rect" id="node1" title=" " alt="" coords="5,171,104,197"/>
+<area shape="rect" id="node2" href="$classMonster.html" title="Monster class." alt="" coords="17,81,92,108"/>
+<area shape="rect" id="node3" href="$classCharacter.html" title="Character class." alt="" coords="12,5,97,32"/>
+</map>
