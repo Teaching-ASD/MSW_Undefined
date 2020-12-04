@@ -67,7 +67,7 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classMap-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Map Class Reference</div>  </div>
@@ -101,12 +101,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0e30c60f21f5f5fc2e742c24a96f495a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMap.html#a41697b848ea9a5aad1910714e0196b7b">Map::type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a0e30c60f21f5f5fc2e742c24a96f495a">get</a> (long unsigned int x, long unsigned int y) const</td></tr>
 <tr class="memdesc:a0e30c60f21f5f5fc2e742c24a96f495a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method returns the map type from the given coordinates x and y.  <a href="classMap.html#a0e30c60f21f5f5fc2e742c24a96f495a">More...</a><br /></td></tr>
 <tr class="separator:a0e30c60f21f5f5fc2e742c24a96f495a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c381eed25099bc1e49d74b5429fbe67"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a0c381eed25099bc1e49d74b5429fbe67">getVector</a> () const</td></tr>
+<tr class="separator:a0c381eed25099bc1e49d74b5429fbe67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a9e5f79c2be80ce0bdafb376aab2e8a8e"><td class="memItemLeft" align="right" valign="top"><a id="a9e5f79c2be80ce0bdafb376aab2e8a8e"></a>
-std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mapvector</b></td></tr>
-<tr class="separator:a9e5f79c2be80ce0bdafb376aab2e8a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a5c822c03ab30f76262cfed81a145d5c1"><td class="memItemLeft" align="right" valign="top"><a id="a5c822c03ab30f76262cfed81a145d5c1"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>MarkedMap</b></td></tr>
+<tr class="separator:a5c822c03ab30f76262cfed81a145d5c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0e30c60f21f5f5fc2e742c24a96f495a"></a>
@@ -137,6 +139,24 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 
 <p>This method returns the map type from the given coordinates x and y. </p>
 <dl class="section return"><dt>Returns</dt><dd>The coordinate given <a class="el" href="classMap.html">Map</a> type enum, it can be Free or Wall </dd></dl>
+
+</div>
+</div>
+<a id="a0c381eed25099bc1e49d74b5429fbe67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c381eed25099bc1e49d74b5429fbe67">&#9670;&nbsp;</a></span>getVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Map::getVector </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The mapvector getter </dd></dl>
 
 </div>
 </div>

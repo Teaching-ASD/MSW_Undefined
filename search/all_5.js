@@ -17,5 +17,6 @@ var searchData=
   ['getname_24',['getName',['../classCharacter.html#ad79f892fe576c7ef0804cad502d94517',1,'Character']]],
   ['getphysicaldamage_25',['getPhysicalDamage',['../classCharacter.html#a93b8efd7f7dc879b0b29ba94649154af',1,'Character']]],
   ['getstringvar_26',['getStringvar',['../classCharacter.html#adf886a6256bf827bc26f6a0a2ec2df35',1,'Character']]],
-  ['getxpperlvl_27',['getXpPerLvl',['../classHero.html#a00ebf70b8b49d9ce99920600e683c892',1,'Hero']]]
+  ['getvector_27',['getVector',['../classMap.html#a0c381eed25099bc1e49d74b5429fbe67',1,'Map']]],
+  ['getxpperlvl_28',['getXpPerLvl',['../classHero.html#a00ebf70b8b49d9ce99920600e683c892',1,'Hero']]]
 ];
