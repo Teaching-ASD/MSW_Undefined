@@ -14,9 +14,8 @@
 #include "Map.h"
 
 
-
 const std::map<int,std::string> error_messages = {
-    { 1 , "Bad number of arguments. Only a single scenario file should be provided." },
+    { 1 , "Bad number of arguments. Only a single scenario file should be provided or the second argument should be Map.txt ." },
     { 2 , "The provided scenario file is not accessible." },
     { 3 , "The provided scenario file is invalid." },
     { 4 , "JSON parsing error." }
@@ -30,7 +29,7 @@ void bad_exit(int exitcode){
 }
 
 int main(int argc, char** argv){
-    if (argc != 2) bad_exit(1);
+    if (argc != 3 && argc != 2 ) bad_exit(1);
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
     std::string hero_file;
@@ -51,17 +50,33 @@ int main(int argc, char** argv){
         std::list<Monster> monsters;
         for (const auto& monster_file : monster_files)
             monsters.push_back(Monster::parse(monster_file));   
-        Map map("map1.txt");
-        Game game;
-        game.setMap(map);
-        game.putHero(hero, 1, 2);
-        game.putMonster(monsters.front(),1,3);
-        monsters.pop_front();    
-        game.putMonster(monsters.front(),3,1);
-        monsters.pop_front();    
-        game.putMonster(monsters.front(),5,4);
-        monsters.pop_front();
+      
+    if(argv[2]){ 
+
+        std::string s = argv[2];
+        Game game = Game(s);
+        game.setChInMap(monsters,hero,game);
         game.run();
+
+
+    }
+    else{
+        std::cout<<"Map name:"<<std::endl; 
+        std::string mapname;
+        std::cin>>mapname;
+
+        Map map(mapname); //kell exception ,ha nincs fajl dobjon hibat
+
+        Game game;
+
+        game.setMap(map);
+
+        game.setChInMap(monsters,hero,game);
+
+        game.run();
+
+    }
+
     } catch (const JSON::ParseException& e) {bad_exit(4);}
     return 0;
 }

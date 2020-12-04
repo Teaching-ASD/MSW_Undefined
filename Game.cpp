@@ -1,8 +1,10 @@
 #include "Game.h"
+#include<iostream>
+
 
 Game::Game(){Map map;};
 
-Game::Game(std::string &mapfilename):map(Map(mapfilename)){
+Game::Game(std::string& mapfilename):map(Map(mapfilename)){
     beeMap=true;
 }
 
@@ -18,8 +20,6 @@ void Game::setMap(const Map &map){
     this->map = map;
     beeMap=true;
 }
-
-
 
 
 void Game::putHero(Hero hero, int x, int y) {
@@ -105,6 +105,88 @@ void Game::step(int x, int y){
     }
     else std::cout << "Wrong direction! This is a wall!"<< std::endl;
 }
+
+
+
+void Game::setChInMap(std::list<Monster>& monsters,Hero& hero,Game& game)const{
+
+    std::vector<std::string> v = map.getVector();
+    
+    game.mapCout(v);
+   // for(auto x : v){ std::cout<<x<<std::endl;}
+
+    int x = 0, y=0;
+    std::cout<<"Hero position:"<<std::endl; 
+    std::cin>>x>>y;
+    game.putHero(hero,x,y);
+    v[y][x]='H';
+
+    game.mapCout(v);
+
+    for(auto i : monsters){
+        std::cout<<"Monster" <<i.getName()<< " position:" <<std::endl; 
+        std::cin>>x>>y;
+
+        if(v[y][x]==' '){v[y][x]='M';}
+        else{v[y][x]='W';}
+
+        game.putMonster(i,x,y);
+        game.mapCout(v);
+    }
+
+};
+
+
+void Game::mapCout(std::vector<std::string> v) const {
+
+    unsigned int max = 0;
+    for (unsigned int i = 0; i < v.size(); i++)
+    {
+        if(v[i].size() > max){max = v[i].size();}
+    } 
+
+    std::cout<<"╔";
+    for (unsigned int i = 0; i < max*2; i++)
+    {
+        std::cout<<"═";
+    }
+    std::cout<<"╗"<<std::endl;;
+
+    for(auto y : v){
+        std::cout<<"║";
+        for(auto x : y){
+            
+            if(x==' '){
+                std::cout<<"░░";
+            }
+            else if(x=='#'){
+                std::cout<<"██";
+            }
+            else if(x=='H'){
+                std::cout<<"┣┫";
+            }
+            else if(x=='M'){
+                std::cout<<"M░";
+            }
+            else if(x=='W'){ //W==tobb monster
+                std::cout<<"MM";
+            }
+        }
+        std::cout<<"║";
+        std::cout<<"\n";
+    }
+
+    std::cout<<"╚";
+    for (unsigned int i = 0; i < (max*2); i++)
+    {
+        std::cout<<"═";
+    }
+    std::cout<<"╝"<<std::endl;;
+
+}
+
+
+
 void Game::drawMap(){
     bool end = false;
     int x=0;

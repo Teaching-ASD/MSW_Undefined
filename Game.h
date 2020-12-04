@@ -1,7 +1,6 @@
 #pragma once
 #include<string>
 #include<vector>
-#include<iostream>
 
 
 #include "Map.h"
@@ -38,21 +37,23 @@ private:
     void drawMap();
 public:
     Game();
-    explicit Game(std::string&);
+    //explicit Game(std::string&);
+    Game(std::string&);
     void setMap(const Map&);
     void putHero(Hero,int,int);
     void putMonster(Monster,int,int);
     void run();
+    void setChInMap(std::list<Monster>&,Hero&,Game&) const;
+    void mapCout(std::vector<std::string>)const;
+
+
+
 
     ~Game(){
 
         delete heroPos;
         monsters.clear();
 
-        /*for (int i = monstersV.size()-1; i >= 0; i--)
-        {
-            delete monstersV[i];
-        }*/
     }
 
         class OccupiedException : public std::runtime_error {

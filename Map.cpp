@@ -1,6 +1,9 @@
 #include "Map.h"
 #include <fstream>
-#include<iostream>
+
+
+Map::Map(){};
+
 
 Map::Map(std::string filename)
 {
@@ -26,6 +29,13 @@ Map::Map(std::string filename)
     }
     file.close();
 }
+
+std::vector<std::string> Map::getVector()const  {
+
+    return this->mapvector;
+
+};
+
 
 Map::type Map::get(long unsigned int x, long unsigned int y) const
 {

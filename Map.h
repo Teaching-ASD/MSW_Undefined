@@ -20,8 +20,8 @@
 #include <exception>
 
 class Map{
-
-public:
+friend class MarkedMap;
+private:
     std::vector<std::string> mapvector;
 
 public:
@@ -32,7 +32,7 @@ public:
     };
 
     /// This is a constructor for the Map Class
-    Map(){};
+    Map();
     /// This is a constructor for the Map Class, this constructor reads the file in
     explicit Map(std::string filename);
 
@@ -41,6 +41,10 @@ public:
     * \return The coordinate given Map type enum, it can be Free or Wall
     */
     Map::type get(long unsigned int x, long unsigned int y) const;
+    /**
+    * \return The mapvector getter
+    */
+    std::vector<std::string> getVector() const;
 
     /// This method is an exception if the given coordinates are wrong
     class WrongIndexException : public std::runtime_error {
