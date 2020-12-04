@@ -86,10 +86,8 @@ protected:
 
    ///This is a destructor for the game.
     ~Game(){
-
         delete heroPos;
         monsters.clear();
-
     }
         ///This is an exception class, which is thrown when an error is happened.
 
