@@ -11,10 +11,7 @@
 #include "Hero.h"
 #include "Monster.h"
 #include "Game.h"
-#include "Map.h"
 
-//advanced
-#include "MarkedMap.h"
 
 const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single scenario file should be provided or the second argument should be Map.txt ." },
@@ -56,14 +53,10 @@ int main(int argc, char** argv){
     if(argv[2]){ 
 
         std::string s = argv[2];
-  
-        MarkedMap Mmap(s);
 
-        Game game;
+        Game game(s);
 
-        game.setMap(Mmap.getClearMap());
-
-        std::vector<int> v=Mmap.getHeroPosition();
+        std::vector<int> v=game.getHeroPosition();
 
         game.putHero(hero,v[0],v[1]);
 
@@ -75,9 +68,9 @@ int main(int argc, char** argv){
 
             c = '0'+i;
 
-            v = Mmap.getMonsterPositions(c);
+            v = game.getMonsterPositions(c);
 
-            //MarkedMap.txt
+            
 
             for (unsigned int x = 0; x < v.size(); x += 2)
             {
@@ -88,22 +81,21 @@ int main(int argc, char** argv){
         
         }
 
-        game.run();
+       
+       game.run();
 
     }
     else{
-        //MarkedMap.txt
+
         std::cout<<"MarkedMap name:"<<std::endl; 
         std::string mapname;
         std::cin>>mapname;
 
-        MarkedMap Mmap(mapname);
 
-        Game game;
+        Game game(mapname);
 
-        game.setMap(Mmap.getClearMap());
 
-        std::vector<int> v=Mmap.getHeroPosition();
+        std::vector<int> v=game.getHeroPosition();
 
         game.putHero(hero,v[0],v[1]);
 
@@ -115,9 +107,9 @@ int main(int argc, char** argv){
 
             c = '0'+i;
 
-            v = Mmap.getMonsterPositions(c);
+            v = game.getMonsterPositions(c);
 
-            //MarkedMap.txt
+            
 
             for (unsigned int x = 0; x < v.size(); x += 2)
             {

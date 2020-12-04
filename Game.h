@@ -3,7 +3,7 @@
 #include<vector>
 
 
-#include "Map.h"
+#include "MarkedMap.h"
 #include "Hero.h"
 #include "Monster.h"
 
@@ -25,21 +25,22 @@ struct monsterPos{
     }
 };
 
-class Game{
+class Game : public MarkedMap{
 
 private:
     bool beeMap = false; 
     bool gameIsRunning = false;
-    Map map;
     Pos* heroPos = nullptr;
     std::list<monsterPos> monsters;
     void step(int x, int y);
     void drawMap();
 public:
-    Game();
-    //explicit Game(std::string&);
-    Game(std::string&);
-    void setMap(const Map&);
+    //Game();
+    explicit Game(std::string&);
+    //Game(std::string&);
+/*
+    void setMap(const MarkedMap&);
+*/
     void putHero(Hero,int,int);
     void putMonster(Monster,int,int);
     void run();

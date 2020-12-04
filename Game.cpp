@@ -2,13 +2,14 @@
 #include<iostream>
 
 
-Game::Game(){Map map;};
+//Game::Game():MarkedMap(){};
 
-Game::Game(std::string& mapfilename):map(Map(mapfilename)){
+Game::Game(std::string& mapfilename):MarkedMap(mapfilename){
     beeMap=true;
 }
 
-void Game::setMap(const Map &map){
+/*
+void Game::setMap(const MarkedMap &map){
 
     if(monsters.size() > 0 || heroPos != nullptr ){
 
@@ -20,13 +21,13 @@ void Game::setMap(const Map &map){
     this->map = map;
     beeMap=true;
 }
-
+*/
 
 void Game::putHero(Hero hero, int x, int y) {
 
     if(beeMap == false){ throw Map::WrongIndexException(" There is no map loaded.");}
 
-    if(map.get(x,y)==Map::type::Wall){throw OccupiedException(" Occupied block. ");};
+    if(get(x,y)==Map::type::Wall){throw OccupiedException(" Occupied block. ");};
     
     if(std::any_of(monsters.begin(),monsters.end(),[x,y](monsterPos i){return i.x == x && i.y==y;})){
             throw OccupiedException(" Occupied block. There is a monster in here.");
@@ -43,7 +44,7 @@ void Game::putMonster(Monster monster,int x,int y){
 
     if(beeMap == false){ throw Map::WrongIndexException(" There is no map loaded."); }
 
-    if(map.get(x,y)==Map::type::Wall){throw OccupiedException(" Occupied block. ");};
+    if(get(x,y)==Map::type::Wall){throw OccupiedException(" Occupied block. ");};
     
     if(heroPos!=nullptr){
         if(heroPos->x == x && heroPos->y==y){
@@ -87,7 +88,7 @@ void Game::run(){
 }
 
 void Game::step(int x, int y){
-    if(this->map.get(x,y) == Map::type::Free){
+    if(this->get(x,y) == Map::type::Free){
     std::list<monsterPos>::iterator i = monsters.begin();
     while(i!=monsters.end()){
         if(i->x == x && i->y==y){
@@ -110,7 +111,7 @@ void Game::step(int x, int y){
 
 void Game::setChInMap(std::list<Monster>& monsters,Hero& hero,Game& game)const{
 
-    std::vector<std::string> v = map.getVector();
+    std::vector<std::string> v = getVector();
     
     game.mapCout(v);
    // for(auto x : v){ std::cout<<x<<std::endl;}
@@ -182,7 +183,6 @@ void Game::mapCout(std::vector<std::string> v) const {
         std::cout<<"═";
     }
     std::cout<<"╝"<<std::endl;;
-
 }
 
 
@@ -197,7 +197,7 @@ void Game::drawMap(){
     std::cout << "\u2554";
     while(!end){
         try{
-            if(this->map.get(x,y) == Map::type::Free){
+            if(this->get(x,y) == Map::type::Free){
                 if(this->heroPos->x==x && this->heroPos->y==y){
                     std::cout << "┣┫";
                     }

@@ -59,8 +59,10 @@ Map::type Map::get(long unsigned int x, long unsigned int y) const
             Map::type a = Wall;
             return a;
         }
+        
         else{
-            throw WrongIndexException("Not found symbol");
+            Map::type a = Free;
+            return a;
         }
     }
 }

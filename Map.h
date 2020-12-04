@@ -20,11 +20,9 @@
 #include <exception>
 
 class Map{
-friend class MarkedMap;
-private:
+protected:
     std::vector<std::string> mapvector;
-
-public:
+    
     /// This is a type named enum, and it returns Free or Wall
     enum type{
         Free,
