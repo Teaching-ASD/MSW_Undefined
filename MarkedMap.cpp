@@ -4,10 +4,7 @@ MarkedMap::MarkedMap(std::string filename):Map(filename){
 }
 
 std::vector<int> MarkedMap::getHeroPosition() const{
-
     std::vector<int> ret;
-
-
     for(unsigned int y = 0 ; y < mapvector.size(); y++ ){
         for(unsigned int x = 0 ; x < mapvector[y].size(); x++){
             if(mapvector[y][x]=='H'){

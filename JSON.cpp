@@ -95,8 +95,11 @@ void JSON::internalParser(std::string data){
         this->internalStringParse(data, "lore");
         this->internalStringParse(data, "race");
         this->internalStringParse(data, "additional_info");
+        this->internalStringParse(data,"map");
         this->internalStringParse(data,"hero");
-        this->internalStringParseMonster(data,"monsters");
+        this->internalStringParse(data,"monster-1");
+        this->internalStringParse(data,"monster-2");
+        this->internalStringParse(data,"monster-3");
 };
 
 void JSON::parseString(std::string data){
@@ -122,7 +125,7 @@ std::string JSON::readFile(std::string fname){
         return adatok;
 }
 
-JSON JSON::parseFromFile(char* fname){
+JSON JSON::parseFromFile(std::string fname){
         JSON object;
         object.internalParser(object.readFile(fname));
         return object;

@@ -117,7 +117,7 @@ public:
          * \return A parsed JSON object.
          */
 
-        static JSON parseFromFile(char* fname);
+        static JSON parseFromFile(std::string fname);
         
         ///This is an exception class, which is thrown when an error is happened.
         class ParseException : public std::logic_error {

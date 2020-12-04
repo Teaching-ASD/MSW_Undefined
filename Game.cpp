@@ -2,29 +2,39 @@
 #include<iostream>
 
 
-//Game::Game():MarkedMap(){};
+Game::Game():MarkedMap(){};
 
 Game::Game(std::string& mapfilename):MarkedMap(mapfilename){
     beeMap=true;
 }
 
-/*
-void Game::setMap(const MarkedMap &map){
-
-    if(monsters.size() > 0 || heroPos != nullptr ){
-
-        throw AlreadyHasUnitsException(" You can't change the map, because it contains units.");
+void Game::setMap(std::string filename){
+    long unsigned int max=0;
+    std::ifstream file;
+    file.open(filename);
+    if(!file.is_open())
+    {
+        throw "The file not exists";
     }
-    if(gameIsRunning){
-        throw GameAlreadyStartedException("You can't change the map, because the game started");
+    std::string line;
+    while(getline(file,line))
+    {
+        if(line.size()>max){max=line.size();}
+        mapvector.push_back(line);
+
     }
-    this->map = map;
-    beeMap=true;
+    for(long unsigned int i=0;i<mapvector.size();i++){
+        mapvector.at(i).pop_back();
+        while(mapvector.at(i).size()<=max){
+            mapvector.at(i)+="#";
+        }
+    }
+    file.close();
+    beeMap = true;
 }
-*/
+
 
 void Game::putHero(Hero hero, int x, int y) {
-
     if(beeMap == false){ throw Map::WrongIndexException(" There is no map loaded.");}
 
     if(get(x,y)==Map::type::Wall){throw OccupiedException(" Occupied block. ");};

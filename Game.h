@@ -35,12 +35,10 @@ private:
     void step(int x, int y);
     void drawMap();
 public:
-    //Game();
+    Game();
     explicit Game(std::string&);
     //Game(std::string&);
-/*
-    void setMap(const MarkedMap&);
-*/
+    void setMap(std::string filename);
     void putHero(Hero,int,int);
     void putMonster(Monster,int,int);
     void run();
