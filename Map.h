@@ -1,7 +1,7 @@
 /**
- * \class Hero
+ * \class Map
  *
- * \brief Hero class
+ * \brief Map class
  *
  * This is a Map class. This is stores the datas from a map file. 
  *

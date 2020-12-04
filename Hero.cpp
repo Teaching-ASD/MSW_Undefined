@@ -57,7 +57,7 @@ Hero Hero::parse(std::string fname){
         Hero(
         json.get<std::string>("name"),
         json.get<int>("health_points"),
-        json.get<int>("base_damage"),
+        json.get<int>("damage"),
         json.get<int>("magical_damage"),
         json.get<double>("attack_cooldown"),
         json.get<int>("experience_per_level"),
@@ -68,28 +68,6 @@ Hero Hero::parse(std::string fname){
         json.get<double>("defense_bonus_per_level")
         );
         return object;
-}
-
-
-void Hero::fightCout(Monster& monster,Hero& hero){
-
-
-    std::cout<<"\nHero name: "<<hero.getName();
-    std::cout<<"\nHero level: "<<hero.getLevel();
-    std::cout<<"\nHero hp: "<<hero.getHealthPoints();
-    std::cout<<"\nHero physical damage: "<<hero.getPhysicalDamage();
-    std::cout<<"\nHero magical damage: "<<hero.getMagicalDamage();
-    std::cout<<"\nHero attack cooldown: "<<hero.getAttackCoolDown();
-    std::cout<<"\nHero defense: "<<hero.getDefense();
-    std::cout<<std::endl;
-    std::cout<<"\nMonster name: "<<monster.getName();
-    std::cout<<"\nMonster hp: "<<monster.getHealthPoints();
-    std::cout<<"\nMonster physical damage: "<<monster.getPhysicalDamage();
-    std::cout<<"\nMonster magical damage: "<<monster.getMagicalDamage();
-    std::cout<<"\nMonster attack cooldown: "<<monster.getAttackCoolDown();
-    std::cout<<"\nMonster defense: "<<monster.getDefense();
-    std::cout<<std::endl;
-
 }
 
 

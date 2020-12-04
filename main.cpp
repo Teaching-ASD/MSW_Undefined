@@ -17,7 +17,8 @@ const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single scenario file should be provided or the second argument should be Map.txt ." },
     { 2 , "The provided scenario file is not accessible." },
     { 3 , "The provided scenario file is invalid." },
-    { 4 , "JSON parsing error." }
+    { 4 , "JSON parsing error." },
+    { 5 , "The map file not exist." }
 };
 
 void bad_exit(int exitcode){

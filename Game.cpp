@@ -2,48 +2,28 @@
 #include<iostream>
 
 
-Game::Game():MarkedMap(){};
+Game::Game(){MarkedMap map;};
 
-Game::Game(std::string& mapfilename):MarkedMap(mapfilename){
+Game::Game(std::string& mapfilename):map(MarkedMap(mapfilename)){
     beeMap=true;
 }
 
-void Game::setMap(std::string filename){
-    long unsigned int max=0;
-    std::ifstream file;
-    file.open(filename);
-    if(!file.is_open())
-    {
-        throw "The file not exists";
-    }
-    std::string line;
-    while(getline(file,line))
-    {
-        if(line.size()>max){max=line.size();}
-        mapvector.push_back(line);
+void Game::setMap(const MarkedMap &map){
 
-    }
-    for(long unsigned int i=0;i<mapvector.size();i++){
-        mapvector.at(i).pop_back();
-        while(mapvector.at(i).size()<=max){
-            mapvector.at(i)+="#";
-        }
-    }
-    file.close();
-    beeMap = true;
+    if(monsters.size() > 0 || heroPos != nullptr ){throw AlreadyHasUnitsException(" You can't change the map, because it contains units.");}
+
+    if(gameIsRunning){throw GameAlreadyStartedException("You can't change the map, because the game started");}
+    
+    this->map = map;
+    beeMap=true;
 }
 
 
 void Game::putHero(Hero hero, int x, int y) {
     if(beeMap == false){ throw Map::WrongIndexException(" There is no map loaded.");}
-
-    if(get(x,y)==Map::type::Wall){throw OccupiedException(" Occupied block. ");};
+    if(map.get(x,y)==Map::type::Wall){throw OccupiedException(" Occupied block. ");};
     
-    if(std::any_of(monsters.begin(),monsters.end(),[x,y](monsterPos i){return i.x == x && i.y==y;})){
-            throw OccupiedException(" Occupied block. There is a monster in here.");
-
-    }
-    if(gameIsRunning) throw GameAlreadyStartedException("You can't change the map, because the game started");
+    if(gameIsRunning) throw GameAlreadyStartedException("You can't change the Hero, because the game started");
 
     if(heroPos != nullptr){ throw AlreadyHasHeroException(" Map already has a hero." );}
     Hero* hero_ = new Hero(hero);
@@ -54,20 +34,14 @@ void Game::putMonster(Monster monster,int x,int y){
 
     if(beeMap == false){ throw Map::WrongIndexException(" There is no map loaded."); }
 
-    if(get(x,y)==Map::type::Wall){throw OccupiedException(" Occupied block. ");};
-    
-    if(heroPos!=nullptr){
-        if(heroPos->x == x && heroPos->y==y){
+    if(map.get(x,y)==Map::type::Wall){throw OccupiedException(" Occupied block. ");};
 
-            throw OccupiedException(" Occupied block. There is a Hero in here.  ");
-
-        }
-    }
     monsters.push_back(monsterPos(monster,x,y));
 };
 void Game::run(){
         gameIsRunning = true;
         if(beeMap == false || heroPos==nullptr){ throw Game::NotInitializedException(" Map or Hero is not initialized."); }
+        this->step(this->heroPos->x, this->heroPos->y);
         while(monsters.size()!=0 && heroPos->hero->isAlive()){
             this->drawMap();
             std::string direction;
@@ -98,7 +72,7 @@ void Game::run(){
 }
 
 void Game::step(int x, int y){
-    if(this->get(x,y) == Map::type::Free){
+    if(this->map.get(x,y) == Map::type::Free){
     std::list<monsterPos>::iterator i = monsters.begin();
     while(i!=monsters.end()){
         if(i->x == x && i->y==y){
@@ -119,81 +93,22 @@ void Game::step(int x, int y){
 
 
 
-void Game::setChInMap(std::list<Monster>& monsters,Hero& hero,Game& game)const{
-
-    std::vector<std::string> v = getVector();
-    
-    game.mapCout(v);
-   // for(auto x : v){ std::cout<<x<<std::endl;}
-
+void Game::setChInMap(const std::list<Monster>& monsters, const Hero& hero){
+    this->drawMap();
     int x = 0, y=0;
     std::cout<<"Hero position:"<<std::endl; 
     std::cin>>x>>y;
-    game.putHero(hero,x,y);
-    v[y][x]='H';
-
-    game.mapCout(v);
+    this->putHero(hero,x,y);
+    this->drawMap();
 
     for(auto i : monsters){
         std::cout<<"Monster" <<i.getName()<< " position:" <<std::endl; 
         std::cin>>x>>y;
-
-        if(v[y][x]==' '){v[y][x]='M';}
-        else{v[y][x]='W';}
-
-        game.putMonster(i,x,y);
-        game.mapCout(v);
+        this->putMonster(i,x,y);
+        this->drawMap();
     }
 
 };
-
-
-void Game::mapCout(std::vector<std::string> v) const {
-
-    unsigned int max = 0;
-    for (unsigned int i = 0; i < v.size(); i++)
-    {
-        if(v[i].size() > max){max = v[i].size();}
-    } 
-
-    std::cout<<"╔";
-    for (unsigned int i = 0; i < max*2; i++)
-    {
-        std::cout<<"═";
-    }
-    std::cout<<"╗"<<std::endl;;
-
-    for(auto y : v){
-        std::cout<<"║";
-        for(auto x : y){
-            
-            if(x==' '){
-                std::cout<<"░░";
-            }
-            else if(x=='#'){
-                std::cout<<"██";
-            }
-            else if(x=='H'){
-                std::cout<<"┣┫";
-            }
-            else if(x=='M'){
-                std::cout<<"M░";
-            }
-            else if(x=='W'){ //W==tobb monster
-                std::cout<<"MM";
-            }
-        }
-        std::cout<<"║";
-        std::cout<<"\n";
-    }
-
-    std::cout<<"╚";
-    for (unsigned int i = 0; i < (max*2); i++)
-    {
-        std::cout<<"═";
-    }
-    std::cout<<"╝"<<std::endl;;
-}
 
 
 
@@ -202,18 +117,16 @@ void Game::drawMap(){
     int x=0;
     int y=0;
     bool firstLine=true;
-    int m=0;
     int xmax=0;
     std::cout << "\u2554";
     while(!end){
         try{
-            if(this->get(x,y) == Map::type::Free){
-                if(this->heroPos->x==x && this->heroPos->y==y){
+            if(this->map.get(x,y) == Map::type::Free){
+                if(this->heroPos!=nullptr &&this->heroPos->x==x && this->heroPos->y==y){
                     std::cout << "┣┫";
                     }
-                 else{  
-                     m= count_if(monsters.begin(),monsters.end(),[x,y](monsterPos monster){return monster.x == x && monster.y==y;});
-                    switch (m)
+                 else{
+                    switch (count_if(monsters.begin(),monsters.end(),[x,y](monsterPos monster){return monster.x == x && monster.y==y;}))
                     {
                     case(0): 
                             std::cout << "\u2591\u2591";
@@ -225,7 +138,6 @@ void Game::drawMap(){
                             std::cout << "MM";
                             break;
                     }
-                    m=0;
                  }
                 
             }
