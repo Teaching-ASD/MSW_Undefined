@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['game_10',['Game',['../classGame.html',1,'Game'],['../classGame.html#ad59df6562a58a614fda24622d3715b65',1,'Game::Game()'],['../classGame.html#a2bf543405718e4895dceb4abf9d54553',1,'Game::Game(std::string &amp;)']]],
+  ['game_10',['Game',['../classGame.html',1,'']]],
   ['gamealreadystartedexception_11',['GameAlreadyStartedException',['../classGame_1_1GameAlreadyStartedException.html',1,'Game']]],
   ['get_12',['get',['../classJSON.html#a2e3d7b3d03297c4b09ce1f64ad4187d7',1,'JSON::get(const std::string &amp;key)'],['../classJSON.html#a8de84d9d127678670c65199e150ac6d4',1,'JSON::get(const std::string &amp;key)'],['../classMap.html#a0e30c60f21f5f5fc2e742c24a96f495a',1,'Map::get()']]],
   ['getattackcooldown_13',['getAttackCoolDown',['../classCharacter.html#a44d2b7c4acb13bc0ee070b951a595ab3',1,'Character']]],

@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classJSON.html" title="JSON parser class." alt="" coords="5,5,60,32"/>
+<area shape="rect" id="node1" href="$classMap.html" title=" " alt="" coords="5,5,56,32"/>
+<area shape="rect" id="node2" href="$classMarkedMap.html" title=" " alt="" coords="104,5,203,32"/>
+<area shape="rect" id="node3" href="$classGame.html" title=" " alt="" coords="251,5,312,32"/>
+<area shape="rect" id="node4" href="$classPreparedGame.html" title=" " alt="" coords="360,5,479,32"/>
 </map>
