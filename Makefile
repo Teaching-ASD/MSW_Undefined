@@ -1,5 +1,5 @@
-OBJS := Hero.o JSON.o Monster.o main.o Character.o Map.o Game.o
-FILES := Hero.cpp JSON.cpp Monster.cpp Character.cpp Map.cpp Game.cpp
+OBJS := Hero.o JSON.o Monster.o main.o Character.o Map.o Game.o	PreparedGame.o MarkedMap.o
+FILES := Hero.cpp JSON.cpp Monster.cpp Character.cpp Map.cpp Game.cpp PreparedGame.cpp MarkedMap.cpp
 CFLAGS := -std=c++17 -Wall -Wextra
 CC := g++-10
 SHELL := /bin/bash
@@ -20,8 +20,12 @@ Monster.o: Monster.cpp
 	$(CC) $(CFLAGS) -c Monster.cpp
 Map.o: Map.cpp
 	$(CC) $(CFLAGS) -c Map.cpp
+MarkedMap.o: MarkedMap.cpp
+		$(CC) $(CFLAGS) -c MarkedMap.cpp
 Game.o: Game.cpp
 	$(CC) $(CFLAGS) -c Game.cpp
+PreparedGame.o: PreparedGame.cpp
+		$(CC) $(CFLAGS) -c PreparedGame.cpp
 main.o: main.cpp
 	$(CC) $(CFLAGS) -c main.cpp
 clean:
@@ -29,7 +33,7 @@ clean:
 docs:
 	doxygen doxconf
 leaktest: rpg
-	$ (cp rpg $(TESTFLDR)/rpg && cd $(TESTFLDR) && (valgrind $(VLGFLAGS) ./rpg scenario1.json) <<< "exit")  
+	$ (cp rpg $(TESTFLDR)/rpg && cd $(TESTFLDR) && (valgrind $(VLGFLAGS) ./rpg scenariomm.json) <<< "exit")  
 cppcheck:
 	cppcheck $(FILES)  $(CHCKFLAGS)
 
@@ -39,7 +43,7 @@ creategtest:
 unittest: creategtest
 	$ (cd $(TESTFLDR) && ./runTests)
 
-test: cppcheck leaktest unittest
+test: leaktest cppcheck unittest
 
 run: rpg
-	$ (cp rpg $(TESTFLDR)/rpg && cd $(TESTFLDR) && ./rpg scenario1.json)
+	$ (cp rpg $(TESTFLDR)/rpg && cd $(TESTFLDR) && ./rpg scenariomm.json)

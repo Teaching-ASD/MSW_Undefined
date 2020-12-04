@@ -36,6 +36,7 @@ void JSON::internalStringParseMonster(std::string data, std::string key){
             std::string str=data.substr(
             data.find("\"",data.find(":",data.find(key))),
             data.find("]")-(data.find("\"",data.find(":",data.find(key)))) );
+            key.erase(remove(key.begin(), key.end(), '\"'), key.end());
             std::pair<std::string,std::variant<std::string, int, double>> ret=std::make_pair(key, str);
             adatok.insert(ret);
         }
@@ -99,6 +100,7 @@ void JSON::internalParser(std::string data){
         this->internalStringParse(data,"monster-1");
         this->internalStringParse(data,"monster-2");
         this->internalStringParse(data,"monster-3");
+        this->internalStringParseMonster(data, "\"monsters\"");
 };
 
 void JSON::parseString(std::string data){

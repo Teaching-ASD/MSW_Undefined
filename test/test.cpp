@@ -3,6 +3,8 @@
 #include "../JSON.h"
 #include "../Game.h"
 #include "../Map.h"
+#include "../MarkedMap.h"
+#include "../PreparedGame.h"
 #include<gtest/gtest.h>
 #include<string>
 #include<map>
@@ -47,7 +49,7 @@ class JSONTest : public ::testing::Test{
 
 TEST_F(JSONTest, fileParser){
     ASSERT_NO_THROW({
-        char fname[]="scenario3.json";
+        std::string fname="scenario3.json";
         JSON scenario = JSON::parseFromFile(fname);         
         std::string hero_file;
         std::list<std::string> monster_files;
@@ -84,7 +86,7 @@ TEST_F(JSONTest, fileParserScenario1){
             exp1.append(line + "\n");      
         }
     file.close();
-    char fname[]="scenario1.json";
+    std::string fname="scenario1.json";
     JSON scenario = JSON::parseFromFile(fname);  
     std::string hero_file;
     std::list<std::string> monster_files;
@@ -112,7 +114,7 @@ TEST_F(JSONTest, fileParserScenario2){
             exp1.append(line + "\n");      
         }
     file.close();
-    char fname[]="scenario2.json";
+    std::string fname="scenario2.json";
     JSON scenario = JSON::parseFromFile(fname);  
     std::string hero_file;
     std::list<std::string> monster_files;
@@ -243,65 +245,10 @@ TEST_F(JSONTest, keyOrder){
 
 TEST(GameTest,gameStart){
     ASSERT_NO_THROW({
-          char fname[]="scenario1.json";
-    JSON scenario = JSON::parseFromFile(fname);  
-    std::string hero_file;
-    std::list<std::string> monster_files;
-    hero_file=scenario.get<std::string>("hero");
-    JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
-    for(auto monster_file : monster_file_list)
-        monster_files.push_back(std::get<std::string>(monster_file));
-    Hero hero{Hero::parse(hero_file)};
-    std::list<Monster> monsters1;
-    for (const auto& monster_file : monster_files){
-        monsters1.push_back(Monster::parse(monster_file));
-    } 
-    Map map("map1.txt");
-      Game game;
-      game.setMap(map);
-    freopen("commands.txt","r",stdin);
-      game.setChInMap(monsters1,hero);
+    PreparedGame game("scenariomm.json");
     freopen("commandsnavigate.txt","r",stdin);
       game.run();
     });
-}
-TEST(GameTest, exceptionTets){
-         std::string mapfile = "map1.txt";
-            Game game(mapfile);
-        char fname[]="scenario1.json";
-    JSON scenario = JSON::parseFromFile(fname);  
-    std::string hero_file;
-    std::list<std::string> monster_files;
-    hero_file=scenario.get<std::string>("hero");
-    JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
-    for(auto monster_file : monster_file_list)
-        monster_files.push_back(std::get<std::string>(monster_file));
-    Hero hero{Hero::parse(hero_file)};
-    std::list<Monster> monsters1;
-    for (const auto& monster_file : monster_files){
-        monsters1.push_back(Monster::parse(monster_file));
-    } 
-    ASSERT_THROW({
-
-        game.putHero(hero,1,1);
-        game.putHero(hero,2,1);
-    }, Game::AlreadyHasHeroException);
-    ASSERT_THROW({
-        game.putHero(hero,0,0);
-    },Game::OccupiedException);
-    ASSERT_THROW({
-        game.putMonster(monsters1.front(),1,1);
-        Map map2("map2.txt");
-        game.setMap(map2);
-    },Game::AlreadyHasUnitsException);
-    ASSERT_THROW({
-        Game game2;
-        game2.run();
-    },Game::NotInitializedException);
-    ASSERT_THROW({
-        Map map2("map2.txt");
-        map2.get(100,100);
-    },Map::WrongIndexException);
 }
 int main(int argc, char** argv){
     ::testing::InitGoogleTest(&argc,argv);

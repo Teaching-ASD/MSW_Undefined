@@ -22,7 +22,7 @@
 class Map{
 protected:
     std::vector<std::string> mapvector;
-    
+public: 
     /// This is a type named enum, and it returns Free or Wall
     enum type{
         Free,
@@ -39,10 +39,6 @@ protected:
     * \return The coordinate given Map type enum, it can be Free or Wall
     */
     Map::type get(long unsigned int x, long unsigned int y) const;
-    /**
-    * \return The mapvector getter
-    */
-    std::vector<std::string> getVector() const;
 
     /// This method is an exception if the given coordinates are wrong
     class WrongIndexException : public std::runtime_error {

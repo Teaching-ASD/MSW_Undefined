@@ -1,4 +1,4 @@
-  
+#pragma once
 #include<string>
 #include "Map.h"
 
@@ -6,10 +6,10 @@ class MarkedMap: public Map{
 
 
 public:
-    MarkedMap(std::string);
+    explicit MarkedMap(std::string filename);
     MarkedMap(){};
 
-    std::vector<int> getHeroPosition() const;
-    std::vector<int> getMonsterPositions(char) const;
+    std::pair<int,int> getHeroPosition() const;
+    std::vector<std::pair<int,int>> getMonsterPositions(char) const;
 
 };
