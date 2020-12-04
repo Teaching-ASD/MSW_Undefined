@@ -4,7 +4,6 @@
 
 
 class PreparedGame:public Game{
-    private:
     public:
         PreparedGame(std::string str_);
 };

@@ -34,26 +34,25 @@ private:
     std::list<monsterPos> monsters;
     void step(int x, int y);
     void drawMap();
-public:
+protected:
     Game();
     explicit Game(std::string&);
     //Game(std::string&);
     void setMap(std::string filename);
     void putHero(Hero,int,int);
     void putMonster(Monster,int,int);
-    void run();
+
     void setChInMap(std::list<Monster>&,Hero&,Game&) const;
     void mapCout(std::vector<std::string>)const;
-
-
-
-
     ~Game(){
-
         delete heroPos;
         monsters.clear();
-
     }
+
+public:
+
+    void run();
+
 
         class OccupiedException : public std::runtime_error {
         public:
