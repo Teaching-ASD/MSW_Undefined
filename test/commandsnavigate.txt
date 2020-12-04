@@ -1,0 +1,8 @@
+east
+east
+west
+west
+south
+south
+east
+east

@@ -1,6 +1,8 @@
 #include "../Monster.h"
 #include "../Hero.h"
 #include "../JSON.h"
+#include "../Game.h"
+#include "../Map.h"
 #include<gtest/gtest.h>
 #include<string>
 #include<map>
@@ -17,7 +19,7 @@ class JSONTest : public ::testing::Test{
     Monster* m1ok = new Monster("Zombie",10,1,1,2.8,1);
     std::string h1string = "{    \"name\" : \"Prince Aidan of Khanduras\", \"defense\": 1,\"defense_bonus_per_level\": 0.1,     \"base_health_points\" : 30,        \"experience_per_level\" : 20, \"magical_damage\":1,   \"damage\" : 1,    \"base_attack_cooldown\" : 1.1,    \"health_point_bonus_per_level\" : 5,  \"damage_bonus_per_level\" : 1,  \"cooldown_multiplier_per_level\": 0.9}";
     std::string m1string = "{\"lore\" : \"The lowest rank of the undead, zombies befoul much of the wilderness of the Western Kingdoms, as well as the tombs and crypts of the whole of Sanctuary. Zombies serve the darkness blindly and without thought, attacking only with their bare hands. They move slowly, but with relentless determination, seeking to consume the flesh of the living. They are simple-minded and easily outwitted, but in large groups can overwhelm the unwary.\",    \"name\" : \"Zombie\"   ,\"health_points\" : 10     ,\"damage\" : 1, \"magical_damage\":1, \"defense\":1, \"attack_cooldown\" : 2.8  ,\"race\" : \"undead\"}";
-    std::string expected = "Prince Aidan of Khanduras(1) vs Zombie\nThe hero won.\nPrince Aidan of Khanduras: LVL1\n   HP: 29/30\n ACD: 1.100000\n";
+    std::string expected = "Prince Aidan of Khanduras(1) vs Zombie\nThe hero won.\nPrince Aidan of Khanduras: LVL1\n   HP: 27/30\n  ACD: 1.100000\n";
 
    std::string getResults(Hero& h1, std::list<Monster> monsters){
                std::string result;
@@ -42,6 +44,7 @@ class JSONTest : public ::testing::Test{
     }
 };
 
+
 TEST_F(JSONTest, fileParser){
     ASSERT_NO_THROW({
         char fname[]="scenario3.json";
@@ -57,7 +60,6 @@ TEST_F(JSONTest, fileParser){
         std::list<Monster> monsters;
         monsters.push_back(Monster::parse(monster_files.back()));
         ASSERT_EQ(h1.getName(),h1ok->getName());
-        //ASSERT_EQ(h1.getDamage(),h1ok->getDamage());
         ASSERT_EQ(h1.getHealthPoints(),h1ok->getHealthPoints());
         ASSERT_EQ(h1.getAttackCoolDown(), h1ok->getAttackCoolDown());
         ASSERT_EQ(h1.getMaxHealthPoints(), h1ok->getMaxHealthPoints());
@@ -65,10 +67,9 @@ TEST_F(JSONTest, fileParser){
         ASSERT_EQ(h1.getCdmPerLvl(), h1ok->getCdmPerLvl());
         ASSERT_EQ(h1.getXpPerLvl(), h1ok->getXpPerLvl());    
         ASSERT_EQ(m1.getName(),m1ok->getName());
-        //ASSERT_EQ(m1.getDamage(),m1ok->getDamage());
         ASSERT_EQ(m1.getHealthPoints(),m1ok->getHealthPoints());
         ASSERT_EQ(m1.getAttackCoolDown(), m1ok->getAttackCoolDown());
-        //EXPECT_EQ(this->getResults(h1,monsters),expected);
+        EXPECT_EQ(this->getResults(h1,monsters),expected);
     });
 }
 
@@ -160,7 +161,6 @@ TEST_F(JSONTest, stringParser){
         );
         monsters.push_back(m1);
         ASSERT_EQ(h1.getName(),h1ok->getName());
-        //ASSERT_EQ(h1.getDamage(),h1ok->getDamage());
         ASSERT_EQ(h1.getHealthPoints(),h1ok->getHealthPoints());
         ASSERT_EQ(h1.getAttackCoolDown(), h1ok->getAttackCoolDown());
         ASSERT_EQ(h1.getMaxHealthPoints(), h1ok->getMaxHealthPoints());
@@ -168,10 +168,9 @@ TEST_F(JSONTest, stringParser){
         ASSERT_EQ(h1.getCdmPerLvl(), h1ok->getCdmPerLvl());
         ASSERT_EQ(h1.getXpPerLvl(), h1ok->getXpPerLvl());
         ASSERT_EQ(m1.getName(),m1ok->getName());
-        //ASSERT_EQ(m1.getDamage(),m1ok->getDamage());
         ASSERT_EQ(m1.getHealthPoints(),m1ok->getHealthPoints());
         ASSERT_EQ(m1.getAttackCoolDown(), m1ok->getAttackCoolDown());
-     //  EXPECT_EQ(this->getResults(h1,monsters),expected);
+        EXPECT_EQ(this->getResults(h1,monsters),expected);
     });
 
 }
@@ -237,10 +236,72 @@ TEST_F(JSONTest, keyOrder){
     ASSERT_NO_THROW({
         Monster m1 = Monster(Monster::parse("units/5.json"));
         ASSERT_EQ(m1.getName(),m1ok->getName());
-       // ASSERT_EQ(m1.getDamage(),m1ok->getDamage());
         ASSERT_EQ(m1.getHealthPoints(),m1ok->getHealthPoints());
         ASSERT_EQ(m1.getAttackCoolDown(), m1ok->getAttackCoolDown());
     });
+}
+
+TEST(GameTest,gameStart){
+    ASSERT_NO_THROW({
+          char fname[]="scenario1.json";
+    JSON scenario = JSON::parseFromFile(fname);  
+    std::string hero_file;
+    std::list<std::string> monster_files;
+    hero_file=scenario.get<std::string>("hero");
+    JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
+    for(auto monster_file : monster_file_list)
+        monster_files.push_back(std::get<std::string>(monster_file));
+    Hero hero{Hero::parse(hero_file)};
+    std::list<Monster> monsters1;
+    for (const auto& monster_file : monster_files){
+        monsters1.push_back(Monster::parse(monster_file));
+    } 
+    Map map("map1.txt");
+      Game game;
+      game.setMap(map);
+    freopen("commands.txt","r",stdin);
+      game.setChInMap(monsters1,hero);
+    freopen("commandsnavigate.txt","r",stdin);
+      game.run();
+    });
+}
+TEST(GameTest, exceptionTets){
+         std::string mapfile = "map1.txt";
+            Game game(mapfile);
+        char fname[]="scenario1.json";
+    JSON scenario = JSON::parseFromFile(fname);  
+    std::string hero_file;
+    std::list<std::string> monster_files;
+    hero_file=scenario.get<std::string>("hero");
+    JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
+    for(auto monster_file : monster_file_list)
+        monster_files.push_back(std::get<std::string>(monster_file));
+    Hero hero{Hero::parse(hero_file)};
+    std::list<Monster> monsters1;
+    for (const auto& monster_file : monster_files){
+        monsters1.push_back(Monster::parse(monster_file));
+    } 
+    ASSERT_THROW({
+
+        game.putHero(hero,1,1);
+        game.putHero(hero,2,1);
+    }, Game::AlreadyHasHeroException);
+    ASSERT_THROW({
+        game.putHero(hero,0,0);
+    },Game::OccupiedException);
+    ASSERT_THROW({
+        game.putMonster(monsters1.front(),1,1);
+        Map map2("map2.txt");
+        game.setMap(map2);
+    },Game::AlreadyHasUnitsException);
+    ASSERT_THROW({
+        Game game2;
+        game2.run();
+    },Game::NotInitializedException);
+    ASSERT_THROW({
+        Map map2("map2.txt");
+        map2.get(100,100);
+    },Map::WrongIndexException);
 }
 int main(int argc, char** argv){
     ::testing::InitGoogleTest(&argc,argv);
