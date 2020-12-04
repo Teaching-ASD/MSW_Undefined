@@ -65,7 +65,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classMarkedMap-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">MarkedMap Class Reference</div>  </div>
@@ -76,10 +75,8 @@ Inheritance diagram for MarkedMap:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMarkedMap__inherit__graph.png" border="0" usemap="#MarkedMap_inherit__map" alt="Inheritance graph"/></div>
 <map name="MarkedMap_inherit__map" id="MarkedMap_inherit__map">
-<area shape="rect" title=" " alt="" coords="15,80,114,107"/>
-<area shape="rect" href="classGame.html" title=" " alt="" coords="34,155,95,181"/>
-<area shape="rect" href="classMap.html" title=" " alt="" coords="39,5,90,32"/>
-<area shape="rect" href="classPreparedGame.html" title=" " alt="" coords="5,229,124,256"/>
+<area shape="rect" title=" " alt="" coords="5,80,104,107"/>
+<area shape="rect" href="classMap.html" title="Map class." alt="" coords="29,5,80,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -88,47 +85,42 @@ Collaboration diagram for MarkedMap:</div>
 <div class="center"><img src="classMarkedMap__coll__graph.png" border="0" usemap="#MarkedMap_coll__map" alt="Collaboration graph"/></div>
 <map name="MarkedMap_coll__map" id="MarkedMap_coll__map">
 <area shape="rect" title=" " alt="" coords="5,80,104,107"/>
-<area shape="rect" href="classMap.html" title=" " alt="" coords="29,5,80,32"/>
+<area shape="rect" href="classMap.html" title="Map class." alt="" coords="29,5,80,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1285ba9ffe0bb43d92331eb2cde25259"><td class="memItemLeft" align="right" valign="top"><a id="a1285ba9ffe0bb43d92331eb2cde25259"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MarkedMap</b> (std::string)</td></tr>
-<tr class="separator:a1285ba9ffe0bb43d92331eb2cde25259"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a3fb95ac33c477e3de51f6a0f747d6a52"><td class="memItemLeft" align="right" valign="top"><a id="a3fb95ac33c477e3de51f6a0f747d6a52"></a>
-std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getHeroPosition</b> () const</td></tr>
-<tr class="separator:a3fb95ac33c477e3de51f6a0f747d6a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78c3b23e63403e40a2faf5ec0c5f8726"><td class="memItemLeft" align="right" valign="top"><a id="a78c3b23e63403e40a2faf5ec0c5f8726"></a>
-std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getMonsterPositions</b> (char) const</td></tr>
-<tr class="separator:a78c3b23e63403e40a2faf5ec0c5f8726"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_classMap"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classMap')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classMap.html">Map</a></td></tr>
-<tr class="memitem:a0f5ad0fd4563497b4214038cbca8b582 inherit pro_methods_classMap"><td class="memItemLeft" align="right" valign="top"><a id="a0f5ad0fd4563497b4214038cbca8b582"></a>
+<tr class="memitem:a618f75da9dc21d4ba9a81f22b91a0e89"><td class="memItemLeft" align="right" valign="top"><a id="a618f75da9dc21d4ba9a81f22b91a0e89"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MarkedMap</b> (std::string filename)</td></tr>
+<tr class="separator:a618f75da9dc21d4ba9a81f22b91a0e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa25768bfdd3ea4b21e847882a3f9ccd"><td class="memItemLeft" align="right" valign="top"><a id="aaa25768bfdd3ea4b21e847882a3f9ccd"></a>
+std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getHeroPosition</b> () const</td></tr>
+<tr class="separator:aaa25768bfdd3ea4b21e847882a3f9ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad19d299ab9123d71afdbb200ad7afa43"><td class="memItemLeft" align="right" valign="top"><a id="ad19d299ab9123d71afdbb200ad7afa43"></a>
+std::vector&lt; std::pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getMonsterPositions</b> (char) const</td></tr>
+<tr class="separator:ad19d299ab9123d71afdbb200ad7afa43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classMap"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMap')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMap.html">Map</a></td></tr>
+<tr class="memitem:a0f5ad0fd4563497b4214038cbca8b582 inherit pub_methods_classMap"><td class="memItemLeft" align="right" valign="top"><a id="a0f5ad0fd4563497b4214038cbca8b582"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a0f5ad0fd4563497b4214038cbca8b582">Map</a> ()</td></tr>
-<tr class="memdesc:a0f5ad0fd4563497b4214038cbca8b582 inherit pro_methods_classMap"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a constructor for the <a class="el" href="classMap.html">Map</a> Class. <br /></td></tr>
-<tr class="separator:a0f5ad0fd4563497b4214038cbca8b582 inherit pro_methods_classMap"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab124c12c6c9dec693aedb1a4b6384ecd inherit pro_methods_classMap"><td class="memItemLeft" align="right" valign="top"><a id="ab124c12c6c9dec693aedb1a4b6384ecd"></a>
+<tr class="memdesc:a0f5ad0fd4563497b4214038cbca8b582 inherit pub_methods_classMap"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a constructor for the <a class="el" href="classMap.html" title="Map class.">Map</a> Class. <br /></td></tr>
+<tr class="separator:a0f5ad0fd4563497b4214038cbca8b582 inherit pub_methods_classMap"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab124c12c6c9dec693aedb1a4b6384ecd inherit pub_methods_classMap"><td class="memItemLeft" align="right" valign="top"><a id="ab124c12c6c9dec693aedb1a4b6384ecd"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#ab124c12c6c9dec693aedb1a4b6384ecd">Map</a> (std::string filename)</td></tr>
-<tr class="memdesc:ab124c12c6c9dec693aedb1a4b6384ecd inherit pro_methods_classMap"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a constructor for the <a class="el" href="classMap.html">Map</a> Class, this constructor reads the file in. <br /></td></tr>
-<tr class="separator:ab124c12c6c9dec693aedb1a4b6384ecd inherit pro_methods_classMap"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e30c60f21f5f5fc2e742c24a96f495a inherit pro_methods_classMap"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMap.html#a41697b848ea9a5aad1910714e0196b7b">Map::type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a0e30c60f21f5f5fc2e742c24a96f495a">get</a> (long unsigned int x, long unsigned int y) const</td></tr>
-<tr class="memdesc:a0e30c60f21f5f5fc2e742c24a96f495a inherit pro_methods_classMap"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method returns the map type from the given coordinates x and y.  <a href="classMap.html#a0e30c60f21f5f5fc2e742c24a96f495a">More...</a><br /></td></tr>
-<tr class="separator:a0e30c60f21f5f5fc2e742c24a96f495a inherit pro_methods_classMap"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c381eed25099bc1e49d74b5429fbe67 inherit pro_methods_classMap"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a0c381eed25099bc1e49d74b5429fbe67">getVector</a> () const</td></tr>
-<tr class="separator:a0c381eed25099bc1e49d74b5429fbe67 inherit pro_methods_classMap"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ab124c12c6c9dec693aedb1a4b6384ecd inherit pub_methods_classMap"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a constructor for the <a class="el" href="classMap.html" title="Map class.">Map</a> Class, this constructor reads the file in. <br /></td></tr>
+<tr class="separator:ab124c12c6c9dec693aedb1a4b6384ecd inherit pub_methods_classMap"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e30c60f21f5f5fc2e742c24a96f495a inherit pub_methods_classMap"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMap.html#a41697b848ea9a5aad1910714e0196b7b">Map::type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a0e30c60f21f5f5fc2e742c24a96f495a">get</a> (long unsigned int x, long unsigned int y) const</td></tr>
+<tr class="memdesc:a0e30c60f21f5f5fc2e742c24a96f495a inherit pub_methods_classMap"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method returns the map type from the given coordinates x and y.  <a href="classMap.html#a0e30c60f21f5f5fc2e742c24a96f495a">More...</a><br /></td></tr>
+<tr class="separator:a0e30c60f21f5f5fc2e742c24a96f495a inherit pub_methods_classMap"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pro_types_classMap"><td colspan="2" onclick="javascript:toggleInherit('pro_types_classMap')"><img src="closed.png" alt="-"/>&#160;Protected Types inherited from <a class="el" href="classMap.html">Map</a></td></tr>
-<tr class="memitem:a41697b848ea9a5aad1910714e0196b7b inherit pro_types_classMap"><td class="memItemLeft" align="right" valign="top"><a id="a41697b848ea9a5aad1910714e0196b7b"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a41697b848ea9a5aad1910714e0196b7b">type</a> { <b>Free</b>, 
+<tr class="inherit_header pub_types_classMap"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classMap')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classMap.html">Map</a></td></tr>
+<tr class="memitem:a41697b848ea9a5aad1910714e0196b7b inherit pub_types_classMap"><td class="memItemLeft" align="right" valign="top"><a id="a41697b848ea9a5aad1910714e0196b7b"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a41697b848ea9a5aad1910714e0196b7b">type</a> { <b>Free</b>, 
 <b>Wall</b>
  }</td></tr>
 <tr class="memdesc:a41697b848ea9a5aad1910714e0196b7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a type named enum, and it returns Free or Wall. <br /></td></tr>
-<tr class="separator:a41697b848ea9a5aad1910714e0196b7b inherit pro_types_classMap"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a41697b848ea9a5aad1910714e0196b7b inherit pub_types_classMap"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classMap"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classMap')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classMap.html">Map</a></td></tr>
 <tr class="memitem:a9e5f79c2be80ce0bdafb376aab2e8a8e inherit pro_attribs_classMap"><td class="memItemLeft" align="right" valign="top"><a id="a9e5f79c2be80ce0bdafb376aab2e8a8e"></a>
 std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mapvector</b></td></tr>

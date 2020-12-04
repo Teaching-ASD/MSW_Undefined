@@ -80,57 +80,62 @@ $(function() {
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">int</span> magical = 0;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="structDamage.html">Damage</a>(<span class="keywordtype">int</span> physical_, <span class="keywordtype">int</span> magical_):physical(physical_),magical(magical_){}</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">auto</span>&amp; operator+= (<span class="keywordtype">int</span> d){</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                <span class="keywordflow">return</span> physical+=d,magical+=d;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">auto</span>&amp; operator+ (<a class="code" href="structDamage.html">Damage</a> d){</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <span class="keywordflow">return</span> physical = d.physical,magical=d.magical;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">auto</span>&amp; operator*= (<span class="keywordtype">int</span> d){</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="keywordflow">return</span> physical*=d,magical*=d;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="structDamage.html">Damage</a>&amp; operator+= (<span class="keywordtype">int</span> d){</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                magical+=d;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                physical+=d;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="structDamage.html">Damage</a> operator+ (<a class="code" href="structDamage.html">Damage</a> d){</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <a class="code" href="structDamage.html">Damage</a> dmg(d.magical+this-&gt;magical,d.physical+this-&gt;physical);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="keywordflow">return</span> dmg;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classCharacter.html">   40</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCharacter.html">Character</a></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">const</span> std::string name;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">int</span> hp;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">double</span> cooldown;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">int</span> defense = 0;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        std::string stringvar;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="structDamage.html">Damage</a> characterDmg;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classCharacter.html#a4fb6ab1f866b1ade5f87ef975b6afade">ChangeHP</a>(<span class="keywordtype">int</span>);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classCharacter.html#a9e5ea09a01dade5c39d7879f372e102b">setDamage</a>(<span class="keywordtype">int</span>);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classCharacter.html#a042fb0766865f255c8e5a98b630dd1c3">setCd</a>(<span class="keywordtype">double</span> );</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classCharacter.html#a7dae16019759ba26a71aa3e8801393b8">setHp</a>(<span class="keywordtype">int</span> );</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classCharacter.html#a392fa8cd8e180f62ae5ee0d7d0142484">setDefense</a>(<span class="keywordtype">int</span> );</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="classCharacter.html#a6f27b11dfae50372e28dc80e74f916bd">Character</a>(<span class="keyword">const</span> std::string &amp;name_ , <span class="keywordtype">int</span> hp_ ,<span class="keywordtype">int</span> damage_ ,<span class="keywordtype">int</span> magical_,<span class="keywordtype">double</span> cd_ ,<span class="keywordtype">int</span> defense_);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        std::string <a class="code" href="classCharacter.html#ad79f892fe576c7ef0804cad502d94517">getName</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classCharacter.html#a4b5771117324e7bcf7afd005b2aa5943">getDamage</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classCharacter.html#a11c7a043e31cad72a2dd090b8daac6d2">getHealthPoints</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        std::string <a class="code" href="classCharacter.html#adf886a6256bf827bc26f6a0a2ec2df35">getStringvar</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classCharacter.html#a44d2b7c4acb13bc0ee070b951a595ab3">getAttackCoolDown</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classCharacter.html#a547565a6792224db79fd441cf3fd6d63">getDefense</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classCharacter.html#a93b8efd7f7dc879b0b29ba94649154af">getPhysicalDamage</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classCharacter.html#a61f27c928712fc9c5b0a48bc6c86e07f">getMagicalDamage</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classCharacter.html#a7afd0521efcaa1ee2478b73ddcfcc23e">endGame</a>(<a class="code" href="classCharacter.html">Character</a>* h2_ );</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classCharacter.html#aa62e72ce7f0beb300c206b288b1c8db1">Attack</a>(<a class="code" href="classCharacter.html">Character</a>* h2_ );</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">static</span> <a class="code" href="classCharacter.html">Character</a> <a class="code" href="classCharacter.html#a9d11464a48670007a86baacf8646d2ef">parse</a>(std::string fname );</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classCharacter.html#aa49f985b1b05751b2d4b3de74b4acc8c">isAlive</a>();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        ~<a class="code" href="classCharacter.html">Character</a>();</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;};</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif //Character_H</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="structDamage.html">Damage</a>&amp; operator*= (<span class="keywordtype">int</span> d){</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                magical*=d;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                physical*=d;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classCharacter.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCharacter.html">Character</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">const</span> std::string name;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">int</span> hp;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">double</span> cooldown;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">int</span> defense = 0;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        std::string stringvar;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="structDamage.html">Damage</a> characterDmg;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classCharacter.html#a4fb6ab1f866b1ade5f87ef975b6afade">ChangeHP</a>(<span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classCharacter.html#a9e5ea09a01dade5c39d7879f372e102b">setDamage</a>(<span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classCharacter.html#a042fb0766865f255c8e5a98b630dd1c3">setCd</a>(<span class="keywordtype">double</span> );</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classCharacter.html#a7dae16019759ba26a71aa3e8801393b8">setHp</a>(<span class="keywordtype">int</span> );</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classCharacter.html#a392fa8cd8e180f62ae5ee0d7d0142484">setDefense</a>(<span class="keywordtype">int</span> );</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="classCharacter.html#a6f27b11dfae50372e28dc80e74f916bd">Character</a>(<span class="keyword">const</span> std::string &amp;name_ , <span class="keywordtype">int</span> hp_ ,<span class="keywordtype">int</span> damage_ ,<span class="keywordtype">int</span> magical_,<span class="keywordtype">double</span> cd_ ,<span class="keywordtype">int</span> defense_);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        std::string <a class="code" href="classCharacter.html#ad79f892fe576c7ef0804cad502d94517">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classCharacter.html#a4b5771117324e7bcf7afd005b2aa5943">getDamage</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classCharacter.html#a11c7a043e31cad72a2dd090b8daac6d2">getHealthPoints</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        std::string <a class="code" href="classCharacter.html#adf886a6256bf827bc26f6a0a2ec2df35">getStringvar</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classCharacter.html#a44d2b7c4acb13bc0ee070b951a595ab3">getAttackCoolDown</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classCharacter.html#a547565a6792224db79fd441cf3fd6d63">getDefense</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classCharacter.html#a93b8efd7f7dc879b0b29ba94649154af">getPhysicalDamage</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classCharacter.html#a61f27c928712fc9c5b0a48bc6c86e07f">getMagicalDamage</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classCharacter.html#a7afd0521efcaa1ee2478b73ddcfcc23e">endGame</a>(<a class="code" href="classCharacter.html">Character</a>* h2_ );</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classCharacter.html#aa62e72ce7f0beb300c206b288b1c8db1">Attack</a>(<a class="code" href="classCharacter.html">Character</a>* h2_ );</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">static</span> <a class="code" href="classCharacter.html">Character</a> <a class="code" href="classCharacter.html#a9d11464a48670007a86baacf8646d2ef">parse</a>(std::string fname );</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classCharacter.html#aa49f985b1b05751b2d4b3de74b4acc8c">isAlive</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        ~<a class="code" href="classCharacter.html">Character</a>();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;};</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif //Character_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassCharacter_html_a4b5771117324e7bcf7afd005b2aa5943"><div class="ttname"><a href="classCharacter.html#a4b5771117324e7bcf7afd005b2aa5943">Character::getDamage</a></div><div class="ttdeci">int getDamage() const</div></div>
 <div class="ttc" id="aclassCharacter_html_aa62e72ce7f0beb300c206b288b1c8db1"><div class="ttname"><a href="classCharacter.html#aa62e72ce7f0beb300c206b288b1c8db1">Character::Attack</a></div><div class="ttdeci">void Attack(Character *h2_)</div><div class="ttdoc">This method is for the Characteres attacking eachother. It contains the cooldown logic as well....</div></div>
@@ -151,7 +156,7 @@ $(function() {
 <div class="ttc" id="aclassCharacter_html_a9d11464a48670007a86baacf8646d2ef"><div class="ttname"><a href="classCharacter.html#a9d11464a48670007a86baacf8646d2ef">Character::parse</a></div><div class="ttdeci">static Character parse(std::string fname)</div><div class="ttdoc">This method is for parsing the json files. It gets the filename and passes to the json parser.</div><div class="ttdef"><b>Definition:</b> Character.cpp:61</div></div>
 <div class="ttc" id="aclassCharacter_html_a9e5ea09a01dade5c39d7879f372e102b"><div class="ttname"><a href="classCharacter.html#a9e5ea09a01dade5c39d7879f372e102b">Character::setDamage</a></div><div class="ttdeci">void setDamage(int)</div><div class="ttdef"><b>Definition:</b> Character.cpp:40</div></div>
 <div class="ttc" id="aclassCharacter_html_a042fb0766865f255c8e5a98b630dd1c3"><div class="ttname"><a href="classCharacter.html#a042fb0766865f255c8e5a98b630dd1c3">Character::setCd</a></div><div class="ttdeci">void setCd(double)</div><div class="ttdef"><b>Definition:</b> Character.cpp:44</div></div>
-<div class="ttc" id="aclassCharacter_html"><div class="ttname"><a href="classCharacter.html">Character</a></div><div class="ttdoc">Character class.</div><div class="ttdef"><b>Definition:</b> Character.h:40</div></div>
+<div class="ttc" id="aclassCharacter_html"><div class="ttname"><a href="classCharacter.html">Character</a></div><div class="ttdoc">Character class.</div><div class="ttdef"><b>Definition:</b> Character.h:45</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

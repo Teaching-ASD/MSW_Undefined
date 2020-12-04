@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['game_10',['Game',['../classGame.html',1,'']]],
+  ['game_10',['Game',['../classGame.html',1,'Game'],['../classGame.html#ad59df6562a58a614fda24622d3715b65',1,'Game::Game()'],['../classGame.html#a2bf543405718e4895dceb4abf9d54553',1,'Game::Game(std::string &amp;)']]],
   ['gamealreadystartedexception_11',['GameAlreadyStartedException',['../classGame_1_1GameAlreadyStartedException.html',1,'Game']]],
   ['get_12',['get',['../classJSON.html#a2e3d7b3d03297c4b09ce1f64ad4187d7',1,'JSON::get(const std::string &amp;key)'],['../classJSON.html#a8de84d9d127678670c65199e150ac6d4',1,'JSON::get(const std::string &amp;key)'],['../classMap.html#a0e30c60f21f5f5fc2e742c24a96f495a',1,'Map::get()']]],
   ['getattackcooldown_13',['getAttackCoolDown',['../classCharacter.html#a44d2b7c4acb13bc0ee070b951a595ab3',1,'Character']]],
@@ -17,6 +17,5 @@ var searchData=
   ['getname_24',['getName',['../classCharacter.html#ad79f892fe576c7ef0804cad502d94517',1,'Character']]],
   ['getphysicaldamage_25',['getPhysicalDamage',['../classCharacter.html#a93b8efd7f7dc879b0b29ba94649154af',1,'Character']]],
   ['getstringvar_26',['getStringvar',['../classCharacter.html#adf886a6256bf827bc26f6a0a2ec2df35',1,'Character']]],
-  ['getvector_27',['getVector',['../classMap.html#a0c381eed25099bc1e49d74b5429fbe67',1,'Map']]],
-  ['getxpperlvl_28',['getXpPerLvl',['../classHero.html#a00ebf70b8b49d9ce99920600e683c892',1,'Hero']]]
+  ['getxpperlvl_27',['getXpPerLvl',['../classHero.html#a00ebf70b8b49d9ce99920600e683c892',1,'Hero']]]
 ];
