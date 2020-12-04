@@ -13,6 +13,8 @@
 #include "Game.h"
 #include "Map.h"
 
+//advanced
+#include "MarkedMap.h"
 
 const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single scenario file should be provided or the second argument should be Map.txt ." },
@@ -54,24 +56,77 @@ int main(int argc, char** argv){
     if(argv[2]){ 
 
         std::string s = argv[2];
-        Game game = Game(s);
-        game.setChInMap(monsters,hero,game);
-        game.run();
-
-
-    }
-    else{
-        std::cout<<"Map name:"<<std::endl; 
-        std::string mapname;
-        std::cin>>mapname;
-
-        Map map(mapname); //kell exception ,ha nincs fajl dobjon hibat
+  
+        MarkedMap Mmap(s);
 
         Game game;
 
-        game.setMap(map);
+        game.setMap(Mmap.getClearMap());
 
-        game.setChInMap(monsters,hero,game);
+        std::vector<int> v=Mmap.getHeroPosition();
+
+        game.putHero(hero,v[0],v[1]);
+
+        char c;
+        for (int i = 1; i < 4; i++)
+        {
+        
+            v.clear();
+
+            c = '0'+i;
+
+            v = Mmap.getMonsterPositions(c);
+
+            //MarkedMap.txt
+
+            for (unsigned int x = 0; x < v.size(); x += 2)
+            {
+               if(i==1){ game.putMonster(Monster::parse("Blood_Raven.json"),v[x],v[x+1]);}
+               if(i==2) {game.putMonster(Monster::parse("Fallen.json"),v[x],v[x+1]);}
+               if(i==3) {game.putMonster(Monster::parse("Zombie.json"),v[x],v[x+1]);}
+            }
+        
+        }
+
+        game.run();
+
+    }
+    else{
+        //MarkedMap.txt
+        std::cout<<"MarkedMap name:"<<std::endl; 
+        std::string mapname;
+        std::cin>>mapname;
+
+        MarkedMap Mmap(mapname);
+
+        Game game;
+
+        game.setMap(Mmap.getClearMap());
+
+        std::vector<int> v=Mmap.getHeroPosition();
+
+        game.putHero(hero,v[0],v[1]);
+
+        char c;
+        for (int i = 1; i < 4; i++)
+        {
+        
+            v.clear();
+
+            c = '0'+i;
+
+            v = Mmap.getMonsterPositions(c);
+
+            //MarkedMap.txt
+
+            for (unsigned int x = 0; x < v.size(); x += 2)
+            {
+               if(i==1){ game.putMonster(Monster::parse("Blood_Raven.json"),v[x],v[x+1]);}
+               if(i==2) {game.putMonster(Monster::parse("Fallen.json"),v[x],v[x+1]);}
+               if(i==3) {game.putMonster(Monster::parse("Zombie.json"),v[x],v[x+1]);}
+            }
+        
+        }
 
         game.run();
 
