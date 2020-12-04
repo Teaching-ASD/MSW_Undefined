@@ -25,15 +25,20 @@ struct Damage{
         int magical = 0;
         Damage(int physical_, int magical_):physical(physical_),magical(magical_){}
         
-        auto& operator+= (int d){
-                return physical+=d,magical+=d;
+        Damage& operator+= (int d){
+                magical+=d;
+                physical+=d;
+                return *this;
         }
         
-        auto& operator+ (Damage d){
-                return physical = d.physical,magical=d.magical;
+        Damage operator+ (Damage d){
+                Damage dmg(d.magical+this->magical,d.physical+this->physical);
+                return dmg;
         }
-        auto& operator*= (int d){
-                return physical*=d,magical*=d;
+        Damage& operator*= (int d){
+                magical*=d;
+                physical*=d;
+                return *this;
         }
         
 };

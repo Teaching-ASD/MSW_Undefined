@@ -18,7 +18,8 @@ const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single scenario file should be provided or the second argument should be Map.txt ." },
     { 2 , "The provided scenario file is not accessible." },
     { 3 , "The provided scenario file is invalid." },
-    { 4 , "JSON parsing error." }
+    { 4 , "JSON parsing error." },
+    { 5 , "The map file not exist." }
 };
 
 void bad_exit(int exitcode){
@@ -55,7 +56,7 @@ int main(int argc, char** argv){
 
         std::string s = argv[2];
         Game game = Game(s);
-        game.setChInMap(monsters,hero,game);
+        game.setChInMap(monsters,hero);
         game.run();
 
 
@@ -64,16 +65,17 @@ int main(int argc, char** argv){
         std::cout<<"Map name:"<<std::endl; 
         std::string mapname;
         std::cin>>mapname;
-
+        if(mapname != "exit"){
+        if (!std::filesystem::exists(mapname)) bad_exit(5);
         Map map(mapname); //kell exception ,ha nincs fajl dobjon hibat
 
         Game game;
 
         game.setMap(map);
 
-        game.setChInMap(monsters,hero,game);
+        game.setChInMap(monsters,hero);
 
-        game.run();
+        game.run();}
 
     }
 

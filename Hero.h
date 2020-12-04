@@ -34,7 +34,6 @@ private:
     const int dmgperlvl;
     const double cdmperlvl;
     const double defperlvl;
-    void fightCout(Monster& monster,Hero& hero);
  
 public:
 

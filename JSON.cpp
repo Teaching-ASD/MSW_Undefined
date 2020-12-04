@@ -83,7 +83,6 @@ void JSON::internalParser(std::string data){
         this->internalStringParse(data,"name");
         this->internalNumParse(data,"health_points");
         this->internalNumParse(data,"\"damage\"");
-        this->internalNumParse(data,"base_damage");
         this->internalNumParse(data,"magical_damage");
         this->internalNumParse(data,"attack_cooldown");
         this->internalNumParse(data,"experience_per_level");
