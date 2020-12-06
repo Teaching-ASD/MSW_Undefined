@@ -67,19 +67,22 @@ $(function() {
 <div class="title">Renderer.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">class </span><a class="code" href="classGame.html">Game</a>;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include&quot;Game.h&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include&quot;MarkedMap.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classRenderer.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRenderer.html">Renderer</a>{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">public</span>: </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> render(<span class="keyword">const</span> <a class="code" href="classGame.html">Game</a>&amp; g) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classRenderer.html">Renderer</a>(){};</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;};</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">class </span><a class="code" href="classGame.html">Game</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include&quot;Game.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include&quot;MarkedMap.h&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classRenderer.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRenderer.html">Renderer</a>{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">public</span>: </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRenderer.html#a96ef06a837b0e51969aa6ba943aa54e1">render</a>(<span class="keyword">const</span> <a class="code" href="classGame.html">Game</a>&amp; g) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classRenderer.html#aba42b60392775e4a492c4d14d4fff29f">   26</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classRenderer.html#aba42b60392775e4a492c4d14d4fff29f">~Renderer</a>(){};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassRenderer_html"><div class="ttname"><a href="classRenderer.html">Renderer</a></div><div class="ttdef"><b>Definition:</b> Renderer.h:6</div></div>
+<div class="ttc" id="aclassRenderer_html_a96ef06a837b0e51969aa6ba943aa54e1"><div class="ttname"><a href="classRenderer.html#a96ef06a837b0e51969aa6ba943aa54e1">Renderer::render</a></div><div class="ttdeci">virtual void render(const Game &amp;g) const =0</div><div class="ttdoc">This is a constructor for the Renderer.</div></div>
+<div class="ttc" id="aclassRenderer_html"><div class="ttname"><a href="classRenderer.html">Renderer</a></div><div class="ttdoc">Renderer class.</div><div class="ttdef"><b>Definition:</b> Renderer.h:21</div></div>
 <div class="ttc" id="aclassGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdoc">Game class.</div><div class="ttdef"><b>Definition:</b> Game.h:46</div></div>
+<div class="ttc" id="aclassRenderer_html_aba42b60392775e4a492c4d14d4fff29f"><div class="ttname"><a href="classRenderer.html#aba42b60392775e4a492c4d14d4fff29f">Renderer::~Renderer</a></div><div class="ttdeci">virtual ~Renderer()</div><div class="ttdoc">This is a destructor for the Renderer.</div><div class="ttdef"><b>Definition:</b> Renderer.h:26</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['setcd_137',['setCd',['../classCharacter.html#a042fb0766865f255c8e5a98b630dd1c3',1,'Character']]],
-  ['setdamage_138',['setDamage',['../classCharacter.html#a9e5ea09a01dade5c39d7879f372e102b',1,'Character']]],
-  ['setdefense_139',['setDefense',['../classCharacter.html#a392fa8cd8e180f62ae5ee0d7d0142484',1,'Character']]],
-  ['sethp_140',['setHp',['../classCharacter.html#a7dae16019759ba26a71aa3e8801393b8',1,'Character']]],
-  ['setlightradius_141',['setLightRadius',['../classHero.html#a0184604935109d5bb710f5402ff7dab8',1,'Hero']]],
-  ['setmap_142',['setMap',['../classGame.html#a0aebdcaffc11ca24a9fd3bf907c0db2f',1,'Game']]],
-  ['step_143',['step',['../classGame.html#a4980bc8acb3b1be861499bac9a32ac53',1,'Game']]]
+  ['registerrenderer_169',['registerRenderer',['../classGame.html#ab234db2839bf8776c31998fee8d02038',1,'Game']]],
+  ['render_170',['render',['../classCharacterSVGRenderer.html#a50bba6054debf5092e552309c74526ca',1,'CharacterSVGRenderer::render()'],['../classHeroTextRenderer.html#a11301735584cbd8ff95aba3d8e7eba98',1,'HeroTextRenderer::render()'],['../classObserverSVGRenderer.html#a845dbe2adff43c487a4ffcf8f22cb883',1,'ObserverSVGRenderer::render()'],['../classObserverTextRenderer.html#af0901f1e787e31e9f256a0c0134e4595',1,'ObserverTextRenderer::render()'],['../classRenderer.html#a96ef06a837b0e51969aa6ba943aa54e1',1,'Renderer::render()']]],
+  ['run_171',['run',['../classGame.html#a1ab78f5ed0d5ea879157357cf2fb2afa',1,'Game::run()'],['../classPreparedGame.html#affbffce464ec1b07ad312953436ef0fd',1,'PreparedGame::run()']]]
 ];

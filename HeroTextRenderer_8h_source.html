@@ -67,18 +67,21 @@ $(function() {
 <div class="title">HeroTextRenderer.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include&quot;TextRenderer.h&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include&lt;iostream&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classHeroTextRenderer.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHeroTextRenderer.html">HeroTextRenderer</a> : <span class="keyword">public</span> <a class="code" href="classTextRenderer.html">TextRenderer</a>{</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <span class="keywordtype">void</span> render(<span class="keyword">const</span> <a class="code" href="classGame.html">Game</a>&amp; gm) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="classHeroTextRenderer.html">HeroTextRenderer</a>(std::ostream&amp; os = std::cout) : <a class="code" href="classTextRenderer.html">TextRenderer</a>(os){}</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;};</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include&quot;TextRenderer.h&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include&lt;iostream&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classHeroTextRenderer.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHeroTextRenderer.html">HeroTextRenderer</a> : <span class="keyword">public</span> <a class="code" href="classTextRenderer.html">TextRenderer</a>{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classHeroTextRenderer.html#a11301735584cbd8ff95aba3d8e7eba98">render</a>(<span class="keyword">const</span> <a class="code" href="classGame.html">Game</a>&amp; gm) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classHeroTextRenderer.html#af6c4f9a04f560189f8117e78d6fa419e">   25</a></span>&#160;        <a class="code" href="classHeroTextRenderer.html#af6c4f9a04f560189f8117e78d6fa419e">HeroTextRenderer</a>(std::ostream&amp; os = std::cout) : <a class="code" href="classTextRenderer.html">TextRenderer</a>(os){}</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassTextRenderer_html"><div class="ttname"><a href="classTextRenderer.html">TextRenderer</a></div><div class="ttdef"><b>Definition:</b> TextRenderer.h:5</div></div>
-<div class="ttc" id="aclassHeroTextRenderer_html"><div class="ttname"><a href="classHeroTextRenderer.html">HeroTextRenderer</a></div><div class="ttdef"><b>Definition:</b> HeroTextRenderer.h:5</div></div>
+<div class="ttc" id="aclassHeroTextRenderer_html_af6c4f9a04f560189f8117e78d6fa419e"><div class="ttname"><a href="classHeroTextRenderer.html#af6c4f9a04f560189f8117e78d6fa419e">HeroTextRenderer::HeroTextRenderer</a></div><div class="ttdeci">HeroTextRenderer(std::ostream &amp;os=std::cout)</div><div class="ttdoc">This is a contructor and it needs a filename equals std::cout.</div><div class="ttdef"><b>Definition:</b> HeroTextRenderer.h:25</div></div>
+<div class="ttc" id="aclassHeroTextRenderer_html_a11301735584cbd8ff95aba3d8e7eba98"><div class="ttname"><a href="classHeroTextRenderer.html#a11301735584cbd8ff95aba3d8e7eba98">HeroTextRenderer::render</a></div><div class="ttdeci">void render(const Game &amp;gm) const override</div><div class="ttdoc">This method is for print out the datas to the file.</div><div class="ttdef"><b>Definition:</b> HeroTextRenderer.cpp:3</div></div>
+<div class="ttc" id="aclassTextRenderer_html"><div class="ttname"><a href="classTextRenderer.html">TextRenderer</a></div><div class="ttdoc">TextRenderer class.</div><div class="ttdef"><b>Definition:</b> TextRenderer.h:20</div></div>
+<div class="ttc" id="aclassHeroTextRenderer_html"><div class="ttname"><a href="classHeroTextRenderer.html">HeroTextRenderer</a></div><div class="ttdoc">HeroTextRenderer class.</div><div class="ttdef"><b>Definition:</b> HeroTextRenderer.h:20</div></div>
 <div class="ttc" id="aclassGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdoc">Game class.</div><div class="ttdef"><b>Definition:</b> Game.h:46</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

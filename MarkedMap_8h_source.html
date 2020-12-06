@@ -67,22 +67,25 @@ $(function() {
 <div class="title">MarkedMap.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include&lt;string&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Map.h&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classMarkedMap.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMarkedMap.html">MarkedMap</a>: <span class="keyword">public</span> <a class="code" href="classMap.html">Map</a>{</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classMarkedMap.html">MarkedMap</a>(std::string filename);</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="classMarkedMap.html">MarkedMap</a>(){};</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    std::pair&lt;int,int&gt; getHeroPosition() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    std::vector&lt;std::pair&lt;int,int&gt;&gt; getMonsterPositions(<span class="keywordtype">char</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;};</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include&lt;string&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;Map.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classMarkedMap.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMarkedMap.html">MarkedMap</a>: <span class="keyword">public</span> <a class="code" href="classMap.html">Map</a>{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classMarkedMap.html#a5bf2032d693c9eed1defddfb5a796a43">MarkedMap</a>(std::string filename);</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classMarkedMap.html#a5bf2032d693c9eed1defddfb5a796a43">   25</a></span>&#160;    <a class="code" href="classMarkedMap.html#a5bf2032d693c9eed1defddfb5a796a43">MarkedMap</a>(){};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::pair&lt;int,int&gt; <a class="code" href="classMarkedMap.html#aaa25768bfdd3ea4b21e847882a3f9ccd">getHeroPosition</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::vector&lt;std::pair&lt;int,int&gt;&gt; <a class="code" href="classMarkedMap.html#ad19d299ab9123d71afdbb200ad7afa43">getMonsterPositions</a>(<span class="keywordtype">char</span> ) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassMarkedMap_html"><div class="ttname"><a href="classMarkedMap.html">MarkedMap</a></div><div class="ttdef"><b>Definition:</b> MarkedMap.h:5</div></div>
+<div class="ttc" id="aclassMarkedMap_html_aaa25768bfdd3ea4b21e847882a3f9ccd"><div class="ttname"><a href="classMarkedMap.html#aaa25768bfdd3ea4b21e847882a3f9ccd">MarkedMap::getHeroPosition</a></div><div class="ttdeci">std::pair&lt; int, int &gt; getHeroPosition() const</div><div class="ttdoc">This method is for giving back a HeroPosition coordinates in pair.</div><div class="ttdef"><b>Definition:</b> MarkedMap.cpp:7</div></div>
+<div class="ttc" id="aclassMarkedMap_html"><div class="ttname"><a href="classMarkedMap.html">MarkedMap</a></div><div class="ttdoc">MarkedMap class.</div><div class="ttdef"><b>Definition:</b> MarkedMap.h:20</div></div>
+<div class="ttc" id="aclassMarkedMap_html_ad19d299ab9123d71afdbb200ad7afa43"><div class="ttname"><a href="classMarkedMap.html#ad19d299ab9123d71afdbb200ad7afa43">MarkedMap::getMonsterPositions</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; int, int &gt; &gt; getMonsterPositions(char) const</div><div class="ttdoc">This method is for giving back the Monsters position coordinates in pair type vector.</div><div class="ttdef"><b>Definition:</b> MarkedMap.cpp:20</div></div>
 <div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdoc">Map class.</div><div class="ttdef"><b>Definition:</b> Map.h:22</div></div>
+<div class="ttc" id="aclassMarkedMap_html_a5bf2032d693c9eed1defddfb5a796a43"><div class="ttname"><a href="classMarkedMap.html#a5bf2032d693c9eed1defddfb5a796a43">MarkedMap::MarkedMap</a></div><div class="ttdeci">MarkedMap()</div><div class="ttdoc">This is an empty constructor for Map.</div><div class="ttdef"><b>Definition:</b> MarkedMap.h:25</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
