@@ -28,7 +28,7 @@ public:
 
     /// This method is for parsing the json files. It gets the filename and passes to the json parser. 
     static Monster parse(std::string fname /**< [in] Name of the file */);
-
+    ///This is a destructor for the Monster
     ~Monster(){};
 };
 #endif //MONSTER_H

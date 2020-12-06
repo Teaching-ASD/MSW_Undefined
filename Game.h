@@ -7,11 +7,11 @@
  *
  * \author LeviG9901, 97Vix, b3nc301
  * 
- * \version 1.0
+ * \version 2.0
  *
- * \date 2020.12.04. 16:00
+ * \date 2020.12.06. 21:40
  *
- * Created on: 2020.12.04. 16:00
+ * Created on: 2020.12.06. 21:40
 */
 #pragma once
 class Renderer;
@@ -45,23 +45,43 @@ struct monsterPos{
 
 class Game{
 public:
+    /**
+    * \return This returns the map
+    */
     MarkedMap getMarkedMap() const;
+    /**
+    * \return This returns the Position of the hero
+    */
     Pos* getHeroPos() const;
+    /**
+    * \return This returns the positions of monsters
+    */
     std::list<monsterPos> getMonsters() const;
+    ///This methos is for adding the Renderer class to the Renderer list
     void registerRenderer(Renderer *);
+    /**
+    * \return This returns the Wall texture
+    */
     std::string getWallTexture() const;
+    /**
+    * \return This returns the Free texture
+    */
     std::string getFreeTexture() const;
 private:
 friend class Render;
 protected:
+    ///This is a MarkedMap object
     MarkedMap map;
+    ///This is a List of Renderers
     std::list<Renderer*> rendererList;
+    ///This is a string contains the WallTexture
     std::string wallTexture;
+    ///This is a string contains the FreeTexture
     std::string freeTexture;
-    bool beeMap = false; 
-    bool gameIsRunning = false;
-    Pos* heroPos = nullptr;
-    std::list<monsterPos> monsters;
+    bool beeMap = false; ///This is a bool if the map is readed in or not
+    bool gameIsRunning = false;///This is a bool if the game is running or not
+    Pos* heroPos = nullptr;///This is a Pos structure which stores the Hero Position
+    std::list<monsterPos> monsters;///This is a list which stores the positions of the monsters
     /// This method is for the Hero position changing with the given direction
     void step(int x, int y);
     /// This is an empty constructor for Game. After this the map has to be setted.

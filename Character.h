@@ -52,7 +52,7 @@ private:
         std::string texture;
         
 public:
-        Damage characterDmg;
+        Damage characterDmg;/// This is the Damage value of the character
         void ChangeHP(int/**< [in] The ammount of HP decrease. */);
         void setDamage(int/**< [in] The new damage. */);
         void setCd(double /**< [in] The new CD. */);
@@ -91,7 +91,7 @@ public:
         */
         int getPhysicalDamage() const;
         /**
-         * \return The Character's physical damage
+         * \return The Character's magical damage
         */
         int getMagicalDamage() const;
         /// This method is for checking if one of the two Character died while attacking eachother, and if one of them died, then it just puts who won as a string in the stringvar variable.

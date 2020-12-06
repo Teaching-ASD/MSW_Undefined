@@ -63,7 +63,7 @@ public:
         /**
         * \exception JSON::ParseException The data has duplicated keys.
         */
-        friend std::istream& operator>>(std::istream&, JSON& j);
+        friend std::istream& operator>>(std::istream&/**< [in] std::istream reference */, JSON& j/**< [in] Json object reference */);
 
         /// This is a template for get the proper data from the Adatok map.
         /**
@@ -117,14 +117,15 @@ public:
          * \return A parsed JSON object.
          */
 
-        static JSON parseFromFile(std::string fname);
+        static JSON parseFromFile(std::string fname/**< [in] The filename string */);
         
         ///This is an exception class, which is thrown when an error is happened.
         class ParseException : public std::logic_error {
                 public:
                         explicit ParseException(const std::string& msg) : std::logic_error(msg){};
         };
-        unsigned int count(const std::string& data);
+        ///This method is for counting the information from the given data reference
+        unsigned int count(const std::string& data/**< [in] The data reference */);
 };
 
 #endif //JSON_H

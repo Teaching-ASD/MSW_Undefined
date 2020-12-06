@@ -23,7 +23,7 @@ class Map{
 protected:
     std::vector<std::string> mapvector;
 public: 
-    /// This is a type named enum, and it returns Free or Wall
+    /// This is a type named enum, and it returns Free, Wall, Hero or Monster
     enum type{
         Free,
         Wall,
@@ -34,13 +34,13 @@ public:
     /// This is a constructor for the Map Class
     Map();
     /// This is a constructor for the Map Class, this constructor reads the file in
-    explicit Map(std::string filename);
+    explicit Map(std::string filename/**< [in] The filename string */);
 
     /// This method returns the map type from the given coordinates x and y
     /**
     * \return The coordinate given Map type enum, it can be Free or Wall
     */
-    Map::type get(long unsigned int x, long unsigned int y) const;
+    Map::type get(long unsigned int x /**< [in] The X coordinate */, long unsigned int y/**< [in] The Y coordinate */) const;
 
     /// This method is an exception if the given coordinates are wrong
     class WrongIndexException : public std::runtime_error {
