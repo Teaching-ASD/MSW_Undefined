@@ -48,7 +48,9 @@ protected:
     bool gameIsRunning = false;
     Pos* heroPos = nullptr;
     std::list<monsterPos> monsters;
+    /// This method is for the Hero position changing with the given direction
     void step(int x, int y);
+    /// This method is for drawing out the map fully at the end of the game
     void drawMap();
     /// This is an empty constructor for Game. After this the map has to be setted.
     Game();
@@ -81,8 +83,8 @@ protected:
     **/
     ///This function is for add a character to the map, and set it's place.
     void setChInMap(const std::list<Monster>&/**< [in] The list of monster objects.*/,const Hero&/**< [in] The Hero's object*/);
-
-
+    ///This function is for draw the map with the given radius distance
+    void lightradius() const;
 
    ///This is a destructor for the game.
     ~Game(){

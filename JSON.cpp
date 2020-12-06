@@ -44,7 +44,6 @@ void JSON::internalStringParseMonster(std::string data, std::string key){
 void JSON::internalNumParse(std::string data, std::string key){
         //remove whitespaces
         data.erase(remove_if(data.begin(), data.end(), isspace), data.end());
-        //
         if(data.find(key)<data.size()){
         this->keyTester(data,key);
         if(data.find(',',data.find(key))<data.find('}',data.find(key))){
@@ -92,6 +91,8 @@ void JSON::internalParser(std::string data){
         this->internalNumParse(data, "cooldown_multiplier_per_level");
         this->internalNumParse(data, "defense\"");
         this->internalNumParse(data, "defense_bonus_per_level");
+        this->internalNumParse(data, "\"light_radius\"");
+        this->internalNumParse(data, "light_radius_bonus_per_level");
         this->internalStringParse(data, "lore");
         this->internalStringParse(data, "race");
         this->internalStringParse(data, "additional_info");
@@ -101,6 +102,7 @@ void JSON::internalParser(std::string data){
         this->internalStringParse(data,"monster-2");
         this->internalStringParse(data,"monster-3");
         this->internalStringParseMonster(data, "\"monsters\"");
+
 };
 
 void JSON::parseString(std::string data){

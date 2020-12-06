@@ -9,7 +9,7 @@ std::pair<int,int> MarkedMap::getHeroPosition() const{
     for(unsigned int y = 0 ; y < mapvector.size(); y++){
         for(unsigned int x = 0 ; x < mapvector[y].size(); x++){
             if(mapvector[y][x]=='H'){
-                ret=std::make_pair(y,x);
+                ret=std::make_pair(x,y);
                 return ret;
             }
         }

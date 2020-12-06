@@ -26,7 +26,8 @@ public:
     /// This is a type named enum, and it returns Free or Wall
     enum type{
         Free,
-        Wall
+        Wall,
+        Monster
     };
 
     /// This is a constructor for the Map Class

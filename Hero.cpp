@@ -1,7 +1,7 @@
 #include "Hero.h"
 #include <iostream>
 
-Hero::Hero(const std::string& name,int hp, int damage_, int magical_,double cd_, const int xpperlvl_, const int hpperlvl_, const int dmgperlvl_, const double cdmperlvl_, int defense_, const double defperlvl_):Character(name,hp,damage_,magical_,cd_,defense_),xpperlvl(xpperlvl_),hpperlvl(hpperlvl_),dmgperlvl(dmgperlvl_),cdmperlvl(cdmperlvl_),defperlvl(defperlvl_){
+Hero::Hero(const std::string& name,int hp, int damage_, int magical_,double cd_, const int xpperlvl_, const int hpperlvl_, const int dmgperlvl_, const double cdmperlvl_, int defense_, const double defperlvl_, int lradius_, const int lrperlvl_):Character(name,hp,damage_,magical_,cd_,defense_),xpperlvl(xpperlvl_),hpperlvl(hpperlvl_),dmgperlvl(dmgperlvl_),cdmperlvl(cdmperlvl_),defperlvl(defperlvl_),lradius(lradius_),lrperlvl(lrperlvl_){
 
     this->maxHP=hp;
 
@@ -20,6 +20,7 @@ void Hero::levelUp(){
         this->characterDmg+=dmgperlvl;
         this->setCd(this->getAttackCoolDown()*cdmperlvl);
 	    this->setDefense(this->getDefense()+defperlvl);
+        this->setLightRadius(this->getLightRadius()+lrperlvl);
     }
 }
 int Hero::getLevel() const{
@@ -50,6 +51,16 @@ int Hero::getDefPerLvl() const{
     return defperlvl;
 }
 
+int Hero::getLightRadius() const{
+    return lradius;
+}
+
+int Hero::getLRPerLvl() const{
+    return lrperlvl;
+}
+void Hero::setLightRadius(int lr_){
+    this->lradius=lr_;
+}
 Hero Hero::parse(std::string fname){
         JSON json;
         json.parseFile(fname);
@@ -65,8 +76,11 @@ Hero Hero::parse(std::string fname){
         json.get<int>("damage_bonus_per_level"),
         json.get<double>("cooldown_multiplier_per_level"),
         json.get<int>("defense"),
-        json.get<double>("defense_bonus_per_level")
+        json.get<double>("defense_bonus_per_level"),
+        json.get<int>("light_radius"),
+        json.get<int>("light_radius_bonus_per_level")
         );
+        
         return object;
 }
 

@@ -72,21 +72,22 @@ void Game::run(){
 }
 
 void Game::step(int x, int y){
-    if(this->map.get(x,y) == Map::type::Free){
-    std::list<monsterPos>::iterator i = monsters.begin();
-    while(i!=monsters.end()){
-        if(i->x == x && i->y==y){
-        this->heroPos->hero->fightTilDeath(i->monster);
-        i= monsters.erase(i);
-    }
-    else {++i;}
-    }
-    if(this->heroPos->hero->isAlive()){
-    this->heroPos->x = x;
-    this->heroPos->y = y;
-    }
-    else {std::cout << "The hero died."<< std::endl;
-    }
+    if(this->map.get(x,y) == Map::type::Free || this->map.get(x,y) == Map::type::Monster){
+        std::list<monsterPos>::iterator i = monsters.begin();
+        while(i!=monsters.end()){
+            if(i->x == x && i->y==y){
+            this->heroPos->hero->fightTilDeath(i->monster);
+            i= monsters.erase(i);
+            }
+            else {++i;}
+        }
+        if(this->heroPos->hero->isAlive()){
+            this->heroPos->x = x;
+            this->heroPos->y = y;
+        }
+        else {
+            std::cout << "The hero died."<< std::endl;
+        }
     }
     else std::cout << "Wrong direction! This is a wall!"<< std::endl;
 }
@@ -113,6 +114,7 @@ void Game::setChInMap(const std::list<Monster>& monsters, const Hero& hero){
 
 
 void Game::drawMap(){
+    
     bool end = false;
     int x=0;
     int y=0;
@@ -121,7 +123,7 @@ void Game::drawMap(){
     std::cout << "\u2554";
     while(!end){
         try{
-            if(this->map.get(x,y) == Map::type::Free){
+            if(this->map.get(x,y) == Map::type::Free || this->map.get(x,y) == Map::type::Monster){
                 if(this->heroPos!=nullptr &&this->heroPos->x==x && this->heroPos->y==y){
                     std::cout << "┣┫";
                     }
@@ -180,4 +182,151 @@ void Game::drawMap(){
         std::cout << "\u2550\u2550";
     }
     std::cout << "\u255D" << std::endl;
+    
+}
+
+
+void Game::lightradius()const {
+    int x = this->heroPos->x;
+    int y = this->heroPos->y;
+    int r = this->heroPos->hero->getLightRadius();
+    int max=0;
+    int xk=0;
+    int ymax=0;
+    int xmax=0;
+    bool end = false;
+    int rowmax=0;
+    while(!end)
+    {
+        try
+        {
+            map.get(0,ymax);
+            try
+            {
+                xk++;
+                map.get(xk,ymax);
+                rowmax++;
+            }
+            catch(Map::WrongIndexException &e)
+            {
+                
+                xk = -1;
+                ymax++;
+                if(xmax<rowmax)
+                {
+                    xmax=rowmax;
+                    
+                }
+                rowmax=0;
+            }
+        }
+        catch(Map::WrongIndexException &e)
+        {end=true;}
+    }
+
+
+    try{
+        for(int o = 0; o < r*2+1;o++){
+            for(int i=0; i < r*2+1; i++)
+            {
+                if(x-r+i>=0 && y-r+o>=0)
+                {
+                    map.get(x-r+i,y-r+o);
+                    max++;
+                }
+            
+            }
+            if(max>0)
+            {
+                break;
+            }
+        }
+        
+    }catch(Map::WrongIndexException &e)
+    {
+    }
+
+    std::cout<<"╔";
+    for (unsigned int i = 0; i < max*2; i++)
+    {
+        std::cout<<"═";
+    }
+    std::cout<<"╗"<<std::endl;
+
+    int i = 0;
+    try
+    {
+        bool print = true;
+        bool monsterfound = false;
+        for(int o = 0; o< r*2+1 ; o++)
+        {   
+            if(print == true &&  ymax > y-r+o)
+            {
+                if(x-r+i>=0 && y-r+o>=0 && x-r+i<xmax)
+                {
+                    map.get(x-r+i,y-r+o);
+                }
+                
+                std::cout<<"║";
+            }
+            for(i = 0; i < r*2+1; i++)
+            {
+                if(x-r+i>=0 && y-r+o>=0 && x-r+i<xmax)
+                {
+
+                    print = true;
+                    if(x-r+i==x && y-r+o==y)
+                    {
+                        std::cout<<"┣┫";
+                    }
+                    else if(map.get(x-r+i,y-r+o)==0)
+                    {
+                        std::cout<<"░░";
+                    }
+                    else if(map.get(x-r+i,y-r+o)==1)
+                    {
+                        std::cout<<"██";
+                    }
+                    else
+                    {
+                        
+                        for(auto k : monsters)
+                        {
+                            if(x-r+i==k.x && y-r+o==k.y)
+                            {
+                                std::cout<<"M░";
+                                monsterfound = true;
+                            }
+                        }
+                        if(!monsterfound)
+                        {
+                            std::cout<<"░░";
+                        }
+                        monsterfound = false;
+                    }
+                    
+                }
+                else
+                {
+                    print = false;
+                }
+            }
+            
+            if(print == true ||( x-r+i>=xmax && y-r+o>=0))
+            {
+                std::cout<<"║";
+                std::cout<<std::endl;
+                print = true;
+            }
+            
+        }
+    }
+    catch(Map::WrongIndexException &e)
+    {}
+    std::cout<<"╚";
+    for (unsigned int i = 0; i < max*2; i++)
+    {
+        std::cout<<"═";
+    }
+    std::cout<<"╝"<<std::endl;
 }

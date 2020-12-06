@@ -54,8 +54,14 @@ Map::type Map::get(long unsigned int x, long unsigned int y) const
             return a;
         }
         
-        else{
+        else if(mapvector[y][x] == 'H')
+        {
             Map::type a = Free;
+            return a;
+        }
+        else
+        {
+            Map::type a = Monster;
             return a;
         }
     }
