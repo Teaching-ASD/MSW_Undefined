@@ -65,8 +65,10 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classGame-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Game Class Reference</div>  </div>
@@ -109,6 +111,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame_1_1AlreadyHasUnitsException.html">AlreadyHasUnitsException</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an exception class, which is thrown when an error is happened.  <a href="classGame_1_1AlreadyHasUnitsException.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGame_1_1deleter.html">deleter</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame_1_1GameAlreadyStartedException.html">GameAlreadyStartedException</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an exception class, which is thrown when an error is happened.  <a href="classGame_1_1GameAlreadyStartedException.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,16 +123,27 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an exception class, which is thrown when an error is happened.  <a href="classGame_1_1OccupiedException.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a067da70486ed80d78d0167999d306663"><td class="memItemLeft" align="right" valign="top"><a id="a067da70486ed80d78d0167999d306663"></a>
+<a class="el" href="classMarkedMap.html">MarkedMap</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getMarkedMap</b> () const</td></tr>
+<tr class="separator:a067da70486ed80d78d0167999d306663"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c9e66233269e68ebac7b262f0fa72ae"><td class="memItemLeft" align="right" valign="top"><a id="a7c9e66233269e68ebac7b262f0fa72ae"></a>
+<a class="el" href="structPos.html">Pos</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getHeroPos</b> () const</td></tr>
+<tr class="separator:a7c9e66233269e68ebac7b262f0fa72ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03f5bf5516868b1c6fdf7458db94976f"><td class="memItemLeft" align="right" valign="top"><a id="a03f5bf5516868b1c6fdf7458db94976f"></a>
+std::list&lt; <a class="el" href="structmonsterPos.html">monsterPos</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getMonsters</b> () const</td></tr>
+<tr class="separator:a03f5bf5516868b1c6fdf7458db94976f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab234db2839bf8776c31998fee8d02038"><td class="memItemLeft" align="right" valign="top"><a id="ab234db2839bf8776c31998fee8d02038"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>registerRenderer</b> (<a class="el" href="classRenderer.html">Renderer</a> *)</td></tr>
+<tr class="separator:ab234db2839bf8776c31998fee8d02038"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a4980bc8acb3b1be861499bac9a32ac53"><td class="memItemLeft" align="right" valign="top"><a id="a4980bc8acb3b1be861499bac9a32ac53"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a4980bc8acb3b1be861499bac9a32ac53">step</a> (int x, int y)</td></tr>
 <tr class="memdesc:a4980bc8acb3b1be861499bac9a32ac53"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is for the <a class="el" href="classHero.html" title="Hero class.">Hero</a> position changing with the given direction. <br /></td></tr>
 <tr class="separator:a4980bc8acb3b1be861499bac9a32ac53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cfc647506542f877d8495596aa3ece1"><td class="memItemLeft" align="right" valign="top"><a id="a0cfc647506542f877d8495596aa3ece1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a0cfc647506542f877d8495596aa3ece1">drawMap</a> ()</td></tr>
-<tr class="memdesc:a0cfc647506542f877d8495596aa3ece1"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is for drawing out the map fully at the end of the game. <br /></td></tr>
-<tr class="separator:a0cfc647506542f877d8495596aa3ece1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad59df6562a58a614fda24622d3715b65"><td class="memItemLeft" align="right" valign="top"><a id="ad59df6562a58a614fda24622d3715b65"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ad59df6562a58a614fda24622d3715b65">Game</a> ()</td></tr>
 <tr class="memdesc:ad59df6562a58a614fda24622d3715b65"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an empty constructor for <a class="el" href="classGame.html" title="Game class.">Game</a>. After this the map has to be setted. <br /></td></tr>
@@ -149,16 +164,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a1ab78f5ed0d5ea879157357cf2fb2afa">run</a> ()</td></tr>
 <tr class="memdesc:a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is for run the game. <br /></td></tr>
 <tr class="separator:a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5625d5df8506335ba4566960759d6afd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a5625d5df8506335ba4566960759d6afd">setChInMap</a> (const std::list&lt; <a class="el" href="classMonster.html">Monster</a> &gt; &amp;, const <a class="el" href="classHero.html">Hero</a> &amp;)</td></tr>
-<tr class="memdesc:a5625d5df8506335ba4566960759d6afd"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is for add a character to the map, and set it's place.  <a href="classGame.html#a5625d5df8506335ba4566960759d6afd">More...</a><br /></td></tr>
-<tr class="separator:a5625d5df8506335ba4566960759d6afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1ed16c7282b6144e9e0acd836b9d0cc"><td class="memItemLeft" align="right" valign="top"><a id="ac1ed16c7282b6144e9e0acd836b9d0cc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ac1ed16c7282b6144e9e0acd836b9d0cc">lightradius</a> () const</td></tr>
-<tr class="memdesc:ac1ed16c7282b6144e9e0acd836b9d0cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is for draw the map with the given radius distance. <br /></td></tr>
-<tr class="separator:ac1ed16c7282b6144e9e0acd836b9d0cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3d112ca6e0e55150d2fdbc704474530"><td class="memItemLeft" align="right" valign="top"><a id="ae3d112ca6e0e55150d2fdbc704474530"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ae3d112ca6e0e55150d2fdbc704474530">~Game</a> ()</td></tr>
-<tr class="memdesc:ae3d112ca6e0e55150d2fdbc704474530"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a destructor for the game. <br /></td></tr>
+<tr class="memitem:ae3d112ca6e0e55150d2fdbc704474530"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ae3d112ca6e0e55150d2fdbc704474530">~Game</a> ()</td></tr>
+<tr class="memdesc:ae3d112ca6e0e55150d2fdbc704474530"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a destructor for the game.  <a href="classGame.html#ae3d112ca6e0e55150d2fdbc704474530">More...</a><br /></td></tr>
 <tr class="separator:ae3d112ca6e0e55150d2fdbc704474530"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -166,6 +173,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a546a300eb256d6984e957500db6977d6"><td class="memItemLeft" align="right" valign="top"><a id="a546a300eb256d6984e957500db6977d6"></a>
 <a class="el" href="classMarkedMap.html">MarkedMap</a>&#160;</td><td class="memItemRight" valign="bottom"><b>map</b></td></tr>
 <tr class="separator:a546a300eb256d6984e957500db6977d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68f30334ef53d5891d780381fe326337"><td class="memItemLeft" align="right" valign="top"><a id="a68f30334ef53d5891d780381fe326337"></a>
+std::list&lt; <a class="el" href="classRenderer.html">Renderer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rendererList</b></td></tr>
+<tr class="separator:a68f30334ef53d5891d780381fe326337"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7710b2d9999a8d338eecebde8f37296f"><td class="memItemLeft" align="right" valign="top"><a id="a7710b2d9999a8d338eecebde8f37296f"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>beeMap</b> = false</td></tr>
 <tr class="separator:a7710b2d9999a8d338eecebde8f37296f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,6 +188,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>gameIsRunning</b> = f
 <tr class="memitem:aef6fd65adefc892b8dcc5c57c59e27e5"><td class="memItemLeft" align="right" valign="top"><a id="aef6fd65adefc892b8dcc5c57c59e27e5"></a>
 std::list&lt; <a class="el" href="structmonsterPos.html">monsterPos</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>monsters</b></td></tr>
 <tr class="separator:aef6fd65adefc892b8dcc5c57c59e27e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:ad962652a5ca57a062e87b84d43dad6a3"><td class="memItemLeft" align="right" valign="top"><a id="ad962652a5ca57a062e87b84d43dad6a3"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>Render</b></td></tr>
+<tr class="separator:ad962652a5ca57a062e87b84d43dad6a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classGame.html" title="Game class.">Game</a> class. </p>
@@ -215,6 +231,39 @@ std::list&lt; <a class="el" href="structmonsterPos.html">monsterPos</a> &gt;&#16
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">mapfilename</td><td>[in] The <a class="el" href="classMap.html" title="Map class.">Map</a>'s filename. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae3d112ca6e0e55150d2fdbc704474530"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3d112ca6e0e55150d2fdbc704474530">&#9670;&nbsp;</a></span>~Game()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Game::~Game </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This is a destructor for the game. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classGame_1_1NotInitializedException.html" title="This is an exception class, which is thrown when an error is happened.">Game::NotInitializedException</a></td><td>The map is not initialized, or hero is not placed in it. </td></tr>
   </table>
   </dd>
 </dl>
@@ -338,57 +387,6 @@ std::list&lt; <a class="el" href="structmonsterPos.html">monsterPos</a> &gt;&#16
     <tr><td class="paramdir">[in]</td><td class="paramname">monster</td><td>[in] The monster's object </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>[in] The x coordinate where the monster is placed </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>[in] The y coordinate where the monster is placed </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a5625d5df8506335ba4566960759d6afd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5625d5df8506335ba4566960759d6afd">&#9670;&nbsp;</a></span>setChInMap()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Game::setChInMap </td>
-          <td>(</td>
-          <td class="paramtype">const std::list&lt; <a class="el" href="classMonster.html">Monster</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>monsters</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classHero.html">Hero</a> &amp;&#160;</td>
-          <td class="paramname"><em>hero</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>This function is for add a character to the map, and set it's place. </p>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classGame_1_1NotInitializedException.html" title="This is an exception class, which is thrown when an error is happened.">Game::NotInitializedException</a></td><td>The map is not initialized, or hero is not placed in it. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">monsters</td><td>[in] The list of monster objects. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">hero</td><td>[in] The <a class="el" href="classHero.html" title="Hero class.">Hero</a>'s object </td></tr>
   </table>
   </dd>
 </dl>

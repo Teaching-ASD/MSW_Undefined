@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['drawmap_89',['drawMap',['../classGame.html#a0cfc647506542f877d8495596aa3ece1',1,'Game']]]
+  ['endgame_96',['endGame',['../classCharacter.html#a7afd0521efcaa1ee2478b73ddcfcc23e',1,'Character']]]
 ];

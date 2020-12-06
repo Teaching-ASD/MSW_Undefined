@@ -103,6 +103,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:affbffce464ec1b07ad312953436ef0fd"><td class="memItemLeft" align="right" valign="top"><a id="affbffce464ec1b07ad312953436ef0fd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
 <tr class="separator:affbffce464ec1b07ad312953436ef0fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classGame"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classGame')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classGame.html">Game</a></td></tr>
+<tr class="memitem:a067da70486ed80d78d0167999d306663 inherit pub_methods_classGame"><td class="memItemLeft" align="right" valign="top"><a id="a067da70486ed80d78d0167999d306663"></a>
+<a class="el" href="classMarkedMap.html">MarkedMap</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getMarkedMap</b> () const</td></tr>
+<tr class="separator:a067da70486ed80d78d0167999d306663 inherit pub_methods_classGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c9e66233269e68ebac7b262f0fa72ae inherit pub_methods_classGame"><td class="memItemLeft" align="right" valign="top"><a id="a7c9e66233269e68ebac7b262f0fa72ae"></a>
+<a class="el" href="structPos.html">Pos</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getHeroPos</b> () const</td></tr>
+<tr class="separator:a7c9e66233269e68ebac7b262f0fa72ae inherit pub_methods_classGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03f5bf5516868b1c6fdf7458db94976f inherit pub_methods_classGame"><td class="memItemLeft" align="right" valign="top"><a id="a03f5bf5516868b1c6fdf7458db94976f"></a>
+std::list&lt; <a class="el" href="structmonsterPos.html">monsterPos</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getMonsters</b> () const</td></tr>
+<tr class="separator:a03f5bf5516868b1c6fdf7458db94976f inherit pub_methods_classGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab234db2839bf8776c31998fee8d02038 inherit pub_methods_classGame"><td class="memItemLeft" align="right" valign="top"><a id="ab234db2839bf8776c31998fee8d02038"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>registerRenderer</b> (<a class="el" href="classRenderer.html">Renderer</a> *)</td></tr>
+<tr class="separator:ab234db2839bf8776c31998fee8d02038 inherit pub_methods_classGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -111,10 +124,6 @@ Additional Inherited Members</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a4980bc8acb3b1be861499bac9a32ac53">step</a> (int x, int y)</td></tr>
 <tr class="memdesc:a4980bc8acb3b1be861499bac9a32ac53 inherit pro_methods_classGame"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is for the <a class="el" href="classHero.html" title="Hero class.">Hero</a> position changing with the given direction. <br /></td></tr>
 <tr class="separator:a4980bc8acb3b1be861499bac9a32ac53 inherit pro_methods_classGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cfc647506542f877d8495596aa3ece1 inherit pro_methods_classGame"><td class="memItemLeft" align="right" valign="top"><a id="a0cfc647506542f877d8495596aa3ece1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a0cfc647506542f877d8495596aa3ece1">drawMap</a> ()</td></tr>
-<tr class="memdesc:a0cfc647506542f877d8495596aa3ece1 inherit pro_methods_classGame"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is for drawing out the map fully at the end of the game. <br /></td></tr>
-<tr class="separator:a0cfc647506542f877d8495596aa3ece1 inherit pro_methods_classGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad59df6562a58a614fda24622d3715b65 inherit pro_methods_classGame"><td class="memItemLeft" align="right" valign="top"><a id="ad59df6562a58a614fda24622d3715b65"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ad59df6562a58a614fda24622d3715b65">Game</a> ()</td></tr>
 <tr class="memdesc:ad59df6562a58a614fda24622d3715b65 inherit pro_methods_classGame"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an empty constructor for <a class="el" href="classGame.html" title="Game class.">Game</a>. After this the map has to be setted. <br /></td></tr>
@@ -135,21 +144,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a1ab78f5ed0d5ea879157357cf2fb2afa">run</a> ()</td></tr>
 <tr class="memdesc:a1ab78f5ed0d5ea879157357cf2fb2afa inherit pro_methods_classGame"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is for run the game. <br /></td></tr>
 <tr class="separator:a1ab78f5ed0d5ea879157357cf2fb2afa inherit pro_methods_classGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5625d5df8506335ba4566960759d6afd inherit pro_methods_classGame"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a5625d5df8506335ba4566960759d6afd">setChInMap</a> (const std::list&lt; <a class="el" href="classMonster.html">Monster</a> &gt; &amp;, const <a class="el" href="classHero.html">Hero</a> &amp;)</td></tr>
-<tr class="memdesc:a5625d5df8506335ba4566960759d6afd inherit pro_methods_classGame"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is for add a character to the map, and set it's place.  <a href="classGame.html#a5625d5df8506335ba4566960759d6afd">More...</a><br /></td></tr>
-<tr class="separator:a5625d5df8506335ba4566960759d6afd inherit pro_methods_classGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1ed16c7282b6144e9e0acd836b9d0cc inherit pro_methods_classGame"><td class="memItemLeft" align="right" valign="top"><a id="ac1ed16c7282b6144e9e0acd836b9d0cc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ac1ed16c7282b6144e9e0acd836b9d0cc">lightradius</a> () const</td></tr>
-<tr class="memdesc:ac1ed16c7282b6144e9e0acd836b9d0cc inherit pro_methods_classGame"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is for draw the map with the given radius distance. <br /></td></tr>
-<tr class="separator:ac1ed16c7282b6144e9e0acd836b9d0cc inherit pro_methods_classGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3d112ca6e0e55150d2fdbc704474530 inherit pro_methods_classGame"><td class="memItemLeft" align="right" valign="top"><a id="ae3d112ca6e0e55150d2fdbc704474530"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ae3d112ca6e0e55150d2fdbc704474530">~Game</a> ()</td></tr>
-<tr class="memdesc:ae3d112ca6e0e55150d2fdbc704474530 inherit pro_methods_classGame"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a destructor for the game. <br /></td></tr>
+<tr class="memitem:ae3d112ca6e0e55150d2fdbc704474530 inherit pro_methods_classGame"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ae3d112ca6e0e55150d2fdbc704474530">~Game</a> ()</td></tr>
+<tr class="memdesc:ae3d112ca6e0e55150d2fdbc704474530 inherit pro_methods_classGame"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a destructor for the game.  <a href="classGame.html#ae3d112ca6e0e55150d2fdbc704474530">More...</a><br /></td></tr>
 <tr class="separator:ae3d112ca6e0e55150d2fdbc704474530 inherit pro_methods_classGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classGame"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classGame')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classGame.html">Game</a></td></tr>
 <tr class="memitem:a546a300eb256d6984e957500db6977d6 inherit pro_attribs_classGame"><td class="memItemLeft" align="right" valign="top"><a id="a546a300eb256d6984e957500db6977d6"></a>
 <a class="el" href="classMarkedMap.html">MarkedMap</a>&#160;</td><td class="memItemRight" valign="bottom"><b>map</b></td></tr>
 <tr class="separator:a546a300eb256d6984e957500db6977d6 inherit pro_attribs_classGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68f30334ef53d5891d780381fe326337 inherit pro_attribs_classGame"><td class="memItemLeft" align="right" valign="top"><a id="a68f30334ef53d5891d780381fe326337"></a>
+std::list&lt; <a class="el" href="classRenderer.html">Renderer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rendererList</b></td></tr>
+<tr class="separator:a68f30334ef53d5891d780381fe326337 inherit pro_attribs_classGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7710b2d9999a8d338eecebde8f37296f inherit pro_attribs_classGame"><td class="memItemLeft" align="right" valign="top"><a id="a7710b2d9999a8d338eecebde8f37296f"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>beeMap</b> = false</td></tr>
 <tr class="separator:a7710b2d9999a8d338eecebde8f37296f inherit pro_attribs_classGame"><td class="memSeparator" colspan="2">&#160;</td></tr>
