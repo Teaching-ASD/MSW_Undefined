@@ -1,7 +1,7 @@
 #include "Hero.h"
 #include <iostream>
 
-Hero::Hero(const std::string& name,int hp, int damage_, int magical_,double cd_, const int xpperlvl_, const int hpperlvl_, const int dmgperlvl_, const double cdmperlvl_, int defense_, const double defperlvl_, int lradius_, const int lrperlvl_):Character(name,hp,damage_,magical_,cd_,defense_),xpperlvl(xpperlvl_),hpperlvl(hpperlvl_),dmgperlvl(dmgperlvl_),cdmperlvl(cdmperlvl_),defperlvl(defperlvl_),lradius(lradius_),lrperlvl(lrperlvl_){
+Hero::Hero(const std::string& name,int hp, int damage_, int magical_,double cd_, const int xpperlvl_, const int hpperlvl_, const int dmgperlvl_, const double cdmperlvl_, int defense_, const double defperlvl_, int lradius_, const int lrperlvl_, const std::string& texture_):Character(name,hp,damage_,magical_,cd_,defense_, texture_),xpperlvl(xpperlvl_),hpperlvl(hpperlvl_),dmgperlvl(dmgperlvl_),cdmperlvl(cdmperlvl_),defperlvl(defperlvl_),lradius(lradius_),lrperlvl(lrperlvl_){
 
     this->maxHP=hp;
 
@@ -78,7 +78,8 @@ Hero Hero::parse(std::string fname){
         json.get<int>("defense"),
         json.get<double>("defense_bonus_per_level"),
         json.get<int>("light_radius"),
-        json.get<int>("light_radius_bonus_per_level")
+        json.get<int>("light_radius_bonus_per_level"),
+        json.get<std::string>("texture")
         );
         
         return object;

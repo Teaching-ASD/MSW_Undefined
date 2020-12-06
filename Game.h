@@ -49,11 +49,15 @@ public:
     Pos* getHeroPos() const;
     std::list<monsterPos> getMonsters() const;
     void registerRenderer(Renderer *);
+    std::string getWallTexture() const;
+    std::string getFreeTexture() const;
 private:
 friend class Render;
 protected:
     MarkedMap map;
     std::list<Renderer*> rendererList;
+    std::string wallTexture;
+    std::string freeTexture;
     bool beeMap = false; 
     bool gameIsRunning = false;
     Pos* heroPos = nullptr;

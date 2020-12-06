@@ -11,6 +11,13 @@
 
   "defense": 1,
 
-  "attack_cooldown": 2.8
+  "attack_cooldown": 2.8,
+
+
+
+  "texture" : "svg/zombie.svg"
+
+
+
 
 }

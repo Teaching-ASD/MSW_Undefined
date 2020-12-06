@@ -1,6 +1,6 @@
 #include "Monster.h"
 
-Monster::Monster(const std::string &name_, int hp_ , int damage_, int magical_,double cd_,int defense_):Character(name_,hp_,damage_,magical_,cd_,defense_){
+Monster::Monster(const std::string &name_, int hp_ , int damage_, int magical_,double cd_,int defense_, const std::string& texture_):Character(name_,hp_,damage_,magical_,cd_,defense_,texture_){
 };
     
 
@@ -14,7 +14,8 @@ Monster Monster::parse(std::string fname){
         json.get<int>("damage"),
         json.get<int>("magical_damage"),
         json.get<double>("attack_cooldown"),
-        json.get<int>("defense")
+        json.get<int>("defense"),
+        json.get<std::string>("texture")
         );
         return object;
 

@@ -24,6 +24,8 @@ PreparedGame::PreparedGame(std::string str_):Game(){
         JSON scenario = JSON::parseFromFile(str_);
         map_file=scenario.get<std::string>("map");
         hero_file=scenario.get<std::string>("hero");
+        this->wallTexture=scenario.get<std::string>("wall_texture");
+        this->freeTexture=scenario.get<std::string>("free_texture");
         JSON::list monster_file_list;
         monster_file_list.push_back(scenario.get<std::string>("monster-1"));
         monster_file_list.push_back(scenario.get<std::string>("monster-2"));

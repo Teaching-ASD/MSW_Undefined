@@ -1,5 +1,5 @@
-OBJS := Hero.o JSON.o Monster.o Character.o Map.o Game.o PreparedGame.o MarkedMap.o TextRenderer.o HeroTextRenderer.o main.o ObserverTextRenderer.o
-FILES := Hero.cpp JSON.cpp Monster.cpp Character.cpp Map.cpp Game.cpp PreparedGame.cpp MarkedMap.cpp Render.cpp TextRenderer.cpp HeroTextRenderer.cpp ObserverTextRenderer.cpp
+OBJS := Hero.o JSON.o Monster.o Character.o Map.o Game.o PreparedGame.o MarkedMap.o TextRenderer.o HeroTextRenderer.o main.o ObserverTextRenderer.o ObserverSVGRenderer.o CharacterSVGRenderer.o
+FILES := Hero.cpp JSON.cpp Monster.cpp Character.cpp Map.cpp Game.cpp PreparedGame.cpp MarkedMap.cpp Render.cpp TextRenderer.cpp HeroTextRenderer.cpp ObserverTextRenderer.cpp ObserverSVGRenderer.cpp CharacterSVGRenderer.cpp
 CFLAGS := -std=c++17 -Wall -Wextra
 CC := g++-10
 SHELL := /bin/bash
@@ -32,6 +32,10 @@ HeroTextRenderer.o: HeroTextRenderer.cpp Renderer.h
 		$(CC) $(CFLAGS) -c HeroTextRenderer.cpp
 ObserverTextRenderer.o: ObserverTextRenderer.cpp Renderer.h
 		$(CC) $(CFLAGS) -c ObserverTextRenderer.cpp
+ObserverSVGRenderer.o: ObserverSVGRenderer.cpp Renderer.h
+		$(CC) $(CFLAGS) -c ObserverSVGRenderer.cpp
+CharacterSVGRenderer.o: CharacterSVGRenderer.cpp Renderer.h
+		$(CC) $(CFLAGS) -c CharacterSVGRenderer.cpp
 
 main.o: main.cpp
 	$(CC) $(CFLAGS) -c main.cpp

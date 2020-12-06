@@ -17,10 +17,10 @@
 
 class JSONTest : public ::testing::Test{
     protected:
-    Hero* h1ok = new Hero("Prince Aidan of Khanduras",30,1,1,1.1,20,5,1,0.9,1,0.1,2,1);
-    Monster* m1ok = new Monster("Zombie",10,1,1,2.8,1);
-    std::string h1string = "{    \"name\" : \"Prince Aidan of Khanduras\", \"defense\": 1,\"defense_bonus_per_level\": 0.1,     \"base_health_points\" : 30,        \"experience_per_level\" : 20, \"magical_damage\":1,   \"damage\" : 1,    \"base_attack_cooldown\" : 1.1,    \"health_point_bonus_per_level\" : 5,  \"damage_bonus_per_level\" : 1,  \"cooldown_multiplier_per_level\": 0.9 ,     \"light_radius\": 2, \"light_radius_bonus_per_level\": 1}";
-    std::string m1string = "{\"lore\" : \"The lowest rank of the undead, zombies befoul much of the wilderness of the Western Kingdoms, as well as the tombs and crypts of the whole of Sanctuary. Zombies serve the darkness blindly and without thought, attacking only with their bare hands. They move slowly, but with relentless determination, seeking to consume the flesh of the living. They are simple-minded and easily outwitted, but in large groups can overwhelm the unwary.\",    \"name\" : \"Zombie\"   ,\"health_points\" : 10     ,\"damage\" : 1, \"magical_damage\":1, \"defense\":1, \"attack_cooldown\" : 2.8  ,\"race\" : \"undead\"}";
+    Hero* h1ok = new Hero("Prince Aidan of Khanduras",30,1,1,1.1,20,5,1,0.9,1,0.1,2,1,"svg/Hero.svg");
+    Monster* m1ok = new Monster("Zombie",10,1,1,2.8,1,"svg/zombie.svg");
+    std::string h1string = "{    \"name\" : \"Prince Aidan of Khanduras\", \"defense\": 1,\"defense_bonus_per_level\": 0.1,     \"base_health_points\" : 30,        \"experience_per_level\" : 20, \"magical_damage\":1,   \"damage\" : 1,    \"base_attack_cooldown\" : 1.1,    \"health_point_bonus_per_level\" : 5,  \"damage_bonus_per_level\" : 1,  \"cooldown_multiplier_per_level\": 0.9 ,     \"light_radius\": 2, \"light_radius_bonus_per_level\": 1, \"texture\" : \"svg\\Hero.svg\"}";
+    std::string m1string = "{\"lore\" : \"The lowest rank of the undead, zombies befoul much of the wilderness of the Western Kingdoms, as well as the tombs and crypts of the whole of Sanctuary. Zombies serve the darkness blindly and without thought, attacking only with their bare hands. They move slowly, but with relentless determination, seeking to consume the flesh of the living. They are simple-minded and easily outwitted, but in large groups can overwhelm the unwary.\",    \"name\" : \"Zombie\"   ,\"health_points\" : 10     ,\"damage\" : 1, \"magical_damage\":1, \"defense\":1, \"attack_cooldown\" : 2.8  ,\"race\" : \"undead\" \"texture\": \"svg\\zombie.svg\"}";
     std::string expected = "Prince Aidan of Khanduras(1) vs Zombie\nThe hero won.\nPrince Aidan of Khanduras: LVL1\n   HP: 27/30\n  ACD: 1.100000\n";
 
    std::string getResults(Hero& h1, std::list<Monster> monsters){
@@ -150,7 +150,8 @@ TEST_F(JSONTest, stringParser){
         json1.get<int>("defense"),
         json1.get<double>("defense_bonus_per_level"),
         json1.get<int>("light_radius"),
-        json1.get<int>("light_radius_bonus_per_level")
+        json1.get<int>("light_radius_bonus_per_level"),
+        json1.get<std::string>("texture")
         );
         json2.parseString(m1string);
         std::list<Monster> monsters;
@@ -161,7 +162,8 @@ TEST_F(JSONTest, stringParser){
         json2.get<int>("damage"),
         json2.get<int>("magical_damage"),
         json2.get<double>("attack_cooldown"),
-        json2.get<int>("defense")
+        json2.get<int>("defense"),
+        json2.get<std::string>("texture")
         );
         monsters.push_back(m1);
         ASSERT_EQ(h1.getName(),h1ok->getName());
@@ -200,7 +202,8 @@ TEST_F(JSONTest, istreamParser){
         json1.get<int>("defense"),
         json1.get<double>("defense_bonus_per_level"),
         json1.get<int>("light_radius"),
-        json1.get<int>("light_radius_bonus_per_level")
+        json1.get<int>("light_radius_bonus_per_level"),
+        json1.get<std::string>("texture")
         );
         m1ss>>json2;
         std::list<Monster> monsters;
@@ -211,7 +214,8 @@ TEST_F(JSONTest, istreamParser){
         json2.get<int>("damage"),
         json2.get<int>("magical_damage"),
         json2.get<double>("attack_cooldown"),
-        json2.get<int>("defense")
+        json2.get<int>("defense"),
+        json2.get<std::string>("texture")
         );
         monsters.push_back(m1);
         ASSERT_EQ(h1.getName(),h1ok->getName());

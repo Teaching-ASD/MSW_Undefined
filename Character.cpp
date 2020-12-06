@@ -2,7 +2,7 @@
 #include "Character.h"
 
 
-Character::Character(const std::string& name_,int hp_,int damage_,int magical_,double cd_,int defense_):name(name_), hp(hp_), cooldown(cd_),defense(defense_), characterDmg(Damage(damage_,magical_)){
+Character::Character(const std::string& name_,int hp_,int damage_,int magical_,double cd_,int defense_, const std::string& texture_):name(name_), hp(hp_), cooldown(cd_),defense(defense_), texture(texture_), characterDmg(Damage(damage_,magical_)){
 }
 
 std::string Character::getName() const{
@@ -21,8 +21,9 @@ int Character::getDefense() const{
     return this->defense;
 }
 
-std::string Character::getStringvar() const{
-    return this->stringvar;
+std::string Character::getTexture() const{
+    return this->texture;
+
 }
 
 int Character::getPhysicalDamage() const{
@@ -68,7 +69,8 @@ Character Character::parse(std::string fname){
         json.get<int>("damage"),
         json.get<int>("magical_damage"),
         json.get<double>("attack_cooldown"),
-        json.get<int>("defense")
+        json.get<int>("defense"),
+        json.get<std::string>("texture")
         );
         return object;
 }

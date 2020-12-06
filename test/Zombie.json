@@ -7,5 +7,6 @@
     "damage" : 1,"magical_damage"  : 1,
     "attack_cooldown" : 2.8,
     "defense": 1,
-    "race" : "undead"
+    "race" : "undead",
+    "texture" : "svg/zombie.svg"
 }

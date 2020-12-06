@@ -3,7 +3,7 @@
 void HeroTextRenderer::render(const Game& game) const{
     int xmax=0;
     bool firstLine=true;
-    std::cout << "\u2554";
+    out << "\u2554";
     for(int j=((game.getHeroPos()->y)-(game.getHeroPos()->hero->getLightRadius()));j<=((game.getHeroPos()->y)+(game.getHeroPos()->hero->getLightRadius()));j++){
         if(j>=0||firstLine){
         int id;
@@ -14,7 +14,7 @@ void HeroTextRenderer::render(const Game& game) const{
                 if(!firstLine){
                 try{
                 game.getMarkedMap().get(game.getHeroPos()->x,j);
-                std::cout << "\u2551";
+                out << "\u2551";
                 hasleft=true;
             }
             catch(Map::WrongIndexException &e){}
@@ -25,25 +25,25 @@ void HeroTextRenderer::render(const Game& game) const{
             if(game.getMarkedMap().get(i,j) == Map::type::Free || game.getMarkedMap().get(i,j) == Map::type::Monster){
                 max++;
                 if(firstLine){
-                std::cout << "\u2550\u2550";     
+                out << "\u2550\u2550";     
                 }
                 else
                 if(game.getHeroPos()!=nullptr &&game.getHeroPos()->x==i && game.getHeroPos()->y==j){
-                    std::cout << "┣┫";
+                    out << "┣┫";
                     }
                  else{
                      std::list<monsterPos> monsters = game.getMonsters();
                     switch (count_if(monsters.begin(),monsters.end(),[i,j](monsterPos monster){return monster.x == i && monster.y==j;}))
                     {
                     case(0): 
-                            std::cout << "\u2591\u2591";
+                            out << "\u2591\u2591";
                             break;
                     case(1):
-                            std::cout << "M\u2591";
+                            out << "M\u2591";
 
                             break;
                     default:
-                            std::cout << "MM";
+                            out << "MM";
 
                             break;
                     }
@@ -51,10 +51,10 @@ void HeroTextRenderer::render(const Game& game) const{
                 
             }
             else if(firstLine){
-                std::cout << "\u2550\u2550";     
+                out << "\u2550\u2550";     
             }
             else if(game.getMarkedMap().get(i,j) == Map::type::Wall){
-                std::cout<< "\u2588\u2588";
+                out<< "\u2588\u2588";
                                 max++;
             }
 
@@ -69,32 +69,32 @@ void HeroTextRenderer::render(const Game& game) const{
         try{
             game.getMarkedMap().get(id+1,j);
             if(firstLine){
-            std::cout << "\u2557"<< std::endl;
+            out << "\u2557"<< std::endl;
             firstLine=false;
             j--;
             }
             else{
-            std::cout << "\u2551";
-            std::cout << std::endl;
+            out << "\u2551";
+            out << std::endl;
             }
             }
             catch(Map::WrongIndexException &e){
             std::string err = e.what();
             if(err!="Y is wrong"){          if(firstLine){
-            std::cout << "\u2557"<< std::endl;
+            out << "\u2557"<< std::endl;
             firstLine=false;
             j--;
             }
-            else{std::cout << "\u2551" << std::endl;}}
+            else{out << "\u2551" << std::endl;}}
             }
         }
     
     }
     }
-        std::cout << "\u255A";
+        out << "\u255A";
     for(int i=0;i<xmax;i++){
-        std::cout << "\u2550\u2550";
+        out << "\u2550\u2550";
     }
-    std::cout << "\u255D" << std::endl;
+    out << "\u255D" << std::endl;
 }
     

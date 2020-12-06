@@ -11,9 +11,15 @@ Pos* Game::getHeroPos() const{
 std::list<monsterPos> Game::getMonsters() const{
     return this->monsters;
 };
+std::string Game::getWallTexture() const{
+    return this->wallTexture;
+};
+std::string Game::getFreeTexture() const{
+    return this->freeTexture;
+};
 
-
-Game::Game(){MarkedMap map;};
+Game::Game(){MarkedMap map;
+};
 
 Game::Game(std::string& mapfilename):map(MarkedMap(mapfilename)){
     beeMap=true;

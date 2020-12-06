@@ -49,7 +49,7 @@ private:
         int hp;
         double cooldown;
         int defense = 0;
-        std::string stringvar;
+        std::string texture;
         
 public:
         Damage characterDmg;
@@ -60,7 +60,7 @@ public:
         void setDefense(int /**< [in] The new Defense. */);
 
         /// This is a constructor for Character
-        Character(const std::string &name_ /**< [in] The Character's name */, int hp_ /**< [in] The Character's health */,int damage_ /**< [in] The Character's physical damage */,int magical_/**< [in] The Character's magical damage value */,double cd_ /**< [in] The Character's attackcooldown */,int defense_/**< [in] The Character's Defense value */);
+        Character(const std::string &name_ /**< [in] The Character's name */, int hp_ /**< [in] The Character's health */,int damage_ /**< [in] The Character's physical damage */,int magical_/**< [in] The Character's magical damage value */,double cd_ /**< [in] The Character's attackcooldown */,int defense_/**< [in] The Character's Defense value */, const std::string &texture_ /**<[in] The texture variable*/);
         /// This is a simple getter for getting the Character's name.
         /**
          * \return The Character's name
@@ -75,9 +75,9 @@ public:
         */
         int getHealthPoints() const;
         /**
-         * \return The stringvar variable
+         * \return The texture variable
         */
-        std::string getStringvar() const;
+        std::string getTexture() const;
         /**
          * \return The Character's cooldown
         */

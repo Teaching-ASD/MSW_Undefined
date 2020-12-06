@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <iterator>
 #include <list>
+#include<iostream>
+#include<fstream>
 
 #include "JSON.h"
 #include "Hero.h"
@@ -16,6 +18,10 @@
 #include "TextRenderer.h"
 #include "HeroTextRenderer.h"
 #include "ObserverTextRenderer.h"
+#include "SVGRenderer.h"
+#include "ObserverSVGRenderer.h"
+#include "CharacterSVGRenderer.h"
+
 
 const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single scenario file should be provided or the second argument should be Map.txt ." },
@@ -38,8 +44,12 @@ int main(int argc, char** argv){
     try{
         std::string str = argv[1];
         PreparedGame pgame(str);
+        std::ofstream ofstream_ = std::ofstream("log.txt");
         pgame.registerRenderer(new HeroTextRenderer());
         pgame.registerRenderer(new ObserverTextRenderer());
+        pgame.registerRenderer(new ObserverTextRenderer(ofstream_));
+        pgame.registerRenderer(new ObserverSVGRenderer("file.svg"));
+        pgame.registerRenderer(new CharacterSVGRenderer("file1.svg"));
 
         pgame.run();
     }catch(const JSON::ParseException& e)
