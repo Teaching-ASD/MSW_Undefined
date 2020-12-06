@@ -1,10 +1,10 @@
-OBJS := Hero.o JSON.o Monster.o main.o Character.o Map.o Game.o	PreparedGame.o MarkedMap.o
-FILES := Hero.cpp JSON.cpp Monster.cpp Character.cpp Map.cpp Game.cpp PreparedGame.cpp MarkedMap.cpp
+OBJS := Hero.o JSON.o Monster.o Character.o Map.o Game.o PreparedGame.o MarkedMap.o TextRenderer.o HeroTextRenderer.o main.o ObserverTextRenderer.o
+FILES := Hero.cpp JSON.cpp Monster.cpp Character.cpp Map.cpp Game.cpp PreparedGame.cpp MarkedMap.cpp Render.cpp TextRenderer.cpp HeroTextRenderer.cpp ObserverTextRenderer.cpp
 CFLAGS := -std=c++17 -Wall -Wextra
 CC := g++-10
 SHELL := /bin/bash
 
-VLGFLAGS := --error-exitcode=1 --leak-check=full
+VLGFLAGS := --error-exitcode=1 --leak-check=full -s
 CHCKFLAGS:= --enable=warning,style,performance --error-exitcode=1 --output-file=styleAndPerformance.txt
 TESTFLDR := test
 
@@ -26,6 +26,13 @@ Game.o: Game.cpp
 	$(CC) $(CFLAGS) -c Game.cpp
 PreparedGame.o: PreparedGame.cpp
 		$(CC) $(CFLAGS) -c PreparedGame.cpp
+TextRenderer.o: TextRenderer.cpp Renderer.h
+		$(CC) $(CFLAGS) -c TextRenderer.cpp
+HeroTextRenderer.o: HeroTextRenderer.cpp Renderer.h
+		$(CC) $(CFLAGS) -c HeroTextRenderer.cpp
+ObserverTextRenderer.o: ObserverTextRenderer.cpp Renderer.h
+		$(CC) $(CFLAGS) -c ObserverTextRenderer.cpp
+
 main.o: main.cpp
 	$(CC) $(CFLAGS) -c main.cpp
 clean:

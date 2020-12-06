@@ -27,6 +27,7 @@ public:
     enum type{
         Free,
         Wall,
+        Hero,
         Monster
     };
 

@@ -12,6 +12,10 @@
 #include "Monster.h"
 #include "Game.h"
 #include "PreparedGame.h"
+#include "Renderer.h"
+#include "TextRenderer.h"
+#include "HeroTextRenderer.h"
+#include "ObserverTextRenderer.h"
 
 const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single scenario file should be provided or the second argument should be Map.txt ." },
@@ -34,6 +38,9 @@ int main(int argc, char** argv){
     try{
         std::string str = argv[1];
         PreparedGame pgame(str);
+        pgame.registerRenderer(new HeroTextRenderer());
+        pgame.registerRenderer(new ObserverTextRenderer());
+
         pgame.run();
     }catch(const JSON::ParseException& e)
     {

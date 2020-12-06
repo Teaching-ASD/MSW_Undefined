@@ -53,7 +53,10 @@ void PreparedGame::run(){
         if(beeMap == false || heroPos==nullptr){ throw Game::NotInitializedException(" Map or Hero is not initialized."); }
         this->step(this->heroPos->x, this->heroPos->y);
         while(monsters.size()!=0 && heroPos->hero->isAlive()){
-            this->lightradius();
+            //this->lightradius();
+            for(Renderer* rend:rendererList){
+                rend->render(*this);
+            }
             std::string direction;
             std::cout << "Enter a direction!"<<std::endl;
             std::cin >> direction;
@@ -74,7 +77,7 @@ void PreparedGame::run(){
             else std::cout << "Wrong direction! try again!" << std::endl;
         }
         if(heroPos->hero->isAlive()){
-        this->drawMap();
+        //this->drawMap();
         std::cout << heroPos->hero->getName() << " cleared the map." << std::endl;
         }
         gameIsRunning = false;

@@ -14,13 +14,16 @@
  * Created on: 2020.12.04. 16:00
 */
 #pragma once
+class Renderer;
 #include<string>
 #include<vector>
+#include<list>
 
 
 #include "MarkedMap.h"
 #include "Hero.h"
 #include "Monster.h"
+#include "Renderer.h"
 
 struct Pos{
     Hero *hero=nullptr;
@@ -41,17 +44,22 @@ struct monsterPos{
 };
 
 class Game{
+public:
+    MarkedMap getMarkedMap() const;
+    Pos* getHeroPos() const;
+    std::list<monsterPos> getMonsters() const;
+    void registerRenderer(Renderer *);
 private:
+friend class Render;
 protected:
     MarkedMap map;
+    std::list<Renderer*> rendererList;
     bool beeMap = false; 
     bool gameIsRunning = false;
     Pos* heroPos = nullptr;
     std::list<monsterPos> monsters;
     /// This method is for the Hero position changing with the given direction
     void step(int x, int y);
-    /// This method is for drawing out the map fully at the end of the game
-    void drawMap();
     /// This is an empty constructor for Game. After this the map has to be setted.
     Game();
     /// This is the constructor with the Map filename.
@@ -81,16 +89,24 @@ protected:
     /**
      * \exception Game::NotInitializedException The map is not initialized, or hero is not placed in it. 
     **/
-    ///This function is for add a character to the map, and set it's place.
-    void setChInMap(const std::list<Monster>&/**< [in] The list of monster objects.*/,const Hero&/**< [in] The Hero's object*/);
-    ///This function is for draw the map with the given radius distance
-    void lightradius() const;
 
    ///This is a destructor for the game.
     ~Game(){
         delete heroPos;
         monsters.clear();
+
+        std::for_each (rendererList.begin (), rendererList.end (), deleter<Renderer> ());
+        rendererList.clear();
     }
+
+    template<typename T>
+        struct deleter : std::unary_function<const T*, void>
+        {
+        void operator() (const T *ptr) const
+        {
+            delete ptr;
+        }
+        };
         ///This is an exception class, which is thrown when an error is happened.
 
         class OccupiedException : public std::runtime_error {
