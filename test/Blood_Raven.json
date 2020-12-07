@@ -4,6 +4,10 @@
 
     "health_points"   : 113,
     "damage"          : 8,
+    "magical_damage"  : 8,
     "attack_cooldown" : 1.2,
-    "race" : "undead"
+    "defense": 0,
+    "race" : "undead",
+    "texture" : "svg/BloodRaven.svg"
+    
 }

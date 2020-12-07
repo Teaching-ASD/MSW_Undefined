@@ -25,6 +25,7 @@ void JSON::internalStringParse(std::string data, std::string key){
                     (data.find("\"",data.find(":",data.find(key)))+1)
                 )
             );
+            key.erase(remove(key.begin(), key.end(), '\"'), key.end());
             std::pair<std::string,std::variant<std::string, int, double>> ret=std::make_pair(key, str);
             adatok.insert(ret);
         }
@@ -36,6 +37,7 @@ void JSON::internalStringParseMonster(std::string data, std::string key){
             std::string str=data.substr(
             data.find("\"",data.find(":",data.find(key))),
             data.find("]")-(data.find("\"",data.find(":",data.find(key)))) );
+            key.erase(remove(key.begin(), key.end(), '\"'), key.end());
             std::pair<std::string,std::variant<std::string, int, double>> ret=std::make_pair(key, str);
             adatok.insert(ret);
         }
@@ -43,7 +45,6 @@ void JSON::internalStringParseMonster(std::string data, std::string key){
 void JSON::internalNumParse(std::string data, std::string key){
         //remove whitespaces
         data.erase(remove_if(data.begin(), data.end(), isspace), data.end());
-        //
         if(data.find(key)<data.size()){
         this->keyTester(data,key);
         if(data.find(',',data.find(key))<data.find('}',data.find(key))){
@@ -82,17 +83,31 @@ void JSON::internalNumParse(std::string data, std::string key){
 void JSON::internalParser(std::string data){
         this->internalStringParse(data,"name");
         this->internalNumParse(data,"health_points");
-        this->internalNumParse(data,"damage\"");
+        this->internalNumParse(data,"\"damage\"");
+        this->internalNumParse(data,"magical_damage");
         this->internalNumParse(data,"attack_cooldown");
         this->internalNumParse(data,"experience_per_level");
         this->internalNumParse(data,"health_point_bonus_per_level");
         this->internalNumParse(data, "damage_bonus_per_level");
         this->internalNumParse(data, "cooldown_multiplier_per_level");
+        this->internalNumParse(data, "defense\"");
+        this->internalNumParse(data, "defense_bonus_per_level");
+        this->internalNumParse(data, "\"light_radius\"");
+        this->internalNumParse(data, "light_radius_bonus_per_level");
         this->internalStringParse(data, "lore");
         this->internalStringParse(data, "race");
         this->internalStringParse(data, "additional_info");
+        this->internalStringParse(data,"map");
         this->internalStringParse(data,"hero");
-        this->internalStringParseMonster(data,"monsters");
+        this->internalStringParse(data,"monster-1");
+        this->internalStringParse(data,"monster-2");
+        this->internalStringParse(data,"monster-3");
+        this->internalStringParse(data, "\"texture\"");
+        this->internalStringParse(data, "wall_texture");
+        this->internalStringParse(data, "free_texture");
+        this->internalStringParseMonster(data, "\"monsters\"");
+
+
 };
 
 void JSON::parseString(std::string data){
@@ -118,7 +133,7 @@ std::string JSON::readFile(std::string fname){
         return adatok;
 }
 
-JSON JSON::parseFromFile(char* fname){
+JSON JSON::parseFromFile(std::string fname){
         JSON object;
         object.internalParser(object.readFile(fname));
         return object;

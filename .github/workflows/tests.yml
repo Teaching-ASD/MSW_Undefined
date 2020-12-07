@@ -2,7 +2,7 @@ name: Automated test CI
 
 on:
   push:
-    branches: [docker] 
+    branches: [advanced] 
 
 jobs:
   build_and_test:

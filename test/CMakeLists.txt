@@ -21,5 +21,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
  
 # Link runTests with what we want to test 
 # and the GTest and pthread library
-add_executable(runTests test.cpp ../JSON.cpp ../Character.cpp ../Monster.cpp  ../Hero.cpp )
+add_executable(runTests test.cpp ../JSON.cpp ../Character.cpp ../Monster.cpp  ../Hero.cpp ../Game.cpp ../Map.cpp ../PreparedGame.cpp ../MarkedMap.cpp)
 target_link_libraries(runTests ${GTEST_LIBRARIES} pthread)

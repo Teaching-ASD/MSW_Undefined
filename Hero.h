@@ -33,11 +33,14 @@ private:
     const int hpperlvl;
     const int dmgperlvl;
     const double cdmperlvl;
+    const double defperlvl;
+    int lradius;
+    const int lrperlvl = 1;
  
 public:
 
     /// This is a constructor for Hero
-    Hero(const std::string&/**< [in] The Hero's name */,int/**< [in] The Hero's health */, int/**< [in] The Hero's damage */, double/**< [in] The Hero's attackcooldown */,const int/**< [in] The Hero's Experience per Level */, const int /**< [in] The Hero's HealthPoint Bonus per Level */, const int /**< [in] The Hero's Damage Bonus per Level */, const double /**< [in] The Hero's Cooldown Multiplier per Level */);
+    Hero(const std::string&/**< [in] The Hero's name */,int/**< [in] The Hero's health */, int/**< [in] The Hero's Physical damage */,int/**< [in] The Hero's Magical damage */, double/**< [in] The Hero's attackcooldown */,const int/**< [in] The Hero's Experience per Level */, const int /**< [in] The Hero's HealthPoint Bonus per Level */, const int /**< [in] The Hero's Damage Bonus per Level */, const double /**< [in] The Hero's Cooldown Multiplier per Level */,int/**< [in] The Hero's Defense value */, const double/**< [in] The Hero's Defense Bonus per Level */, int/**< [in] The Hero's light radius */,const int/**< [in] The Hero's light radius bonus per level */, const std::string& texture_ /**<[in] The hero's texture*/);
     /// This method is for parsing the json files. It gets the filename and passes to the json parser. 
     static Hero parse(std::string fname /**< [in] Name of the file */);
     /// This method is increasing the xp of the Hero 
@@ -64,13 +67,26 @@ public:
     * \return The Hero's current level. 
     */
     int getLevel() const;
+    /**
+    * \return The Hero's Defense Bonus Multiplier. 
+    */
+    int getDefPerLvl() const;
+    /**
+    * \return The Hero's Defense Bonus Multiplier. 
+    */
+    int getLightRadius() const;
+    /**
+    * \return The Hero's Defense Bonus Multiplier. 
+    */
+    int getLRPerLvl() const;
     /// This method is for attack a Monster with the Hero
     void fightTilDeath(Monster&);
     /**
     * \return The Hero's maximum Health Points. 
     */
     int getMaxHealthPoints() const;
-
+    /// This method is for set the lightradius
+    void setLightRadius(int lr_);
     /// This method is doing the attack and levelup.
     void Fight(Monster& monster/**< [in] This is the monster*/,Hero& defend,/**< [in] This is the  Hero */bool HeroAttack/**< [in] Is the hero attacking? */);
 
